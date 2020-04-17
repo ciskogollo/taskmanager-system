@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="modelo_de_datos_TM" id="8A8BD441-A06D-E6FE-A43C-3299964EB74C" version="3.5">
+<createdBy>cisko</createdBy>
+<createdTime>2020-04-17 19:32:05 UTC</createdTime>
+<ownerDesignName>modelo_de_datos_TM</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>8A8BD441-A06D-E6FE-A43C-3299964EB74C</designId>
+</OSDM_Design>
