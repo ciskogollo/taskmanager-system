@@ -1,0 +1,155 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="0F0C81CC-1087-A747-6572-22A8F4E594CD" name="Tarea">
+<createdBy>cisko</createdBy>
+<createdTime>2020-04-17 19:54:54 UTC</createdTime>
+<ownerDesignName>modelo_de_datos_TM</ownerDesignName>
+<engineerTo>
+<item key="9041710C-2D8E-AFE0-8E67-E9EB346329C0" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id_tarea" id="3E93A939-9F15-8606-9113-451478F49D5B">
+<createdBy>cisko</createdBy>
+<createdTime>2020-04-17 19:55:07 UTC</createdTime>
+<ownerDesignName>modelo_de_datos_TM</ownerDesignName>
+<engineerTo>
+<item key="9041710C-2D8E-AFE0-8E67-E9EB346329C0" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="descripcion" id="B67C43FC-BEC5-394E-1000-4E1C724DF2D8">
+<createdBy>cisko</createdBy>
+<createdTime>2020-04-17 19:55:21 UTC</createdTime>
+<ownerDesignName>modelo_de_datos_TM</ownerDesignName>
+<engineerTo>
+<item key="9041710C-2D8E-AFE0-8E67-E9EB346329C0" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>A3A3C77D-0366-9768-FF89-1C25E56881C8</logicalDatatype>
+<dataTypeSize>420</dataTypeSize>
+<ownDataTypeParameters>420,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_generador" id="92FDF8D5-D751-1A7D-C9C4-C48F917C9D46">
+<createdBy>cisko</createdBy>
+<createdTime>2020-04-17 20:01:46 UTC</createdTime>
+<ownerDesignName>modelo_de_datos_TM</ownerDesignName>
+<engineerTo>
+<item key="9041710C-2D8E-AFE0-8E67-E9EB346329C0" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="fecha_ingreso" id="E94E0617-4714-0C51-D7CB-4A61E9DDD0A3">
+<createdBy>cisko</createdBy>
+<createdTime>2020-04-17 20:01:58 UTC</createdTime>
+<ownerDesignName>modelo_de_datos_TM</ownerDesignName>
+<engineerTo>
+<item key="9041710C-2D8E-AFE0-8E67-E9EB346329C0" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="fecha_plazo" id="31046D32-0399-89C5-1B3E-E6B534564BA2">
+<createdBy>cisko</createdBy>
+<createdTime>2020-04-17 20:03:37 UTC</createdTime>
+<ownerDesignName>modelo_de_datos_TM</ownerDesignName>
+<engineerTo>
+<item key="9041710C-2D8E-AFE0-8E67-E9EB346329C0" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="fecha_recepcion" id="6CFD0DDE-FBF7-21D1-6CA9-66E6D955EB1B">
+<createdBy>cisko</createdBy>
+<createdTime>2020-04-17 20:03:47 UTC</createdTime>
+<ownerDesignName>modelo_de_datos_TM</ownerDesignName>
+<engineerTo>
+<item key="9041710C-2D8E-AFE0-8E67-E9EB346329C0" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="tarea_antec" id="878004D2-CA17-1630-4C0D-B46EF91713DB">
+<createdBy>cisko</createdBy>
+<createdTime>2020-04-17 20:04:16 UTC</createdTime>
+<ownerDesignName>modelo_de_datos_TM</ownerDesignName>
+<engineerTo>
+<item key="9041710C-2D8E-AFE0-8E67-E9EB346329C0" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="tarea_suces" id="8EB03502-D22B-8E49-4EC1-2A7139B86ABE">
+<createdBy>cisko</createdBy>
+<createdTime>2020-04-17 20:07:48 UTC</createdTime>
+<ownerDesignName>modelo_de_datos_TM</ownerDesignName>
+<engineerTo>
+<item key="9041710C-2D8E-AFE0-8E67-E9EB346329C0" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_status" id="F9909DA7-897D-2818-7464-FDEB89F56967">
+<createdBy>cisko</createdBy>
+<createdTime>2020-04-17 20:08:36 UTC</createdTime>
+<ownerDesignName>modelo_de_datos_TM</ownerDesignName>
+<engineerTo>
+<item key="9041710C-2D8E-AFE0-8E67-E9EB346329C0" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_funcion" id="CC16B346-73B5-6D27-B379-61185BE7B8FD">
+<createdBy>cisko</createdBy>
+<createdTime>2020-04-17 20:08:48 UTC</createdTime>
+<ownerDesignName>modelo_de_datos_TM</ownerDesignName>
+<engineerTo>
+<item key="9041710C-2D8E-AFE0-8E67-E9EB346329C0" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="301928E6-D303-5630-6F05-F1E67212BE51" name="Tarea PK">
+<createdBy>cisko</createdBy>
+<createdTime>2020-04-17 19:55:19 UTC</createdTime>
+<ownerDesignName>modelo_de_datos_TM</ownerDesignName>
+<engineerTo>
+<item key="9041710C-2D8E-AFE0-8E67-E9EB346329C0" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>3E93A939-9F15-8606-9113-451478F49D5B</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>
