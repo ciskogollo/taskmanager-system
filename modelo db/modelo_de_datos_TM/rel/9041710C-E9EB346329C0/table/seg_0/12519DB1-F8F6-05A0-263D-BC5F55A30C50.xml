@@ -1,0 +1,61 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="12519DB1-F8F6-05A0-263D-BC5F55A30C50" name="Cliente">
+<createdBy>cisko</createdBy>
+<createdTime>2020-04-18 01:50:07 UTC</createdTime>
+<generatorID>B4A1D0C7-963A-6024-6F24-3F40563F8EB8</generatorID>
+<ownerDesignName>modelo_de_datos_TM</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_cliente" id="687EC5CA-DFB3-EE63-CA77-5385AE5EF8C7">
+<createdBy>cisko</createdBy>
+<createdTime>2020-04-18 01:50:07 UTC</createdTime>
+<generatorID>C183F6E2-C583-CF64-2863-30B118759A2F</generatorID>
+<ownerDesignName>modelo_de_datos_TM</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="nombre_cliente" id="3B9F27B3-6305-ED9C-72CD-A2E4D3E0C199">
+<createdBy>cisko</createdBy>
+<createdTime>2020-04-18 01:50:07 UTC</createdTime>
+<generatorID>8DD39311-685B-A433-FAB8-1D043BAD8C04</generatorID>
+<ownerDesignName>modelo_de_datos_TM</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>A3A3C77D-0366-9768-FF89-1C25E56881C8</logicalDatatype>
+<dataTypeSize>35</dataTypeSize>
+<ownDataTypeParameters>35,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="habilitado" id="0D27C6B7-74D6-F395-27B0-7826EF0CA383">
+<createdBy>cisko</createdBy>
+<createdTime>2020-04-18 01:50:07 UTC</createdTime>
+<generatorID>BC917951-D5D3-9E57-536F-3F7F02508DC6</generatorID>
+<ownerDesignName>modelo_de_datos_TM</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1 BYTE</dataTypeSize>
+<ownDataTypeParameters>1 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="0EB1D326-8CEA-5C5F-C216-8C998CD9635E" name="Cliente_PK">
+<createdBy>cisko</createdBy>
+<createdTime>2020-04-18 01:50:07 UTC</createdTime>
+<generatorID>525B6B8F-1DE2-0DDC-DBC5-0F6B075E4A77</generatorID>
+<ownerDesignName>modelo_de_datos_TM</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="687EC5CA-DFB3-EE63-CA77-5385AE5EF8C7"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

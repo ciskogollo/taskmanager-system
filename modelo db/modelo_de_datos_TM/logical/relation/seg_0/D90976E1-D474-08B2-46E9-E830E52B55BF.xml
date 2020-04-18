@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="Responsable_Tarea_FK" directorySegmentName="seg_0" id="D90976E1-D474-08B2-46E9-E830E52B55BF">
+<createdBy>cisko</createdBy>
+<createdTime>2020-04-18 06:04:48 UTC</createdTime>
+<generatorID>890F6E74-30E7-710E-79B8-AE0206247E16</generatorID>
+<ownerDesignName>modelo_de_datos_TM</ownerDesignName>
+<engineerTo>
+<item key="9041710C-2D8E-AFE0-8E67-E9EB346329C0" value="true"/>
+</engineerTo>
+<sourcePk>301928E6-D303-5630-6F05-F1E67212BE51</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>0F0C81CC-1087-A747-6572-22A8F4E594CD</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>F105256E-8467-29D0-C743-399D2C80C400</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

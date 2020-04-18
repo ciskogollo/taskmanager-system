@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="0AEE377F-A383-F287-8793-A39F1CDB4DC9" containerWithKeyObject="E923AFD3-D432-552F-D3D2-27AE0B16AA22" localFKIndex="61451C2E-2005-0D02-A1C7-C58298BA16B2" name="Tarea_Funcion_FK">
+<createdBy>cisko</createdBy>
+<createdTime>2020-04-18 04:47:51 UTC</createdTime>
+<generatorID>BB3168C7-2F49-4EA7-A9E3-6484696C427B</generatorID>
+<ownerDesignName>modelo_de_datos_TM</ownerDesignName>
+<referredTableLongName>Funcion</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>9334433A-E607-F635-0C02-6E470B54AEF2</referredTableID>
+<keyObject>630127A0-ADB8-B712-8349-B4E4BB4AB8D6</keyObject>
+<referredKeyID>630127A0-ADB8-B712-8349-B4E4BB4AB8D6</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>id_funcion</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

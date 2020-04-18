@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="Proceso_Cliente_FK" directorySegmentName="seg_0" id="1F4C5061-30D6-F1C4-899D-0623070F7354">
+<createdBy>cisko</createdBy>
+<createdTime>2020-04-18 06:04:48 UTC</createdTime>
+<generatorID>A3FBD763-6A19-5C44-C7BE-50806A2A14FF</generatorID>
+<ownerDesignName>modelo_de_datos_TM</ownerDesignName>
+<engineerTo>
+<item key="9041710C-2D8E-AFE0-8E67-E9EB346329C0" value="true"/>
+</engineerTo>
+<sourcePk>525B6B8F-1DE2-0DDC-DBC5-0F6B075E4A77</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>B4A1D0C7-963A-6024-6F24-3F40563F8EB8</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>B7474E5C-B137-ABB3-6421-0F8CCFAC632F</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

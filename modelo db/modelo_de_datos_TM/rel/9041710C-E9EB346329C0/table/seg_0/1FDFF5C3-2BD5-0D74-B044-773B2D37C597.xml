@@ -1,0 +1,122 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="1FDFF5C3-2BD5-0D74-B044-773B2D37C597" name="Usuario">
+<createdBy>cisko</createdBy>
+<createdTime>2020-04-18 01:50:07 UTC</createdTime>
+<generatorID>80BCA193-2DC9-AF91-CCF5-FC13BCC24EED</generatorID>
+<ownerDesignName>modelo_de_datos_TM</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_usuario" id="D60BB1C9-21F9-492E-7A56-99EAB605F352">
+<createdBy>cisko</createdBy>
+<createdTime>2020-04-18 01:50:07 UTC</createdTime>
+<generatorID>BE69D611-87B9-5EB3-C186-3DFE66957627</generatorID>
+<ownerDesignName>modelo_de_datos_TM</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="correo" id="2301ED84-8875-5610-DE5A-CD6D04045E73">
+<createdBy>cisko</createdBy>
+<createdTime>2020-04-18 01:50:07 UTC</createdTime>
+<generatorID>88FEF4A7-6D81-3ACC-E557-412BD0FF484D</generatorID>
+<ownerDesignName>modelo_de_datos_TM</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>A3A3C77D-0366-9768-FF89-1C25E56881C8</logicalDatatype>
+<dataTypeSize>40</dataTypeSize>
+<ownDataTypeParameters>40,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="hash" id="9F9B8362-F767-A2A1-7C4E-50656CF869AA">
+<createdBy>cisko</createdBy>
+<createdTime>2020-04-18 01:50:07 UTC</createdTime>
+<generatorID>9179D441-F2CB-F4BE-8B9E-AE53B1AA7817</generatorID>
+<ownerDesignName>modelo_de_datos_TM</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>A3A3C77D-0366-9768-FF89-1C25E56881C8</logicalDatatype>
+<dataTypeSize>60</dataTypeSize>
+<ownDataTypeParameters>60,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="nombre" id="8DF3716D-A4C3-5C5F-1FE1-DD513F7744AE">
+<createdBy>cisko</createdBy>
+<createdTime>2020-04-18 01:50:07 UTC</createdTime>
+<generatorID>7E3AF1EB-511E-235D-36F3-7213B80461D4</generatorID>
+<ownerDesignName>modelo_de_datos_TM</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>A3A3C77D-0366-9768-FF89-1C25E56881C8</logicalDatatype>
+<dataTypeSize>35</dataTypeSize>
+<ownDataTypeParameters>35,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="rut" id="4AE9CE0A-503F-3B39-E4F0-DE02B580FA20">
+<createdBy>cisko</createdBy>
+<createdTime>2020-04-18 01:50:07 UTC</createdTime>
+<generatorID>C4E6DE3F-D36E-3F7B-751A-C7D4DFD51F29</generatorID>
+<ownerDesignName>modelo_de_datos_TM</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>A3A3C77D-0366-9768-FF89-1C25E56881C8</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>10,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="direccion" id="480B6D89-CB83-EC88-2FFC-C2585864F7E6">
+<createdBy>cisko</createdBy>
+<createdTime>2020-04-18 01:50:07 UTC</createdTime>
+<generatorID>F012B37A-B383-75B5-EDC1-2E92D156F075</generatorID>
+<ownerDesignName>modelo_de_datos_TM</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>A3A3C77D-0366-9768-FF89-1C25E56881C8</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Rol_id_rol" id="5C28964A-D241-046A-2B1F-89AB30AAC3A7">
+<createdBy>cisko</createdBy>
+<createdTime>2020-04-18 02:00:34 UTC</createdTime>
+<ownerDesignName>modelo_de_datos_TM</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="DED23509-C627-E0F4-13A5-610F4C897E94" referredColumn="F90CBA0C-7F90-27A2-739E-1BB4758F9BEB"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="D2012D44-C868-D9D1-2BCC-9E1D9E93E4AD" name="Usuario_PK">
+<createdBy>cisko</createdBy>
+<createdTime>2020-04-18 01:50:07 UTC</createdTime>
+<generatorID>6B5A4DAE-26E8-8799-BDA8-E3541863F1C4</generatorID>
+<ownerDesignName>modelo_de_datos_TM</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="D60BB1C9-21F9-492E-7A56-99EAB605F352"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="02F14C31-3D2C-FE4A-7D51-5801BB1E65B2" name="Usuario_Rol_FK">
+<createdBy>cisko</createdBy>
+<createdTime>2020-04-18 02:00:34 UTC</createdTime>
+<generatorID>0099C380-334F-EBA1-7A4B-B34CE9ABD95B</generatorID>
+<ownerDesignName>modelo_de_datos_TM</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="5C28964A-D241-046A-2B1F-89AB30AAC3A7"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

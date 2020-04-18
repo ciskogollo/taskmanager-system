@@ -1,7 +1,7 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="7096D8BA-47C8-C7D5-CB06-34C9EE2D0FBD" name="Problema">
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="B7474E5C-B137-ABB3-6421-0F8CCFAC632F" name="Proceso">
 <createdBy>cisko</createdBy>
-<createdTime>2020-04-17 19:53:34 UTC</createdTime>
+<createdTime>2020-04-18 01:12:24 UTC</createdTime>
 <ownerDesignName>modelo_de_datos_TM</ownerDesignName>
 <engineerTo>
 <item key="9041710C-2D8E-AFE0-8E67-E9EB346329C0" value="true"/>
@@ -15,9 +15,9 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="id problema" id="F9E5564D-E378-FA1C-F8D8-C44BE5109261">
+<Attribute name="id proceso" id="8B9E3EDC-7A78-5676-FA14-735E8B850B7B">
 <createdBy>cisko</createdBy>
-<createdTime>2020-04-17 19:53:53 UTC</createdTime>
+<createdTime>2020-04-18 01:13:57 UTC</createdTime>
 <ownerDesignName>modelo_de_datos_TM</ownerDesignName>
 <engineerTo>
 <item key="9041710C-2D8E-AFE0-8E67-E9EB346329C0" value="true"/>
@@ -27,9 +27,9 @@
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="comentario" id="E60B6369-5AB3-5354-B75A-75839942522B">
+<Attribute name="tip flujo" id="5FD20C5D-A155-F113-37BD-6413FAEC6B1D">
 <createdBy>cisko</createdBy>
-<createdTime>2020-04-17 19:54:10 UTC</createdTime>
+<createdTime>2020-04-18 01:14:09 UTC</createdTime>
 <ownerDesignName>modelo_de_datos_TM</ownerDesignName>
 <engineerTo>
 <item key="9041710C-2D8E-AFE0-8E67-E9EB346329C0" value="true"/>
@@ -37,18 +37,32 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>A3A3C77D-0366-9768-FF89-1C25E56881C8</logicalDatatype>
-<dataTypeSize>255</dataTypeSize>
-<ownDataTypeParameters>255,,</ownDataTypeParameters>
+<dataTypeSize>25</dataTypeSize>
+<ownDataTypeParameters>25,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="Usuario id usuario" id="8DBDEEA2-4938-B8FB-289E-B3943489D9F0">
+<Attribute name="Cliente id cliente" id="1D0742F3-6A4C-9848-335F-2F8708379138">
 <createdBy>cisko</createdBy>
 <createdTime>2020-04-18 06:04:48 UTC</createdTime>
-<generatorID>89DFA849-4391-4AC5-2E50-D45A012B3721</generatorID>
+<generatorID>1F4C5061-30D6-F1C4-899D-0623070F7354</generatorID>
 <ownerDesignName>modelo_de_datos_TM</ownerDesignName>
 <engineerTo>
 <item key="9041710C-2D8E-AFE0-8E67-E9EB346329C0" value="true"/>
 </engineerTo>
-<referedAttribute>BE69D611-87B9-5EB3-C186-3DFE66957627</referedAttribute>
+<referedAttribute>C183F6E2-C583-CF64-2863-30B118759A2F</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Responsable id resp" id="C060146B-C8C8-31CE-F63D-3F54CA9A5F4B">
+<createdBy>cisko</createdBy>
+<createdTime>2020-04-18 06:04:48 UTC</createdTime>
+<generatorID>79FB9067-F3B4-8828-1B66-432E5AE0780F</generatorID>
+<ownerDesignName>modelo_de_datos_TM</ownerDesignName>
+<engineerTo>
+<item key="9041710C-2D8E-AFE0-8E67-E9EB346329C0" value="true"/>
+</engineerTo>
+<referedAttribute>AA059911-4E95-B69C-4054-9614018742BB</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT011</logicalDatatype>
@@ -56,9 +70,9 @@
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
-<identifier id="C383FF25-A255-80E7-29ED-FFE632E24C21" name="Problema PK">
+<identifier id="9775F4DA-1328-BC23-83A2-9FC09178AC6B" name="Proceso PK">
 <createdBy>cisko</createdBy>
-<createdTime>2020-04-18 01:39:57 UTC</createdTime>
+<createdTime>2020-04-18 01:14:06 UTC</createdTime>
 <ownerDesignName>modelo_de_datos_TM</ownerDesignName>
 <shouldEngineer>false</shouldEngineer>
 <engineerTo>
@@ -66,7 +80,7 @@
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>
-<attributeRef>F9E5564D-E378-FA1C-F8D8-C44BE5109261</attributeRef>
+<attributeRef>8B9E3EDC-7A78-5676-FA14-735E8B850B7B</attributeRef>
 </usedAttributes>
 </identifier>
 </identifiers>

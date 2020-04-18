@@ -1,7 +1,7 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="6186E867-D605-2DF3-26EB-2A6A435219AD" name="Rol">
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="F0E7F281-769C-FD1A-D165-419D9D3AA60C" name="Tipo funcion">
 <createdBy>cisko</createdBy>
-<createdTime>2020-04-17 19:50:43 UTC</createdTime>
+<createdTime>2020-04-18 01:09:10 UTC</createdTime>
 <ownerDesignName>modelo_de_datos_TM</ownerDesignName>
 <engineerTo>
 <item key="9041710C-2D8E-AFE0-8E67-E9EB346329C0" value="true"/>
@@ -15,9 +15,9 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="id rol" id="83BA146F-D44F-7298-134B-B2D4CFA81511">
+<Attribute name="id tipofunc" id="58ACC35C-A78F-C002-16B4-260B29285A6C">
 <createdBy>cisko</createdBy>
-<createdTime>2020-04-17 19:50:54 UTC</createdTime>
+<createdTime>2020-04-18 01:09:18 UTC</createdTime>
 <ownerDesignName>modelo_de_datos_TM</ownerDesignName>
 <engineerTo>
 <item key="9041710C-2D8E-AFE0-8E67-E9EB346329C0" value="true"/>
@@ -27,15 +27,29 @@
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="Tipo rol id tiporol" id="C3329A4A-8C50-95C3-5050-5953BA9FDCEC">
+<Attribute name="Funcion id funcion" id="ACB24BD7-F0F3-80B6-76C0-34BD0343E887">
 <createdBy>cisko</createdBy>
-<createdTime>2020-04-18 04:35:40 UTC</createdTime>
-<generatorID>8213EEBB-A928-48ED-7C73-0FB3D014285F</generatorID>
+<createdTime>2020-04-18 06:04:48 UTC</createdTime>
+<generatorID>7DE740A8-99BE-6209-25A7-D01535FE721E</generatorID>
 <ownerDesignName>modelo_de_datos_TM</ownerDesignName>
 <engineerTo>
 <item key="9041710C-2D8E-AFE0-8E67-E9EB346329C0" value="true"/>
 </engineerTo>
-<referedAttribute>3ED7E9FC-E5FE-7849-259E-9DBF2CD8DC8D</referedAttribute>
+<referedAttribute>5B37D70B-6025-2AA3-1C4B-7D46A6C58DCF</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Proceso id proceso" id="0EF1FF13-C311-A3BB-A727-465C4D8F3CD5">
+<createdBy>cisko</createdBy>
+<createdTime>2020-04-18 06:04:48 UTC</createdTime>
+<generatorID>FDBAF19D-C356-87E5-3D9E-954BB9727EB4</generatorID>
+<ownerDesignName>modelo_de_datos_TM</ownerDesignName>
+<engineerTo>
+<item key="9041710C-2D8E-AFE0-8E67-E9EB346329C0" value="true"/>
+</engineerTo>
+<referedAttribute>8B9E3EDC-7A78-5676-FA14-735E8B850B7B</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT011</logicalDatatype>
@@ -43,9 +57,9 @@
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
-<identifier id="0099C380-334F-EBA1-7A4B-B34CE9ABD95B" name="Rol PK">
+<identifier id="92D42BAF-FC97-9ECB-0099-2E8CFEBA8D8A" name="Tipo_funcion_PK">
 <createdBy>cisko</createdBy>
-<createdTime>2020-04-17 19:51:04 UTC</createdTime>
+<createdTime>2020-04-18 01:09:33 UTC</createdTime>
 <ownerDesignName>modelo_de_datos_TM</ownerDesignName>
 <shouldEngineer>false</shouldEngineer>
 <engineerTo>
@@ -53,7 +67,7 @@
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>
-<attributeRef>83BA146F-D44F-7298-134B-B2D4CFA81511</attributeRef>
+<attributeRef>58ACC35C-A78F-C002-16B4-260B29285A6C</attributeRef>
 </usedAttributes>
 </identifier>
 </identifiers>

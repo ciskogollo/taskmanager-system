@@ -1,7 +1,7 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="7096D8BA-47C8-C7D5-CB06-34C9EE2D0FBD" name="Problema">
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="989DEADB-1304-6758-3F61-E1B8CF567C62" name="Tarea subordinada">
 <createdBy>cisko</createdBy>
-<createdTime>2020-04-17 19:53:34 UTC</createdTime>
+<createdTime>2020-04-18 04:37:01 UTC</createdTime>
 <ownerDesignName>modelo_de_datos_TM</ownerDesignName>
 <engineerTo>
 <item key="9041710C-2D8E-AFE0-8E67-E9EB346329C0" value="true"/>
@@ -15,9 +15,9 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="id problema" id="F9E5564D-E378-FA1C-F8D8-C44BE5109261">
+<Attribute name="id tsub" id="2AD300AA-9047-4CC5-3439-94FAB6AAC5E3">
 <createdBy>cisko</createdBy>
-<createdTime>2020-04-17 19:53:53 UTC</createdTime>
+<createdTime>2020-04-18 04:37:13 UTC</createdTime>
 <ownerDesignName>modelo_de_datos_TM</ownerDesignName>
 <engineerTo>
 <item key="9041710C-2D8E-AFE0-8E67-E9EB346329C0" value="true"/>
@@ -27,23 +27,38 @@
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="comentario" id="E60B6369-5AB3-5354-B75A-75839942522B">
+<Attribute name="Responsable id resp" id="A3C20BB9-948D-A5FC-B603-832DC42538E8">
 <createdBy>cisko</createdBy>
-<createdTime>2020-04-17 19:54:10 UTC</createdTime>
+<createdTime>2020-04-18 06:04:48 UTC</createdTime>
+<generatorID>40C06C33-26AA-880A-5E4A-EB32EDBC1B71</generatorID>
 <ownerDesignName>modelo_de_datos_TM</ownerDesignName>
 <engineerTo>
 <item key="9041710C-2D8E-AFE0-8E67-E9EB346329C0" value="true"/>
 </engineerTo>
+<referedAttribute>AA059911-4E95-B69C-4054-9614018742BB</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>A3A3C77D-0366-9768-FF89-1C25E56881C8</logicalDatatype>
-<dataTypeSize>255</dataTypeSize>
-<ownDataTypeParameters>255,,</ownDataTypeParameters>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="Usuario id usuario" id="8DBDEEA2-4938-B8FB-289E-B3943489D9F0">
+<Attribute name="Tarea id tarea" id="E82C1144-2163-FE6F-C280-A38534A13895">
 <createdBy>cisko</createdBy>
 <createdTime>2020-04-18 06:04:48 UTC</createdTime>
-<generatorID>89DFA849-4391-4AC5-2E50-D45A012B3721</generatorID>
+<generatorID>643CF6EB-371C-70FC-91CB-C5D85A1DA2E6</generatorID>
+<ownerDesignName>modelo_de_datos_TM</ownerDesignName>
+<engineerTo>
+<item key="9041710C-2D8E-AFE0-8E67-E9EB346329C0" value="true"/>
+</engineerTo>
+<referedAttribute>3E93A939-9F15-8606-9113-451478F49D5B</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Usuario id usuario" id="3E3CCD00-557A-E2A4-E018-342052CA01A4">
+<createdBy>cisko</createdBy>
+<createdTime>2020-04-18 06:04:48 UTC</createdTime>
+<generatorID>7976547E-E699-7ED0-523E-3A82DDFF3DB7</generatorID>
 <ownerDesignName>modelo_de_datos_TM</ownerDesignName>
 <engineerTo>
 <item key="9041710C-2D8E-AFE0-8E67-E9EB346329C0" value="true"/>
@@ -56,9 +71,9 @@
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
-<identifier id="C383FF25-A255-80E7-29ED-FFE632E24C21" name="Problema PK">
+<identifier id="B422E0B1-0183-7CF9-3EAA-C41F811C4FA0" name="Tarea_subordinada_PK">
 <createdBy>cisko</createdBy>
-<createdTime>2020-04-18 01:39:57 UTC</createdTime>
+<createdTime>2020-04-18 04:37:23 UTC</createdTime>
 <ownerDesignName>modelo_de_datos_TM</ownerDesignName>
 <shouldEngineer>false</shouldEngineer>
 <engineerTo>
@@ -66,7 +81,7 @@
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>
-<attributeRef>F9E5564D-E378-FA1C-F8D8-C44BE5109261</attributeRef>
+<attributeRef>2AD300AA-9047-4CC5-3439-94FAB6AAC5E3</attributeRef>
 </usedAttributes>
 </identifier>
 </identifiers>

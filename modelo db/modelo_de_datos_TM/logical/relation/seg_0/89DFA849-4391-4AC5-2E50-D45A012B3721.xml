@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="Problema_Usuario_FK" directorySegmentName="seg_0" id="89DFA849-4391-4AC5-2E50-D45A012B3721">
+<createdBy>cisko</createdBy>
+<createdTime>2020-04-18 06:04:48 UTC</createdTime>
+<generatorID>C3F15AC8-4F1B-EAEE-1B20-D86183B5B814</generatorID>
+<ownerDesignName>modelo_de_datos_TM</ownerDesignName>
+<engineerTo>
+<item key="9041710C-2D8E-AFE0-8E67-E9EB346329C0" value="true"/>
+</engineerTo>
+<sourcePk>6B5A4DAE-26E8-8799-BDA8-E3541863F1C4</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>80BCA193-2DC9-AF91-CCF5-FC13BCC24EED</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>7096D8BA-47C8-C7D5-CB06-34C9EE2D0FBD</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

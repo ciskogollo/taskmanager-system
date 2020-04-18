@@ -15,7 +15,7 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="id_tarea" id="3E93A939-9F15-8606-9113-451478F49D5B">
+<Attribute name="id tarea" id="3E93A939-9F15-8606-9113-451478F49D5B">
 <createdBy>cisko</createdBy>
 <createdTime>2020-04-17 19:55:07 UTC</createdTime>
 <ownerDesignName>modelo_de_datos_TM</ownerDesignName>
@@ -40,19 +40,7 @@
 <dataTypeSize>420</dataTypeSize>
 <ownDataTypeParameters>420,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id_generador" id="92FDF8D5-D751-1A7D-C9C4-C48F917C9D46">
-<createdBy>cisko</createdBy>
-<createdTime>2020-04-17 20:01:46 UTC</createdTime>
-<ownerDesignName>modelo_de_datos_TM</ownerDesignName>
-<engineerTo>
-<item key="9041710C-2D8E-AFE0-8E67-E9EB346329C0" value="true"/>
-</engineerTo>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="fecha_ingreso" id="E94E0617-4714-0C51-D7CB-4A61E9DDD0A3">
+<Attribute name="fecha ingreso" id="E94E0617-4714-0C51-D7CB-4A61E9DDD0A3">
 <createdBy>cisko</createdBy>
 <createdTime>2020-04-17 20:01:58 UTC</createdTime>
 <ownerDesignName>modelo_de_datos_TM</ownerDesignName>
@@ -64,7 +52,7 @@
 <logicalDatatype>LOGDT008</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="fecha_plazo" id="31046D32-0399-89C5-1B3E-E6B534564BA2">
+<Attribute name="fecha plazo" id="31046D32-0399-89C5-1B3E-E6B534564BA2">
 <createdBy>cisko</createdBy>
 <createdTime>2020-04-17 20:03:37 UTC</createdTime>
 <ownerDesignName>modelo_de_datos_TM</ownerDesignName>
@@ -77,7 +65,7 @@
 <logicalDatatype>LOGDT008</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="fecha_recepcion" id="6CFD0DDE-FBF7-21D1-6CA9-66E6D955EB1B">
+<Attribute name="fecha recepcion" id="6CFD0DDE-FBF7-21D1-6CA9-66E6D955EB1B">
 <createdBy>cisko</createdBy>
 <createdTime>2020-04-17 20:03:47 UTC</createdTime>
 <ownerDesignName>modelo_de_datos_TM</ownerDesignName>
@@ -89,49 +77,73 @@
 <logicalDatatype>LOGDT008</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="tarea_antec" id="878004D2-CA17-1630-4C0D-B46EF91713DB">
+<Attribute name="Status work id status" id="4CC0D2F8-E0B1-E6A4-E356-38F2F289C667">
 <createdBy>cisko</createdBy>
-<createdTime>2020-04-17 20:04:16 UTC</createdTime>
+<createdTime>2020-04-18 06:04:48 UTC</createdTime>
+<generatorID>9302DF0A-09F7-EF20-CB45-7731BA5A5C50</generatorID>
 <ownerDesignName>modelo_de_datos_TM</ownerDesignName>
 <engineerTo>
 <item key="9041710C-2D8E-AFE0-8E67-E9EB346329C0" value="true"/>
 </engineerTo>
+<referedAttribute>B08805B0-A3AC-B144-D9F1-35938835D1B3</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="tarea_suces" id="8EB03502-D22B-8E49-4EC1-2A7139B86ABE">
+<Attribute name="Funcion id funcion" id="59343F11-22E3-892F-11CC-925A6014FC3A">
 <createdBy>cisko</createdBy>
-<createdTime>2020-04-17 20:07:48 UTC</createdTime>
+<createdTime>2020-04-18 06:04:48 UTC</createdTime>
+<generatorID>A449E05D-EC59-7583-4322-32AFA15E526C</generatorID>
 <ownerDesignName>modelo_de_datos_TM</ownerDesignName>
 <engineerTo>
 <item key="9041710C-2D8E-AFE0-8E67-E9EB346329C0" value="true"/>
 </engineerTo>
+<referedAttribute>5B37D70B-6025-2AA3-1C4B-7D46A6C58DCF</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id_status" id="F9909DA7-897D-2818-7464-FDEB89F56967">
+<Attribute name="Usuario id usuario" id="6C9E5392-BF76-F4FB-E514-83B36130B8F0">
 <createdBy>cisko</createdBy>
-<createdTime>2020-04-17 20:08:36 UTC</createdTime>
+<createdTime>2020-04-18 06:04:48 UTC</createdTime>
+<generatorID>EA7C8512-BF02-D7F5-6390-59CCEB0EEC4E</generatorID>
 <ownerDesignName>modelo_de_datos_TM</ownerDesignName>
 <engineerTo>
 <item key="9041710C-2D8E-AFE0-8E67-E9EB346329C0" value="true"/>
 </engineerTo>
+<referedAttribute>BE69D611-87B9-5EB3-C186-3DFE66957627</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id_funcion" id="CC16B346-73B5-6D27-B379-61185BE7B8FD">
+<Attribute name="Tarea id tarea" id="55C99C7C-6C2E-5CC9-B1FF-8325B1433C39">
 <createdBy>cisko</createdBy>
-<createdTime>2020-04-17 20:08:48 UTC</createdTime>
+<createdTime>2020-04-18 06:04:48 UTC</createdTime>
+<generatorID>A4695E17-CD54-CD21-913D-879E3E5F5A1A</generatorID>
 <ownerDesignName>modelo_de_datos_TM</ownerDesignName>
 <engineerTo>
 <item key="9041710C-2D8E-AFE0-8E67-E9EB346329C0" value="true"/>
 </engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<referedAttribute>3E93A939-9F15-8606-9113-451478F49D5B</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Tarea id tarea1" id="CB8118FF-84FA-0D9F-FF7C-2997D1B59705">
+<createdBy>cisko</createdBy>
+<createdTime>2020-04-18 06:04:48 UTC</createdTime>
+<generatorID>5B337562-4929-6FD2-3B88-D72AEB1C0445</generatorID>
+<ownerDesignName>modelo_de_datos_TM</ownerDesignName>
+<engineerTo>
+<item key="9041710C-2D8E-AFE0-8E67-E9EB346329C0" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<referedAttribute>3E93A939-9F15-8606-9113-451478F49D5B</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT011</logicalDatatype>
@@ -143,8 +155,9 @@
 <createdBy>cisko</createdBy>
 <createdTime>2020-04-17 19:55:19 UTC</createdTime>
 <ownerDesignName>modelo_de_datos_TM</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
 <engineerTo>
-<item key="9041710C-2D8E-AFE0-8E67-E9EB346329C0" value="true"/>
+<item key="9041710C-2D8E-AFE0-8E67-E9EB346329C0" value="false"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>

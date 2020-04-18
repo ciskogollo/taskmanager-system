@@ -15,31 +15,46 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="id_funcion" id="5B37D70B-6025-2AA3-1C4B-7D46A6C58DCF">
+<Attribute name="id funcion" id="5B37D70B-6025-2AA3-1C4B-7D46A6C58DCF">
 <createdBy>cisko</createdBy>
 <createdTime>2020-04-17 20:15:42 UTC</createdTime>
 <ownerDesignName>modelo_de_datos_TM</ownerDesignName>
 <engineerTo>
 <item key="9041710C-2D8E-AFE0-8E67-E9EB346329C0" value="true"/>
 </engineerTo>
-<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id_unidad" id="070CC70E-1F1D-A7CC-17AF-79DFE596C5F3">
+<Attribute name="Unidad id unidad" id="0E4810BC-DFF0-4ABF-1AAC-E13FF2BB13DC">
 <createdBy>cisko</createdBy>
-<createdTime>2020-04-17 20:15:56 UTC</createdTime>
+<createdTime>2020-04-18 06:04:48 UTC</createdTime>
+<generatorID>49272004-15AF-CCAB-1C87-0BE58AE2052D</generatorID>
 <ownerDesignName>modelo_de_datos_TM</ownerDesignName>
 <engineerTo>
 <item key="9041710C-2D8E-AFE0-8E67-E9EB346329C0" value="true"/>
 </engineerTo>
-<nullsAllowed>true</nullsAllowed>
+<referedAttribute>E485450C-6566-D9E5-03BB-3A81872BED45</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="BB3168C7-2F49-4EA7-A9E3-6484696C427B" name="Funcion PK">
+<createdBy>cisko</createdBy>
+<createdTime>2020-04-18 01:40:09 UTC</createdTime>
+<ownerDesignName>modelo_de_datos_TM</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
+<engineerTo>
+<item key="9041710C-2D8E-AFE0-8E67-E9EB346329C0" value="false"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>5B37D70B-6025-2AA3-1C4B-7D46A6C58DCF</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
 </Entity>

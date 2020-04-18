@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="DA4506F4-1026-B55C-EA00-A0CA4537BAEE" containerWithKeyObject="6805DA10-185D-CA1E-952C-F6B6B1285932" localFKIndex="2329DCBF-CB74-5F27-4EB1-B40BDA8CACB2" name="Rol_Tipo_rol_FK">
+<createdBy>cisko</createdBy>
+<createdTime>2020-04-18 04:34:41 UTC</createdTime>
+<generatorID>2F5C5912-41F0-2CF1-FF07-E712727BB035</generatorID>
+<ownerDesignName>modelo_de_datos_TM</ownerDesignName>
+<referredTableLongName>Tipo_rol</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>2B5E8B4C-057D-2D48-E1F8-8F8C80C2671C</referredTableID>
+<keyObject>699644DF-75D4-C794-D892-A1F31852BA79</keyObject>
+<referredKeyID>699644DF-75D4-C794-D892-A1F31852BA79</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>id_tiporol</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

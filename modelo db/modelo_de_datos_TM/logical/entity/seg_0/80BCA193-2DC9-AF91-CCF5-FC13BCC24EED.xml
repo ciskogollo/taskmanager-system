@@ -15,7 +15,7 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="id_usuario" id="BE69D611-87B9-5EB3-C186-3DFE66957627">
+<Attribute name="id usuario" id="BE69D611-87B9-5EB3-C186-3DFE66957627">
 <createdBy>cisko</createdBy>
 <createdTime>2020-04-17 19:33:01 UTC</createdTime>
 <ownerDesignName>modelo_de_datos_TM</ownerDesignName>
@@ -92,13 +92,15 @@
 <logicalDatatype>A3A3C77D-0366-9768-FF89-1C25E56881C8</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id_rol" id="EAF96341-4168-D6CC-E1F4-5EA8C797F6C7">
+<Attribute name="Rol id rol" id="9E046623-BBAE-0D98-7729-811742FBFF60">
 <createdBy>cisko</createdBy>
-<createdTime>2020-04-17 19:37:20 UTC</createdTime>
+<createdTime>2020-04-18 04:29:39 UTC</createdTime>
+<generatorID>0887F6D2-616C-8695-0C76-CC5D9C88A970</generatorID>
 <ownerDesignName>modelo_de_datos_TM</ownerDesignName>
 <engineerTo>
 <item key="9041710C-2D8E-AFE0-8E67-E9EB346329C0" value="true"/>
 </engineerTo>
+<referedAttribute>83BA146F-D44F-7298-134B-B2D4CFA81511</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT011</logicalDatatype>
@@ -110,8 +112,9 @@
 <createdBy>cisko</createdBy>
 <createdTime>2020-04-17 19:33:48 UTC</createdTime>
 <ownerDesignName>modelo_de_datos_TM</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
 <engineerTo>
-<item key="9041710C-2D8E-AFE0-8E67-E9EB346329C0" value="true"/>
+<item key="9041710C-2D8E-AFE0-8E67-E9EB346329C0" value="false"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>

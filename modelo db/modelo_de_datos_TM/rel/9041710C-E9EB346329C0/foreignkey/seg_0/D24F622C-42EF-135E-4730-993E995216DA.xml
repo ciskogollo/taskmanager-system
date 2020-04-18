@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="D24F622C-42EF-135E-4730-993E995216DA" containerWithKeyObject="5D572E37-DE19-7C2B-9843-B9905B53A30C" localFKIndex="B3A3391E-7754-7355-265D-856524466237" name="Tipo_funcion_Proceso_FK">
+<createdBy>cisko</createdBy>
+<createdTime>2020-04-18 04:51:11 UTC</createdTime>
+<generatorID>9775F4DA-1328-BC23-83A2-9FC09178AC6B</generatorID>
+<ownerDesignName>modelo_de_datos_TM</ownerDesignName>
+<referredTableLongName>Proceso</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>F83442A6-8605-A40E-894F-29BD3B022498</referredTableID>
+<keyObject>F512E261-0785-FC30-2451-261735ECB197</keyObject>
+<referredKeyID>F512E261-0785-FC30-2451-261735ECB197</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>id_proceso</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

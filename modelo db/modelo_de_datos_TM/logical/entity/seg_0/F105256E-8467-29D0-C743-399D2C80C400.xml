@@ -15,7 +15,7 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="id_responsable" id="AA059911-4E95-B69C-4054-9614018742BB">
+<Attribute name="id resp" id="AA059911-4E95-B69C-4054-9614018742BB">
 <createdBy>cisko</createdBy>
 <createdTime>2020-04-17 20:13:33 UTC</createdTime>
 <ownerDesignName>modelo_de_datos_TM</ownerDesignName>
@@ -27,25 +27,29 @@
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id_usuario" id="F06C317F-78A8-7003-65E6-F408015381E5">
+<Attribute name="Tarea id tarea" id="19FECB7E-FCC7-6FA0-980B-62FB55472C55">
 <createdBy>cisko</createdBy>
-<createdTime>2020-04-17 20:13:52 UTC</createdTime>
+<createdTime>2020-04-18 06:04:48 UTC</createdTime>
+<generatorID>D90976E1-D474-08B2-46E9-E830E52B55BF</generatorID>
 <ownerDesignName>modelo_de_datos_TM</ownerDesignName>
 <engineerTo>
 <item key="9041710C-2D8E-AFE0-8E67-E9EB346329C0" value="true"/>
 </engineerTo>
+<referedAttribute>3E93A939-9F15-8606-9113-451478F49D5B</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id_tarea" id="F14D31BB-0251-413C-E71F-83A41C070BB8">
+<Attribute name="Usuario id usuario" id="A12D89C7-DE1A-BDAE-7893-0760FED275B9">
 <createdBy>cisko</createdBy>
-<createdTime>2020-04-17 20:14:18 UTC</createdTime>
+<createdTime>2020-04-18 07:07:57 UTC</createdTime>
+<generatorID>987DDA4D-FB3A-EA7A-8446-6FC683C24565</generatorID>
 <ownerDesignName>modelo_de_datos_TM</ownerDesignName>
 <engineerTo>
 <item key="9041710C-2D8E-AFE0-8E67-E9EB346329C0" value="true"/>
 </engineerTo>
+<referedAttribute>BE69D611-87B9-5EB3-C186-3DFE66957627</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT011</logicalDatatype>
@@ -57,8 +61,9 @@
 <createdBy>cisko</createdBy>
 <createdTime>2020-04-17 20:13:51 UTC</createdTime>
 <ownerDesignName>modelo_de_datos_TM</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
 <engineerTo>
-<item key="9041710C-2D8E-AFE0-8E67-E9EB346329C0" value="true"/>
+<item key="9041710C-2D8E-AFE0-8E67-E9EB346329C0" value="false"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>
