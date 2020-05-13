@@ -119,31 +119,40 @@
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="Tarea id tarea" id="55C99C7C-6C2E-5CC9-B1FF-8325B1433C39">
+<Attribute name="id_tsuperior" id="5C516676-DD23-ED78-63D4-A1AFF853719F">
 <createdBy>cisko</createdBy>
-<createdTime>2020-04-18 06:04:48 UTC</createdTime>
-<generatorID>A4695E17-CD54-CD21-913D-879E3E5F5A1A</generatorID>
+<createdTime>2020-05-05 20:57:52 UTC</createdTime>
 <ownerDesignName>modelo_de_datos_TM</ownerDesignName>
 <engineerTo>
 <item key="9041710C-2D8E-AFE0-8E67-E9EB346329C0" value="true"/>
 </engineerTo>
 <nullsAllowed>true</nullsAllowed>
-<referedAttribute>3E93A939-9F15-8606-9113-451478F49D5B</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="Tarea id tarea1" id="CB8118FF-84FA-0D9F-FF7C-2997D1B59705">
+<Attribute name="id_antes" id="7A7C4E6C-FC12-A1A9-3EDC-6D9A04984E95">
 <createdBy>cisko</createdBy>
-<createdTime>2020-04-18 06:04:48 UTC</createdTime>
-<generatorID>5B337562-4929-6FD2-3B88-D72AEB1C0445</generatorID>
+<createdTime>2020-05-05 21:23:46 UTC</createdTime>
 <ownerDesignName>modelo_de_datos_TM</ownerDesignName>
 <engineerTo>
 <item key="9041710C-2D8E-AFE0-8E67-E9EB346329C0" value="true"/>
 </engineerTo>
 <nullsAllowed>true</nullsAllowed>
-<referedAttribute>3E93A939-9F15-8606-9113-451478F49D5B</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_suces" id="D9EEE22B-3410-D6C5-6F48-8F22ACF3A176">
+<createdBy>cisko</createdBy>
+<createdTime>2020-05-05 21:23:59 UTC</createdTime>
+<ownerDesignName>modelo_de_datos_TM</ownerDesignName>
+<engineerTo>
+<item key="9041710C-2D8E-AFE0-8E67-E9EB346329C0" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT011</logicalDatatype>

@@ -29,9 +29,17 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
-<associations>
-<colAssociation fkAssociation="DA4506F4-1026-B55C-EA00-A0CA4537BAEE" referredColumn="96C9ED1A-3A5B-F332-049F-81768B491B6E"/>
-</associations>
+</Column>
+<Column name="nombre_rol" id="24DD21E1-869F-50F8-CEC1-8C768BBFCBE1">
+<createdBy>cisko</createdBy>
+<createdTime>2020-05-05 21:16:53 UTC</createdTime>
+<generatorID>1FFD00F3-26D0-6A6D-BC7F-DF9D617D5A9B</generatorID>
+<ownerDesignName>modelo_de_datos_TM</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>A3A3C77D-0366-9768-FF89-1C25E56881C8</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
@@ -45,17 +53,6 @@
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="F90CBA0C-7F90-27A2-739E-1BB4758F9BEB"/>
-</indexColumnUsage>
-</ind_PK_UK>
-<ind_PK_UK id="2329DCBF-CB74-5F27-4EB1-B40BDA8CACB2" name="Rol_Tipo_rol_FK">
-<createdBy>cisko</createdBy>
-<createdTime>2020-04-18 04:34:41 UTC</createdTime>
-<generatorID>2F5C5912-41F0-2CF1-FF07-E712727BB035</generatorID>
-<ownerDesignName>modelo_de_datos_TM</ownerDesignName>
-<indexState>Foreign Key</indexState>
-<isSurrogateKey>false</isSurrogateKey>
-<indexColumnUsage>
-<colUsage columnID="31590877-08E3-6807-78DA-4F34059694D7"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

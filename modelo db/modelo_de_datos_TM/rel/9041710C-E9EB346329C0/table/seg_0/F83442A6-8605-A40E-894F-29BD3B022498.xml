@@ -19,7 +19,7 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="tip_flujo" id="F134CCE4-CC98-9E3D-6091-0DFFB08F72FF">
+<Column name="tipo_proceso" id="F134CCE4-CC98-9E3D-6091-0DFFB08F72FF">
 <createdBy>cisko</createdBy>
 <createdTime>2020-04-18 01:50:07 UTC</createdTime>
 <generatorID>5FD20C5D-A155-F113-37BD-6413FAEC6B1D</generatorID>
@@ -55,8 +55,31 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="id_responsable" id="51F38942-9D6B-94EB-6971-962ED8410D0B">
+<createdBy>cisko</createdBy>
+<createdTime>2020-05-05 21:16:53 UTC</createdTime>
+<generatorID>427367B9-A889-9E59-5E5C-8F39AA3EE8CE</generatorID>
+<ownerDesignName>modelo_de_datos_TM</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Usuario_id_usuario" id="FE4AAEA2-6AEF-5544-1C74-685C218B6C40">
+<createdBy>cisko</createdBy>
+<createdTime>2020-05-05 21:36:30 UTC</createdTime>
+<generatorID>7D2566A5-3CDD-87A6-8740-412D78574537</generatorID>
+<ownerDesignName>modelo_de_datos_TM</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
 <associations>
-<colAssociation fkAssociation="3B87A9FC-028F-C91E-BA91-BF05C10BFD00" referredColumn="D26B97D1-1A71-081A-88C8-17560C56B0B0"/>
+<colAssociation fkAssociation="5D5649E4-2BC5-A3E1-3903-9953601D9AD8" referredColumn="D60BB1C9-21F9-492E-7A56-99EAB605F352"/>
 </associations>
 </Column>
 </columns>
@@ -84,15 +107,15 @@
 <colUsage columnID="8ABAEBDC-BB81-F16F-9B73-7784509FB49C"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="F1723054-F12A-E439-607B-4C7D45013E63" name="Proceso_Responsable_FK">
+<ind_PK_UK id="8AE92740-B862-6871-75EC-16B6CDD7BD1F" name="Proceso_Usuario_FK">
 <createdBy>cisko</createdBy>
-<createdTime>2020-04-18 04:58:39 UTC</createdTime>
-<generatorID>5A76347F-543D-6C2D-3FC3-C736C57F6F57</generatorID>
+<createdTime>2020-05-05 21:36:30 UTC</createdTime>
+<generatorID>6FACEB8F-74F5-8ECE-EE89-313260B820CA</generatorID>
 <ownerDesignName>modelo_de_datos_TM</ownerDesignName>
 <indexState>Foreign Key</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="F9D452B7-8648-F049-86DC-EBAE340BA542"/>
+<colUsage columnID="FE4AAEA2-6AEF-5544-1C74-685C218B6C40"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

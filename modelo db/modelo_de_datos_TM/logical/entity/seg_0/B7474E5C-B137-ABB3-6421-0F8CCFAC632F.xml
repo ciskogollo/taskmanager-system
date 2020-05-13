@@ -27,7 +27,7 @@
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="tip flujo" id="5FD20C5D-A155-F113-37BD-6413FAEC6B1D">
+<Attribute name="tipo proceso" id="5FD20C5D-A155-F113-37BD-6413FAEC6B1D">
 <createdBy>cisko</createdBy>
 <createdTime>2020-04-18 01:14:09 UTC</createdTime>
 <ownerDesignName>modelo_de_datos_TM</ownerDesignName>
@@ -54,15 +54,15 @@
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="Responsable id resp" id="C060146B-C8C8-31CE-F63D-3F54CA9A5F4B">
+<Attribute name="id usuario" id="7D2566A5-3CDD-87A6-8740-412D78574537">
 <createdBy>cisko</createdBy>
-<createdTime>2020-04-18 06:04:48 UTC</createdTime>
-<generatorID>79FB9067-F3B4-8828-1B66-432E5AE0780F</generatorID>
+<createdTime>2020-05-05 21:30:42 UTC</createdTime>
+<generatorID>6FACEB8F-74F5-8ECE-EE89-313260B820CA</generatorID>
 <ownerDesignName>modelo_de_datos_TM</ownerDesignName>
 <engineerTo>
 <item key="9041710C-2D8E-AFE0-8E67-E9EB346329C0" value="true"/>
 </engineerTo>
-<referedAttribute>AA059911-4E95-B69C-4054-9614018742BB</referedAttribute>
+<referedAttribute>BE69D611-87B9-5EB3-C186-3DFE66957627</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT011</logicalDatatype>

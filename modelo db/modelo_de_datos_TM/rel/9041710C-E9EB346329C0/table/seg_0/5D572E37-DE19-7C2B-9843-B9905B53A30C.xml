@@ -19,20 +19,6 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="Funcion_id_funcion" id="9EAB8617-8CE3-ADCB-62E7-49EC7BD82B9E">
-<createdBy>cisko</createdBy>
-<createdTime>2020-04-18 04:50:20 UTC</createdTime>
-<ownerDesignName>modelo_de_datos_TM</ownerDesignName>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-<previousColumn>false</previousColumn>
-<autoIncrementCycle>false</autoIncrementCycle>
-<associations>
-<colAssociation fkAssociation="965431B8-BEED-2FCF-7324-E3AADF53874C" referredColumn="2D4F94DA-4133-AC35-A7FB-E77E691797A5"/>
-</associations>
-</Column>
 <Column name="Proceso_id_proceso" id="38C93823-C18C-58CB-BD38-57663BDD598F">
 <createdBy>cisko</createdBy>
 <createdTime>2020-04-18 04:51:11 UTC</createdTime>
@@ -59,17 +45,6 @@
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="6CF52C36-52C5-93EF-3B6B-D9EA5328991D"/>
-</indexColumnUsage>
-</ind_PK_UK>
-<ind_PK_UK id="EBBF2741-7178-003C-8575-685972E73CF9" name="Tipo_funcion_Funcion_FK">
-<createdBy>cisko</createdBy>
-<createdTime>2020-04-18 04:50:20 UTC</createdTime>
-<generatorID>BB3168C7-2F49-4EA7-A9E3-6484696C427B</generatorID>
-<ownerDesignName>modelo_de_datos_TM</ownerDesignName>
-<indexState>Foreign Key</indexState>
-<isSurrogateKey>false</isSurrogateKey>
-<indexColumnUsage>
-<colUsage columnID="9EAB8617-8CE3-ADCB-62E7-49EC7BD82B9E"/>
 </indexColumnUsage>
 </ind_PK_UK>
 <ind_PK_UK id="B3A3391E-7754-7355-265D-856524466237" name="Tipo_funcion_Proceso_FK">

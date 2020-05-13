@@ -27,18 +27,16 @@
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="Tipo rol id tiporol" id="C3329A4A-8C50-95C3-5050-5953BA9FDCEC">
+<Attribute name="nombre_rol" id="1FFD00F3-26D0-6A6D-BC7F-DF9D617D5A9B">
 <createdBy>cisko</createdBy>
-<createdTime>2020-04-18 04:35:40 UTC</createdTime>
-<generatorID>8213EEBB-A928-48ED-7C73-0FB3D014285F</generatorID>
+<createdTime>2020-05-05 21:12:54 UTC</createdTime>
 <ownerDesignName>modelo_de_datos_TM</ownerDesignName>
 <engineerTo>
 <item key="9041710C-2D8E-AFE0-8E67-E9EB346329C0" value="true"/>
 </engineerTo>
-<referedAttribute>3ED7E9FC-E5FE-7849-259E-9DBF2CD8DC8D</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
+<logicalDatatype>A3A3C77D-0366-9768-FF89-1C25E56881C8</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>

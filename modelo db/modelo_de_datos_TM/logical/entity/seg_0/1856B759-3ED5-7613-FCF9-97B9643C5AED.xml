@@ -41,6 +41,20 @@
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
+<Attribute name="id tipofunc" id="F1E5805D-CB4B-5D4A-0F3D-3BA72DDBDB09">
+<createdBy>cisko</createdBy>
+<createdTime>2020-05-05 21:34:47 UTC</createdTime>
+<generatorID>1499828D-316C-41C2-85AA-CAB9CCCBAA83</generatorID>
+<ownerDesignName>modelo_de_datos_TM</ownerDesignName>
+<engineerTo>
+<item key="9041710C-2D8E-AFE0-8E67-E9EB346329C0" value="true"/>
+</engineerTo>
+<referedAttribute>58ACC35C-A78F-C002-16B4-260B29285A6C</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
 <identifier id="BB3168C7-2F49-4EA7-A9E3-6484696C427B" name="Funcion PK">

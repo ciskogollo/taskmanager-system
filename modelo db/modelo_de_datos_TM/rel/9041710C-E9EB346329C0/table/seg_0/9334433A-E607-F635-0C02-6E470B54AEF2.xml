@@ -33,6 +33,32 @@
 <colAssociation fkAssociation="B70CB0EE-B52A-DE20-B9A8-79C35B50B733" referredColumn="388E226B-C782-AC2A-7D55-5811EDC6D0CE"/>
 </associations>
 </Column>
+<Column name="id_tipofunc" id="660A4F89-8462-90F6-AD22-A384EC57AC14">
+<createdBy>cisko</createdBy>
+<createdTime>2020-05-05 21:16:53 UTC</createdTime>
+<generatorID>9D04270D-BB0C-99BD-7393-C15473CFE7C2</generatorID>
+<ownerDesignName>modelo_de_datos_TM</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Tipo_funcion_id_tipofunc" id="6C461340-E53F-CBEB-DC5E-46BBE8B57AB7">
+<createdBy>cisko</createdBy>
+<createdTime>2020-05-05 21:36:30 UTC</createdTime>
+<generatorID>F1E5805D-CB4B-5D4A-0F3D-3BA72DDBDB09</generatorID>
+<ownerDesignName>modelo_de_datos_TM</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="5F228CC0-E475-CAA3-5192-1D1F554E29D0" referredColumn="6CF52C36-52C5-93EF-3B6B-D9EA5328991D"/>
+</associations>
+</Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
 <ind_PK_UK id="630127A0-ADB8-B712-8349-B4E4BB4AB8D6" name="Funcion_PK">
@@ -56,6 +82,17 @@
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="95629497-FF94-DB46-4C6B-953AD2A06F4D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="05BEEBCC-CAC6-A016-BBFE-5D2560E4360D" name="Funcion_Tipo_funcion_FK">
+<createdBy>cisko</createdBy>
+<createdTime>2020-05-05 21:36:30 UTC</createdTime>
+<generatorID>1499828D-316C-41C2-85AA-CAB9CCCBAA83</generatorID>
+<ownerDesignName>modelo_de_datos_TM</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="6C461340-E53F-CBEB-DC5E-46BBE8B57AB7"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

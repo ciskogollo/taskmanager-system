@@ -27,20 +27,6 @@
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="Funcion id funcion" id="ACB24BD7-F0F3-80B6-76C0-34BD0343E887">
-<createdBy>cisko</createdBy>
-<createdTime>2020-04-18 06:04:48 UTC</createdTime>
-<generatorID>7DE740A8-99BE-6209-25A7-D01535FE721E</generatorID>
-<ownerDesignName>modelo_de_datos_TM</ownerDesignName>
-<engineerTo>
-<item key="9041710C-2D8E-AFE0-8E67-E9EB346329C0" value="true"/>
-</engineerTo>
-<referedAttribute>5B37D70B-6025-2AA3-1C4B-7D46A6C58DCF</referedAttribute>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
 <Attribute name="Proceso id proceso" id="0EF1FF13-C311-A3BB-A727-465C4D8F3CD5">
 <createdBy>cisko</createdBy>
 <createdTime>2020-04-18 06:04:48 UTC</createdTime>

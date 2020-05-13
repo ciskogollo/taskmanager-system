@@ -107,35 +107,41 @@
 <colAssociation fkAssociation="B4D39BF1-1397-0B54-7405-26005FF472CB" referredColumn="D60BB1C9-21F9-492E-7A56-99EAB605F352"/>
 </associations>
 </Column>
-<Column name="Tarea_id_tarea" id="81B5F209-8D1B-4396-13D7-6B33FF24BBFB">
+<Column name="id_tsuperior" id="EDE18BC0-3C72-E724-CEAA-4D468976E2E5">
 <createdBy>cisko</createdBy>
-<createdTime>2020-04-18 06:00:43 UTC</createdTime>
+<createdTime>2020-05-05 21:07:34 UTC</createdTime>
+<generatorID>5C516676-DD23-ED78-63D4-A1AFF853719F</generatorID>
 <ownerDesignName>modelo_de_datos_TM</ownerDesignName>
 <nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
-<previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
-<associations>
-<colAssociation fkAssociation="04FCE95C-ACBE-0D31-A269-126C62A1AFF7" referredColumn="07D959D8-0159-C422-B6BF-BEAEFB2D3BF4"/>
-</associations>
 </Column>
-<Column name="Tarea_id_tarea1" id="99435619-262D-76DE-F9F4-15499ECE293F">
+<Column name="id_antes" id="FC713005-8F61-AC2C-4998-227EB848B439">
 <createdBy>cisko</createdBy>
-<createdTime>2020-04-18 06:00:58 UTC</createdTime>
+<createdTime>2020-05-05 21:25:28 UTC</createdTime>
+<generatorID>7A7C4E6C-FC12-A1A9-3EDC-6D9A04984E95</generatorID>
 <ownerDesignName>modelo_de_datos_TM</ownerDesignName>
 <nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
-<previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
-<associations>
-<colAssociation fkAssociation="BF764AFA-E07B-82BA-4CF4-5B8DD29765EB" referredColumn="07D959D8-0159-C422-B6BF-BEAEFB2D3BF4"/>
-</associations>
+</Column>
+<Column name="id_suces" id="E885DB6F-F916-325D-8D27-057120F38D32">
+<createdBy>cisko</createdBy>
+<createdTime>2020-05-05 21:25:28 UTC</createdTime>
+<generatorID>D9EEE22B-3410-D6C5-6F48-8F22ACF3A176</generatorID>
+<ownerDesignName>modelo_de_datos_TM</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
@@ -182,28 +188,6 @@
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="5C6D9BB2-6076-5471-3EC0-CDEB7C1F0E14"/>
-</indexColumnUsage>
-</ind_PK_UK>
-<ind_PK_UK id="5265E08E-AD58-DDBA-31B3-5AC8036ABC61" name="Tarea_Tarea_FK">
-<createdBy>cisko</createdBy>
-<createdTime>2020-04-18 06:00:43 UTC</createdTime>
-<generatorID>301928E6-D303-5630-6F05-F1E67212BE51</generatorID>
-<ownerDesignName>modelo_de_datos_TM</ownerDesignName>
-<indexState>Foreign Key</indexState>
-<isSurrogateKey>false</isSurrogateKey>
-<indexColumnUsage>
-<colUsage columnID="81B5F209-8D1B-4396-13D7-6B33FF24BBFB"/>
-</indexColumnUsage>
-</ind_PK_UK>
-<ind_PK_UK id="AB129D0B-92B1-C20E-4430-D26004AE5842" name="Tarea_Tarea_FKv1">
-<createdBy>cisko</createdBy>
-<createdTime>2020-04-18 06:00:58 UTC</createdTime>
-<generatorID>301928E6-D303-5630-6F05-F1E67212BE51</generatorID>
-<ownerDesignName>modelo_de_datos_TM</ownerDesignName>
-<indexState>Foreign Key</indexState>
-<isSurrogateKey>false</isSurrogateKey>
-<indexColumnUsage>
-<colUsage columnID="99435619-262D-76DE-F9F4-15499ECE293F"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

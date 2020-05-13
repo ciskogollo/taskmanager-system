@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="5F228CC0-E475-CAA3-5192-1D1F554E29D0" containerWithKeyObject="9334433A-E607-F635-0C02-6E470B54AEF2" localFKIndex="05BEEBCC-CAC6-A016-BBFE-5D2560E4360D" name="Funcion_Tipo_funcion_FK">
+<createdBy>cisko</createdBy>
+<createdTime>2020-05-05 21:36:30 UTC</createdTime>
+<generatorID>1499828D-316C-41C2-85AA-CAB9CCCBAA83</generatorID>
+<ownerDesignName>modelo_de_datos_TM</ownerDesignName>
+<referredTableLongName>Tipo_funcion</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>5D572E37-DE19-7C2B-9843-B9905B53A30C</referredTableID>
+<keyObject>6918F131-7DC6-0270-C6D6-7E845694CAB6</keyObject>
+<referredKeyID>6918F131-7DC6-0270-C6D6-7E845694CAB6</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>id_tipofunc</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>
