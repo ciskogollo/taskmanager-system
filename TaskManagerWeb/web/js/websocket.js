@@ -15,9 +15,24 @@ ws.onmessage = onMessage;
 
 function sendText(msg){
     console.log('Enviando msg...');
-    ws.send(msg);
+    try{
+        ws.send(msg);
+    }catch(e){
+        console.log(e);
+        console.error(e);
+    }
 }
 
+function onMessage(evt){
+    var recibidomsg = evt.data;
+    var arraypv = evt.data.split("/");
+    console.log('Mensaje recibido :)');
+    document.getElementById('boxtext').value = recibidomsg;
+    document.getElementById("price").innerHTML = arraypv[0];
+    document.getElementById("volume").innerHTML = arraypv[1];
+}
+
+/*
 function onMessage(evt){
     var arraypv = evt.data.split("/");
     console.log('Recibiendo msg: ' + arraypv);
@@ -26,6 +41,7 @@ function onMessage(evt){
     document.getElementById("volume").innerHTML = arraypv[1];
     writeToScreen(evt.data);
 }
+*/
 
 function onOpen(){
     console.log('Conectado al WS');

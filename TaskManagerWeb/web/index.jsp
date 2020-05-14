@@ -15,7 +15,10 @@
         <h1>Hola putos! xd</h1>
         <div id="output"></div>
         <input type="text" id="txtinput" name="text"><br>
-         <button type="button" id="btnsend">Enviar!</button> 
+        <button type="button" id="btnsend">Enviar!</button> 
+        <hr>
+        <input id="boxtext" name="BOXER!">
+        <hr>
         <table>
             <tr>
                 <td style="width:100px">Ticker</td>
