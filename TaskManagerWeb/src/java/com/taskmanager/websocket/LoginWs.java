@@ -15,8 +15,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.enterprise.context.ApplicationScoped;
 import javax.websocket.OnOpen;
-import javax.websocket.OnMessage;
 import javax.websocket.OnClose;
+import javax.websocket.OnError;
+import javax.websocket.OnMessage;
 import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
 
@@ -30,9 +31,10 @@ public class LoginWs {
     private static final Logger logger = Logger.getLogger("LoginWs");
     
     static Queue<Session> queue = new ConcurrentLinkedQueue<>();
-    private static Set<Session> peers = Collections.synchronizedSet(new HashSet<Session>());
     
-    public static void send(double price, int volume){
+    private static Set<Session> peers = new HashSet<>();
+    
+    public static void sendpeers(double price, int volume){
         String msg = String.format("%.2f / %d", price, volume);
         try {
             /* Send updates to all open WebSocket sessions */
@@ -45,24 +47,49 @@ public class LoginWs {
         }
     }
     
+    public static void send(double price, int volume){
+        System.out.println("Preparando envío de msg.");
+        String msg = String.format("%.2f / %d", price, volume);
+        try{
+            for(Session peer : peers){
+                peer.getBasicRemote().sendText(msg);
+                System.out.println("Mensaje enviado:["+msg+"]");
+            }
+        }catch(IOException e){
+            System.out.println("ERROR:" + e.toString());
+            logger.log(Level.INFO, e.toString());
+        }
+    }
+    
     @OnOpen
-    public void iniciaConexion(Session peer){
+    public void onOpen(Session peer){
         peers.add(peer);
+        
         queue.add(peer);
         logger.log(Level.INFO, "Conexión abierta.");
     }
     
+    @OnMessage
+    public void handleMessage(String msg, Session peer){
+        System.out.println("Nuevo msg ==> " + msg);
+    }
+    
     @OnClose
     public void onClose (Session peer){
+        System.out.println("Conexión cerrada ("+peer.getId()+").");
         peers.remove(peer);
+        
         queue.remove(peer);
         logger.log(Level.INFO, "Conexión cerrada.");
     }
     
-    @OnMessage
-    public void onMessage(Session session, Throwable t) {
-        queue.remove(session);
-        logger.log(Level.INFO, t.toString());
+    @OnError
+    public void onError(Session peer, Throwable e) {
+        System.out.println("ERROR: " + e.getMessage());
+        peers.remove(peer);
+        
+        queue.remove(peer);
+        logger.log(Level.INFO, e.toString());
         logger.log(Level.INFO, "Connection error.");
     }
 }

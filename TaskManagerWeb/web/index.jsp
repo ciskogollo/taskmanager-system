@@ -14,6 +14,20 @@
     <body>
         <h1>Hola putos! xd</h1>
         <div id="output"></div>
+        <input type="text" id="txtinput" name="text"><br>
+         <button type="button" id="btnsend">Enviar!</button> 
+        <table>
+            <tr>
+                <td style="width:100px">Ticker</td>
+                <td style="text-align:center">Price</td>
+                <td id="price" style="font-size:24pt;font-weight:bold;">--.--</td>
+            </tr>
+            <tr>
+                <td style="font-size:18pt;font-weight:bold;width:100px">DKEJ</td>
+                <td style="text-align:center">Volume</td>
+                <td id="volume" align="right">--</td>
+            </tr>
+        </table>
         <script type="text/javascript" src="js/websocket.js"></script>
     </body>
 </html>
