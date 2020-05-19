@@ -208,7 +208,7 @@ public class Tarea implements Serializable {
 
     @Override
     public String toString() {
-        return "com.taskmanage.entity.Tarea[ idTarea=" + idTarea + " ]";
+        return "com.taskmanager.entity.Tarea[ idTarea=" + idTarea + " ]";
     }
     
 }

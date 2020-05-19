@@ -6,10 +6,7 @@
 package com.taskmanager.websocket;
 
 import java.io.IOException;
-import java.util.Collections;
-import java.util.HashSet;
 import java.util.Queue;
-import java.util.Set;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -37,22 +34,7 @@ public class LoginWs {
     private LoginBean loginBean;
     
     static Queue<Session> queue = new ConcurrentLinkedQueue<>();
-    
-    
-    
-    public static void sendpeers(double price, int volume){
-        String msg = String.format("%.2f / %d", price, volume);
-        try {
-            /* Send updates to all open WebSocket sessions */
-            for (Session session : queue) {
-                session.getBasicRemote().sendText(msg);
-                logger.log(Level.INFO, "Sent: {0}", msg);
-            }
-        } catch (IOException e) {
-            logger.log(Level.INFO, e.toString());
-        }
-    }
-    
+
     @OnOpen
     public void onOpen(Session peer){
         queue.add(peer);
@@ -62,7 +44,7 @@ public class LoginWs {
     @OnMessage
     public void onMessage(String msg, Session peer){
         System.out.println("Nuevo msg ==> " + msg);
-        loginBean.enviar(peer, msg);
+        //loginBean.enviar(peer, msg);
     }
     
     @OnError

@@ -7,7 +7,7 @@ package com.taskmanager.entity;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.Collection;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -53,7 +53,7 @@ public class Cliente implements Serializable {
     @Column(name = "HABILITADO")
     private Character habilitado;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "clienteIdCliente")
-    private Collection<Proceso> procesoCollection;
+    private List<Proceso> procesoList;
 
     public Cliente() {
     }
@@ -93,12 +93,12 @@ public class Cliente implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Proceso> getProcesoCollection() {
-        return procesoCollection;
+    public List<Proceso> getProcesoList() {
+        return procesoList;
     }
 
-    public void setProcesoCollection(Collection<Proceso> procesoCollection) {
-        this.procesoCollection = procesoCollection;
+    public void setProcesoList(List<Proceso> procesoList) {
+        this.procesoList = procesoList;
     }
 
     @Override
@@ -123,7 +123,7 @@ public class Cliente implements Serializable {
 
     @Override
     public String toString() {
-        return "com.taskmanage.entity.Cliente[ idCliente=" + idCliente + " ]";
+        return "com.taskmanager.entity.Cliente[ idCliente=" + idCliente + " ]";
     }
     
 }

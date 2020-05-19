@@ -1,3 +1,5 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
 <%-- 
     Document   : Index
     Created on : 19-04-2020, 22:48:10
@@ -31,6 +33,18 @@
                 <td id="volume" align="right">--</td>
             </tr>
         </table>
+        
+        <table border="1">
+            <!-- column headers -->
+            <tr>
+                <c:forEach var="user" items="${usuario}">
+                    <th><c:out value="${user}"/></th>
+                </c:forEach>
+            </tr>
+            <!-- column data -->
+            
+        </table>
+        
         <script type="text/javascript" src="js/websocket.js"></script>
     </body>
 </html>

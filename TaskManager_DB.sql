@@ -1,3 +1,6 @@
+INSERT INTO USUARIO (id_usuario, correo, hash, nombre, rut, direccion, rol_id_rol) 
+VALUES (1,'admin@taskmanager.com', '1234', 'Admin', '11111111-1', 'central alerce', 1);
+
 -- INICIAR CON ADMIN
 DROP USER admintm CASCADE;
 
@@ -13,17 +16,6 @@ GRANT resource to admintm;
 GRANT create session to admintm;
 GRANT create table TO admintm;
 GRANT create view TO admintm;
-
-DROP TABLE cliente CASCADE CONSTRAINTS;
-DROP TABLE funcion CASCADE CONSTRAINTS;
-DROP TABLE problema CASCADE CONSTRAINTS;
-DROP TABLE proceso CASCADE CONSTRAINTS;
-DROP TABLE rol CASCADE CONSTRAINTS;
-DROP TABLE status_work CASCADE CONSTRAINTS;
-DROP TABLE tarea CASCADE CONSTRAINTS;
-DROP TABLE tipo_funcion CASCADE CONSTRAINTS;
-DROP TABLE unidad CASCADE CONSTRAINTS;
-DROP TABLE usuario CASCADE CONSTRAINTS;
 
 -- cambiar el usuario de conexion...
 -- Es mejor cambiar directamente en SQL Developer!

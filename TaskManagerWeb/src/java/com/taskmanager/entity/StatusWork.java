@@ -7,7 +7,7 @@ package com.taskmanager.entity;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.Collection;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -48,7 +48,7 @@ public class StatusWork implements Serializable {
     @Column(name = "TIPO_STATUS")
     private String tipoStatus;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "statusWorkIdStatus")
-    private Collection<Tarea> tareaCollection;
+    private List<Tarea> tareaList;
 
     public StatusWork() {
     }
@@ -79,12 +79,12 @@ public class StatusWork implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Tarea> getTareaCollection() {
-        return tareaCollection;
+    public List<Tarea> getTareaList() {
+        return tareaList;
     }
 
-    public void setTareaCollection(Collection<Tarea> tareaCollection) {
-        this.tareaCollection = tareaCollection;
+    public void setTareaList(List<Tarea> tareaList) {
+        this.tareaList = tareaList;
     }
 
     @Override
@@ -109,7 +109,7 @@ public class StatusWork implements Serializable {
 
     @Override
     public String toString() {
-        return "com.taskmanage.entity.StatusWork[ idStatus=" + idStatus + " ]";
+        return "com.taskmanager.entity.StatusWork[ idStatus=" + idStatus + " ]";
     }
     
 }

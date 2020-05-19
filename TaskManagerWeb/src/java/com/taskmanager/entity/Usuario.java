@@ -7,7 +7,7 @@ package com.taskmanager.entity;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.Collection;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -72,14 +72,14 @@ public class Usuario implements Serializable {
     @Column(name = "DIRECCION")
     private String direccion;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuarioIdUsuario")
-    private Collection<Problema> problemaCollection;
+    private List<Problema> problemaList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuarioIdUsuario")
-    private Collection<Proceso> procesoCollection;
+    private List<Proceso> procesoList;
     @JoinColumn(name = "ROL_ID_ROL", referencedColumnName = "ID_ROL")
     @ManyToOne(optional = false)
     private Rol rolIdRol;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuarioIdUsuario")
-    private Collection<Tarea> tareaCollection;
+    private List<Tarea> tareaList;
 
     public Usuario() {
     }
@@ -145,21 +145,21 @@ public class Usuario implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Problema> getProblemaCollection() {
-        return problemaCollection;
+    public List<Problema> getProblemaList() {
+        return problemaList;
     }
 
-    public void setProblemaCollection(Collection<Problema> problemaCollection) {
-        this.problemaCollection = problemaCollection;
+    public void setProblemaList(List<Problema> problemaList) {
+        this.problemaList = problemaList;
     }
 
     @XmlTransient
-    public Collection<Proceso> getProcesoCollection() {
-        return procesoCollection;
+    public List<Proceso> getProcesoList() {
+        return procesoList;
     }
 
-    public void setProcesoCollection(Collection<Proceso> procesoCollection) {
-        this.procesoCollection = procesoCollection;
+    public void setProcesoList(List<Proceso> procesoList) {
+        this.procesoList = procesoList;
     }
 
     public Rol getRolIdRol() {
@@ -171,12 +171,12 @@ public class Usuario implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Tarea> getTareaCollection() {
-        return tareaCollection;
+    public List<Tarea> getTareaList() {
+        return tareaList;
     }
 
-    public void setTareaCollection(Collection<Tarea> tareaCollection) {
-        this.tareaCollection = tareaCollection;
+    public void setTareaList(List<Tarea> tareaList) {
+        this.tareaList = tareaList;
     }
 
     @Override
@@ -201,7 +201,7 @@ public class Usuario implements Serializable {
 
     @Override
     public String toString() {
-        return "com.taskmanage.entity.Usuario[ idUsuario=" + idUsuario + " ]";
+        return "Usuario[ ID=" + idUsuario + ",Nombre="+ nombre +" ]";
     }
     
 }

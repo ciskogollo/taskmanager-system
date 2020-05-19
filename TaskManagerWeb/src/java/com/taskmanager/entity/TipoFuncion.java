@@ -7,7 +7,7 @@ package com.taskmanager.entity;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.Collection;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -46,7 +46,7 @@ public class TipoFuncion implements Serializable {
     @ManyToOne(optional = false)
     private Proceso procesoIdProceso;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "tipoFuncionIdTipofunc")
-    private Collection<Funcion> funcionCollection;
+    private List<Funcion> funcionList;
 
     public TipoFuncion() {
     }
@@ -72,12 +72,12 @@ public class TipoFuncion implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Funcion> getFuncionCollection() {
-        return funcionCollection;
+    public List<Funcion> getFuncionList() {
+        return funcionList;
     }
 
-    public void setFuncionCollection(Collection<Funcion> funcionCollection) {
-        this.funcionCollection = funcionCollection;
+    public void setFuncionList(List<Funcion> funcionList) {
+        this.funcionList = funcionList;
     }
 
     @Override
@@ -102,7 +102,7 @@ public class TipoFuncion implements Serializable {
 
     @Override
     public String toString() {
-        return "com.taskmanage.entity.TipoFuncion[ idTipofunc=" + idTipofunc + " ]";
+        return "com.taskmanager.entity.TipoFuncion[ idTipofunc=" + idTipofunc + " ]";
     }
     
 }

@@ -107,7 +107,7 @@ public class Problema implements Serializable {
 
     @Override
     public String toString() {
-        return "com.taskmanage.entity.Problema[ idProblema=" + idProblema + " ]";
+        return "com.taskmanager.entity.Problema[ idProblema=" + idProblema + " ]";
     }
     
 }

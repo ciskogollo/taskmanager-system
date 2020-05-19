@@ -8,7 +8,7 @@ package com.taskmanager.entity;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.math.BigInteger;
-import java.util.Collection;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -54,7 +54,7 @@ public class Unidad implements Serializable {
     @Column(name = "TIPO_UNIDAD")
     private String tipoUnidad;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "unidadIdUnidad")
-    private Collection<Funcion> funcionCollection;
+    private List<Funcion> funcionList;
 
     public Unidad() {
     }
@@ -94,12 +94,12 @@ public class Unidad implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Funcion> getFuncionCollection() {
-        return funcionCollection;
+    public List<Funcion> getFuncionList() {
+        return funcionList;
     }
 
-    public void setFuncionCollection(Collection<Funcion> funcionCollection) {
-        this.funcionCollection = funcionCollection;
+    public void setFuncionList(List<Funcion> funcionList) {
+        this.funcionList = funcionList;
     }
 
     @Override
@@ -124,7 +124,7 @@ public class Unidad implements Serializable {
 
     @Override
     public String toString() {
-        return "com.taskmanage.entity.Unidad[ idUnidad=" + idUnidad + " ]";
+        return "com.taskmanager.entity.Unidad[ idUnidad=" + idUnidad + " ]";
     }
     
 }

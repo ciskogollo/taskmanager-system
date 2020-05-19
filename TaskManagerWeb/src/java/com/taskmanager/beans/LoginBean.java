@@ -9,13 +9,6 @@ import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
-import javax.annotation.Resource;
-//import javax.inject.Singleton;
-//import javax.ejb.Startup;
-//import javax.ejb.Timeout;
-//import javax.ejb.TimerConfig;
-//import javax.ejb.TimerService;
-import com.taskmanager.websocket.LoginWs;
 import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
@@ -57,6 +50,10 @@ public class LoginBean {
         peers.remove(peer);
     }
     
+    public void verifyUser(){
+        System.out.println("--Verificando datos--");
+    };
+    
     public void enviar(Session peer, String msg){
         System.out.println("--Enviando data--");
         /* Adjust price and volume and send updates */
@@ -81,16 +78,4 @@ public class LoginBean {
             }
         };
     }
-    
-    //*
-    /* @Timeout
-    /*public void timeout() {
-    /*    System.out.println("--Enviando data--");
-    /*    /* Adjust price and volume and send updates */
-    /*    price += 1.0*(random.nextInt(100)-50)/100.0;
-    /*    volume += random.nextInt(5000) - 2500;
-    /*    LoginWs.send(price, volume);
-    /*    LoginWs.sendpeers(price, volume);
-    /*}
-    //*/
 }

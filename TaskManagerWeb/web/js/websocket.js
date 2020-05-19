@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-var wsUri = "ws://" + document.location.host + document.location.pathname + "LoginWs";
+var wsUri = "ws://" + document.location.hostname + ":8080/TaskManagerWeb/" + "LoginWs";
 var ws = new WebSocket(wsUri);
 var output = document.getElementById("output");
 
@@ -46,9 +46,9 @@ function onMessage(evt){
 function onOpen(){
     console.log('Conectado al WS');
     writeToScreen('Conectado a ' + wsUri);
-    document.getElementById("btnsend").addEventListener('click', function(e){
+    /*document.getElementById("btnsend").addEventListener('click', function(e){
         sendText(document.getElementById("txtinput").value);
-    });
+    });*/
 }
 
 function writeToScreen(msg){
@@ -57,4 +57,35 @@ function writeToScreen(msg){
 
 function onError(evt) {
     writeToScreen('<span style="color:red;">ERROR: </span> ' + evt.data);
+}
+
+document.getElementById("btnsignuser").addEventListener('click',logUser);
+function logUser(){
+    var inputEmail = document.getElementById("inputEmail").value;
+    var inputPassword = document.getElementById("inputPassword").value;
+    if(inputEmail === ''){
+        console.log('User: vacío');
+    }else{
+        console.log('User: '+inputEmail);
+    }
+    if(inputPassword === ''){
+        console.log('Password: vacío');
+    }else{
+        console.log('Password: *****');
+    }
+    
+    var datosUser = {
+        type: "datos",
+        us:inputEmail,
+        pshash:inputPassword,
+        id: 1,
+        date: Date.now()
+    }
+    console.log('Enviando datos al server...');
+    try{
+        ws.send(JSON.stringify(datosUser));
+    }catch(e){
+        console.log(e);
+        console.error(e);
+    }
 }

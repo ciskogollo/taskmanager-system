@@ -7,21 +7,16 @@ package com.taskmanager.entity;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -33,7 +28,6 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Rol.findAll", query = "SELECT r FROM Rol r")
     , @NamedQuery(name = "Rol.findByIdRol", query = "SELECT r FROM Rol r WHERE r.idRol = :idRol")
-    , @NamedQuery(name = "Rol.findByTipoRolIdTiporol", query = "SELECT r FROM Rol r WHERE r.tipoRolIdTiporol = :tipoRolIdTiporol")
     , @NamedQuery(name = "Rol.findByNombreRol", query = "SELECT r FROM Rol r WHERE r.nombreRol = :nombreRol")})
 public class Rol implements Serializable {
 
@@ -46,15 +40,9 @@ public class Rol implements Serializable {
     private BigDecimal idRol;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "TIPO_ROL_ID_TIPOROL")
-    private BigInteger tipoRolIdTiporol;
-    @Basic(optional = false)
-    @NotNull
     @Size(min = 1, max = 4000)
     @Column(name = "NOMBRE_ROL")
     private String nombreRol;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rolIdRol")
-    private Collection<Usuario> usuarioCollection;
 
     public Rol() {
     }
@@ -63,9 +51,8 @@ public class Rol implements Serializable {
         this.idRol = idRol;
     }
 
-    public Rol(BigDecimal idRol, BigInteger tipoRolIdTiporol, String nombreRol) {
+    public Rol(BigDecimal idRol, String nombreRol) {
         this.idRol = idRol;
-        this.tipoRolIdTiporol = tipoRolIdTiporol;
         this.nombreRol = nombreRol;
     }
 
@@ -77,29 +64,12 @@ public class Rol implements Serializable {
         this.idRol = idRol;
     }
 
-    public BigInteger getTipoRolIdTiporol() {
-        return tipoRolIdTiporol;
-    }
-
-    public void setTipoRolIdTiporol(BigInteger tipoRolIdTiporol) {
-        this.tipoRolIdTiporol = tipoRolIdTiporol;
-    }
-
     public String getNombreRol() {
         return nombreRol;
     }
 
     public void setNombreRol(String nombreRol) {
         this.nombreRol = nombreRol;
-    }
-
-    @XmlTransient
-    public Collection<Usuario> getUsuarioCollection() {
-        return usuarioCollection;
-    }
-
-    public void setUsuarioCollection(Collection<Usuario> usuarioCollection) {
-        this.usuarioCollection = usuarioCollection;
     }
 
     @Override
@@ -124,7 +94,7 @@ public class Rol implements Serializable {
 
     @Override
     public String toString() {
-        return "com.taskmanage.entity.Rol[ idRol=" + idRol + " ]";
+        return "com.taskmanager.entity.Rol[ idRol=" + idRol + " ]";
     }
     
 }
