@@ -5,6 +5,7 @@
  */
 package com.taskmanager.controller;
 
+import com.taskmanager.entity.Usuario;
 import com.taskmanager.session.UsuarioFacade;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -28,11 +29,14 @@ public class ControllerServlet extends HttpServlet {
     
     @EJB
     private UsuarioFacade usuarioFacade;
+    public HttpSession session;
             
     @Override
     public void init() throws ServletException{
-        getServletContext().setAttribute("usuario", usuarioFacade.findAll());
+        getServletContext().setAttribute("usuario", usuarioFacade.findAll().get(0).getCorreo());
+        getServletContext().setAttribute("validaruser", usuarioFacade.findAll().size());
     }
+
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -49,15 +53,9 @@ public class ControllerServlet extends HttpServlet {
             throws ServletException, IOException {
         String userPath = request.getServletPath();
         
-        // Si pagina Login es requerida
-        if (userPath.equals("/login")){
-            //TODO: Implementar solicitud de Login
-        }
-
-        
+  
         // use RequestDispatcher to forward request internally
         String url = "/WEB-INF/view" + userPath + ".jsp";
-        
         try{
             request.getRequestDispatcher(url).forward(request, response);
         } catch (Exception ex) {
@@ -78,15 +76,60 @@ public class ControllerServlet extends HttpServlet {
             throws ServletException, IOException {
         
         String userPath = request.getServletPath();
-        HttpSession session = request.getSession();
+
+        // Si Login es requerida
+        if (userPath.equals("/login")){
+            //PROBANDO GETQUERYSTRING, NO FUNCA HAS5TA AHORA
+            String formLogin = request.getQueryString();
+            if(formLogin == null){
+                //System.out.println("Datos no recibidos.");
+                formLogin = "";
+            }
+            
+            // get user from request
+            String name = request.getParameter("inputEmail");
+            String pass = request.getParameter("inputPassword");
+                    
+            if(verifUser(name,pass)){
+                System.out.println("Accediendo '"+name+"'...");
+                Usuario userX = new Usuario();
+                session = request.getSession();
+                session.setMaxInactiveInterval(60*60);
+                //userX = (Usuario) session.getAttribute("user");
+                session.setAttribute("nameUser", name);
+                session.setAttribute("formLoginParam", formLogin);
+                response.sendRedirect(request.getContextPath() + "/index.jsp");
+            }else{
+                System.out.println("Datos erróneos >:(");
+                // AQUI se debe agregar el msg de validación para el html
+                request.getRequestDispatcher("login.jsp").forward(request, response);
+            }
+        }
         
         // use RequestDispatcher to forward request internally
-        String url = "/WEB-INF/view" + userPath + ".jsp";
+        //String url = "/WEB-INF/view" + userPath + ".jsp";
+        //try{
+        //    request.getRequestDispatcher(url).forward(request, response);
+        //}catch(Exception ex){
+        //    ex.printStackTrace();
+        //}
+    }
+    
+    public boolean verifUser(String name, String hash){
         try{
-            request.getRequestDispatcher(url).forward(request, response);
+            String nameResult = usuarioFacade.findByName(name).get(0).getNombre();
+            String hashResult = usuarioFacade.findByName(name).get(0).getHash();
+            if(name.equals(nameResult) && hash.equals(hashResult)){
+                System.out.println("Nombre de usuario y contraseña correctos.");
+                return true;
+            }else{
+                    System.out.println("Usuario no accedido.");
+            }
         }catch(Exception ex){
+            System.out.println("Imposible iniciar el usuario.");
             ex.printStackTrace();
         }
+        return false;
     }
 
     /**
@@ -96,7 +139,7 @@ public class ControllerServlet extends HttpServlet {
      */
     @Override
     public String getServletInfo() {
-        return "Short description dle servlet que pahaa";
+        return "Short description del servlet y que pahaa";
     }// </editor-fold>
 
 }

@@ -6,9 +6,11 @@
 package com.taskmanager.session;
 
 import com.taskmanager.entity.Usuario;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -27,6 +29,11 @@ public class UsuarioFacade extends AbstractFacade<Usuario> {
 
     public UsuarioFacade() {
         super(Usuario.class);
+    }
+    
+    public List<Usuario> findByName(String nameuser){
+        Query query = em.createNamedQuery("Usuario.findByNombre");
+        return query.setParameter("nombre",nameuser).getResultList();
     }
     
 }
