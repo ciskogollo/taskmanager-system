@@ -14,7 +14,7 @@ ws.onopen = function(evt) { onOpen(evt); };
 ws.onmessage = onMessage;
 
 function sendText(msg){
-    console.log('Enviando msg...');
+    console.log('(WS)Enviando msg...');
     try{
         ws.send(msg);
     }catch(e){
@@ -26,7 +26,7 @@ function sendText(msg){
 function onMessage(evt){
     var recibidomsg = evt.data;
     var arraypv = evt.data.split("/");
-    console.log('Mensaje recibido :)');
+    console.log('(WS)Mensaje recibido :)');
     document.getElementById('boxtext').value = recibidomsg;
     document.getElementById("price").innerHTML = arraypv[0];
     document.getElementById("volume").innerHTML = arraypv[1];
@@ -81,7 +81,7 @@ function logUser(){
         id: 1,
         date: Date.now()
     }
-    console.log('Enviando datos al server...');
+    console.log('(WS)Enviando datos al server...');
     try{
         ws.send(JSON.stringify(datosUser));
     }catch(e){

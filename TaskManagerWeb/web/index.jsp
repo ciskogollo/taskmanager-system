@@ -9,5 +9,15 @@
         <hr>
         <input id="boxtext" name="BOXER!">
         <hr>
+        <c:out value="${objUser}"/>
+        <c:choose>
+            <c:when test="${empty objUser}">
+                <p>No logueado:c</p>
+                <c:redirect url="/login.jsp"/>
+            </c:when>
+            <c:otherwise>
+                <p>Logueado de pana.</p>
+            </c:otherwise>
+        </c:choose>
     </body>
 </html>

@@ -33,19 +33,19 @@ public class LoginBean {
     @PostConstruct
     public void init() {
         /* Initialize the EJB and create a timer */
-        logger.log(Level.INFO, "Initializing EJB.");
+        logger.log(Level.INFO, "(WS)Initializing EJB.");
         random = new Random();
         System.out.println("varRandom: "+random.toString());
         //tservice.createIntervalTimer(500, 1000, new TimerConfig());
     }
     
     public void addSession(Session peer) {
-        logger.log(Level.INFO, "Conexión abierta.");
+        logger.log(Level.INFO, "(WS)Conexión abierta.");
         peers.add(peer);
     }
     
     public void removeSession(Session peer) {
-        logger.log(Level.INFO, "Conexión cerrada.");
+        logger.log(Level.INFO, "(WS)Conexión cerrada.");
         System.out.println("Conn close: ("+peer.getId()+").");
         peers.remove(peer);
     }
@@ -63,18 +63,18 @@ public class LoginBean {
         System.out.println("varMSG: "+msg);
         
         for(int i=0; i < peers.size(); i++){
-            System.out.println("NAME-PEER:"+peers.getClass().getName());
+            System.out.println("(WS)NAME-PEER:"+peers.getClass().getName());
         }
         
         for(Session session : peers){
             System.out.println("");
             try{
                 peer.getBasicRemote().sendText(msg);
-                System.out.println("Mensaje enviado:["+msg+"]");
+                System.out.println("(WS)Mensaje enviado:["+msg+"]");
             }catch(IOException ex){
                 peers.remove(peer);
-                System.out.println("ERROR:" + ex.toString());
-                logger.log(Level.SEVERE, "Error al enviar msg al cliente(" + peer.getId() + ")", ex);
+                System.out.println("(WS)ERROR:" + ex.toString());
+                logger.log(Level.SEVERE, "(WS)Error al enviar msg al cliente(" + peer.getId() + ")", ex);
             }
         };
     }

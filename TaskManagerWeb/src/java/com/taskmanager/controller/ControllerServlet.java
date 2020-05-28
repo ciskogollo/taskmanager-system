@@ -86,18 +86,20 @@ public class ControllerServlet extends HttpServlet {
                 formLogin = "";
             }
             
-            // get user from request
+            // get user from request (client)
             String name = request.getParameter("inputEmail");
             String pass = request.getParameter("inputPassword");
-                    
-            if(verifUser(name,pass)){
+            
+            //verificar a través de UsuarioFacade si existe user en BD
+            Usuario userIn = new Usuario();
+            userIn = usuarioFacade.verifUser(name, pass);
+            if(userIn != null){
                 System.out.println("Accediendo '"+name+"'...");
-                Usuario userX = new Usuario();
                 session = request.getSession();
                 session.setMaxInactiveInterval(60*60);
-                //userX = (Usuario) session.getAttribute("user");
-                session.setAttribute("nameUser", name);
-                session.setAttribute("formLoginParam", formLogin);
+                //userIn = (Usuario) session.getAttribute("user");
+                session.setAttribute("nameUser", userIn.getNombre());
+                session.setAttribute("objUser", userIn);
                 response.sendRedirect(request.getContextPath() + "/index.jsp");
             }else{
                 System.out.println("Datos erróneos >:(");

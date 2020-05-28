@@ -201,7 +201,7 @@ public class Usuario implements Serializable {
 
     @Override
     public String toString() {
-        return "Usuario[ ID=" + idUsuario + ",Nombre="+ nombre +" ]";
+        return "{Usuario: {ID:" +idUsuario+", Nombre:"+nombre+", Correo:"+correo+" }}";
     }
     
 }

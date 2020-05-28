@@ -43,16 +43,16 @@ public class LoginWs {
     
     @OnMessage
     public void onMessage(String msg, Session peer){
-        System.out.println("Nuevo msg ==> " + msg);
+        System.out.println("(WS)Nuevo msg ==> " + msg);
         //loginBean.enviar(peer, msg);
     }
     
     @OnError
     public void onError(Session peer, Throwable e) {
-        System.out.println("ERROR: " + e.getMessage());
+        System.out.println("(WS)ERROR: " + e.getMessage());
         
         queue.remove(peer);
-        logger.log(Level.INFO, "Connection error:");
+        logger.log(Level.INFO, "(WS)Connection error:");
         logger.log(Level.INFO, e.toString());
     }
     

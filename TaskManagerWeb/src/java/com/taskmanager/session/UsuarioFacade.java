@@ -31,6 +31,24 @@ public class UsuarioFacade extends AbstractFacade<Usuario> {
         super(Usuario.class);
     }
     
+    public Usuario verifUser(String name, String hash){
+        try{
+            Usuario uResult = findByName(name).get(0);
+            String nameResult = uResult.getNombre();
+            String hashResult = uResult.getHash();
+            if(name.equals(nameResult) && hash.equals(hashResult)){
+                System.out.println("Nombre de usuario y contraseña correctos.");
+                return uResult;
+            }else{
+                    System.out.println("Usuario no accedido.");
+            }
+        }catch(Exception ex){
+            System.out.println("Imposible iniciar el usuario.");
+            ex.printStackTrace();
+        }
+        return null;
+    }
+    
     public List<Usuario> findByName(String nameuser){
         Query query = em.createNamedQuery("Usuario.findByNombre");
         return query.setParameter("nombre",nameuser).getResultList();

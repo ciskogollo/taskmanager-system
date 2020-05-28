@@ -69,19 +69,19 @@
     <div class="row">
         <div class="col">
             <form action="login" class="form-signin" method="POST">
-                <img class="mb-4" src="/docs/4.4/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
-                <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-                <label for="inputEmail" class="sr-only">Email address</label>
-                <input type="text" name="inputEmail" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-                <label for="inputPassword" class="sr-only">Password</label>
-                <input type="password" name="inputPassword" id="inputPassword" class="form-control" placeholder="Password" required>
+                <img class="mb-4" src="${initParam.images}TMS_login.jpeg" alt="" width="72" height="72">
+                <h1 class="h3 mb-3 font-weight-normal">Acceder</h1>
+                <label for="inputEmail" class="sr-only">Nombre de usuario</label>
+                <input type="text" name="inputEmail" id="inputEmail" class="form-control" placeholder="Nombre de usuario" required autofocus>
+                <label for="inputPassword" class="sr-only">Clave</label>
+                <input type="password" name="inputPassword" id="inputPassword" class="form-control" placeholder="Clave" required>
                 <div class="checkbox mb-3">
                   <label>
                     <input type="checkbox" value="remember-me"> Remember me
                   </label>
                 </div>
                 <button id="btnsignuser" class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-                <p class="mt-5 mb-3 text-muted">&copy; 2017-2019</p>
+                <p class="mt-5 mb-3 text-muted">&copy; 2020</p>
             </form>
         </div>
     </div>
