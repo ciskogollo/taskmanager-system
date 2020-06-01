@@ -1,4 +1,9 @@
-
+<%-- 
+    Document   : index
+    Created on : xx-08-2020, xx:xx::xx
+    Author     : cisko
+--%>
+    <!-- <head> -->
         <title>Task Manager</title>
     </head>
     <body>
@@ -9,7 +14,6 @@
         <hr>
         <input id="boxtext" name="BOXER!">
         <hr>
-        <c:out value="${objUser}"/>
         <c:choose>
             <c:when test="${empty objUser}">
                 <p>No logueado:c</p>
@@ -17,6 +21,8 @@
             </c:when>
             <c:otherwise>
                 <p>Logueado de pana.</p>
+                <c:out value="${objUser}"/>
+                <a href="tareas">-> TAREAS</a>
             </c:otherwise>
         </c:choose>
     </body>

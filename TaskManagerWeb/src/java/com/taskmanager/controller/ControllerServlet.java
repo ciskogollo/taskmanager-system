@@ -24,7 +24,7 @@ import javax.servlet.http.HttpSession;
 @WebServlet(name = "ControllerServlet",
             loadOnStartup = 1,
             urlPatterns = {"/ControllerServlet",
-                           "/login"})
+                           "/login", "/tareas"})
 public class ControllerServlet extends HttpServlet {
     
     @EJB
@@ -33,8 +33,12 @@ public class ControllerServlet extends HttpServlet {
             
     @Override
     public void init() throws ServletException{
-        getServletContext().setAttribute("usuario", usuarioFacade.findAll().get(0).getCorreo());
-        getServletContext().setAttribute("validaruser", usuarioFacade.findAll().size());
+        try{
+            getServletContext().setAttribute("usuario", usuarioFacade.findAll().get(0).getCorreo());
+            getServletContext().setAttribute("validaruser", usuarioFacade.findAll().size());
+        }catch(Exception e){
+            throw new RuntimeException("Error consulting database. xd: ", e);
+        }
     }
 
 
@@ -53,7 +57,10 @@ public class ControllerServlet extends HttpServlet {
             throws ServletException, IOException {
         String userPath = request.getServletPath();
         
-  
+        if(userPath.equals("/tareas")){
+            
+        }
+        
         // use RequestDispatcher to forward request internally
         String url = "/WEB-INF/view" + userPath + ".jsp";
         try{
@@ -109,12 +116,13 @@ public class ControllerServlet extends HttpServlet {
         }
         
         // use RequestDispatcher to forward request internally
-        //String url = "/WEB-INF/view" + userPath + ".jsp";
-        //try{
-        //    request.getRequestDispatcher(url).forward(request, response);
-        //}catch(Exception ex){
-        //    ex.printStackTrace();
-        //}
+        String url = "/WEB-INF/view" + userPath + ".jsp";
+        
+        try{
+            request.getRequestDispatcher(url).forward(request, response);
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
     }
     
     public boolean verifUser(String name, String hash){
