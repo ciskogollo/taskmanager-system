@@ -40,7 +40,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Tarea.findByFechaRecepcion", query = "SELECT t FROM Tarea t WHERE t.fechaRecepcion = :fechaRecepcion")
     , @NamedQuery(name = "Tarea.findByIdTsuperior", query = "SELECT t FROM Tarea t WHERE t.idTsuperior = :idTsuperior")
     , @NamedQuery(name = "Tarea.findByIdAntes", query = "SELECT t FROM Tarea t WHERE t.idAntes = :idAntes")
-    , @NamedQuery(name = "Tarea.findByIdSuces", query = "SELECT t FROM Tarea t WHERE t.idSuces = :idSuces")})
+    , @NamedQuery(name = "Tarea.findByIdSuces", query = "SELECT t FROM Tarea t WHERE t.idSuces = :idSuces")
+    , @NamedQuery(name = "Tarea.findByIdResponsable", query = "SELECT t FROM Tarea t WHERE t.usuarioIdUsuario = :usuarioIdUsuario")})
 public class Tarea implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -208,7 +209,7 @@ public class Tarea implements Serializable {
 
     @Override
     public String toString() {
-        return "com.taskmanager.entity.Tarea[ idTarea=" + idTarea + " ]";
+        return "Tarea[ idTarea=" + idTarea + ", descr=" + descripcion + " ]";
     }
     
 }

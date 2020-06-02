@@ -5,10 +5,15 @@
  */
 package com.taskmanager.controller;
 
+import com.taskmanager.entity.Tarea;
 import com.taskmanager.entity.Usuario;
+import com.taskmanager.session.ClienteFacade;
+import com.taskmanager.session.TareaFacade;
 import com.taskmanager.session.UsuarioFacade;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.math.BigDecimal;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,11 +29,18 @@ import javax.servlet.http.HttpSession;
 @WebServlet(name = "ControllerServlet",
             loadOnStartup = 1,
             urlPatterns = {"/ControllerServlet",
-                           "/login", "/tareas"})
+                           "/login",
+                           "/tareas",
+                           "/clientes"})
 public class ControllerServlet extends HttpServlet {
     
     @EJB
     private UsuarioFacade usuarioFacade;
+    @EJB
+    private TareaFacade tareaFacade;
+    @EJB
+    private ClienteFacade clienteFacade;
+    
     public HttpSession session;
             
     @Override
@@ -40,7 +52,6 @@ public class ControllerServlet extends HttpServlet {
             throw new RuntimeException("Error consulting database. xd: ", e);
         }
     }
-
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -58,7 +69,24 @@ public class ControllerServlet extends HttpServlet {
         String userPath = request.getServletPath();
         
         if(userPath.equals("/tareas")){
-            
+            Usuario idUserSession = (Usuario)session.getAttribute("objUser");
+            Tarea tareaPP = new Tarea();
+            tareaPP = tareaFacade.findAll().get(0);
+            //System.out.println("TAREA: "+tareaPP.getDescripcion());
+            //tareaPP.setUsuarioIdUsuario((Usuario)session.getAttribute("idUser"));
+            //System.out.println("IDUSER: "+idUserSession);
+            //System.out.println(session.getAttribute("idUser"));
+            try{
+                //DEVUELVE NULL TODO EL RATO :((
+                List<Tarea> listTareas = tareaFacade.findByIdResponsable(idUserSession);
+                getServletContext().setAttribute("listTareas", listTareas);
+            }catch(Exception e){
+                System.out.println("Error: "+e);
+            }
+        }
+        
+        if(userPath.equals("/clientes")){
+            System.out.println(clienteFacade.findAll().get(0));
         }
         
         // use RequestDispatcher to forward request internally
@@ -106,6 +134,8 @@ public class ControllerServlet extends HttpServlet {
                 session.setMaxInactiveInterval(60*60);
                 //userIn = (Usuario) session.getAttribute("user");
                 session.setAttribute("nameUser", userIn.getNombre());
+                session.setAttribute("idUser", userIn.getIdUsuario());
+                session.setAttribute("tareasUser", userIn.getTareaList());
                 session.setAttribute("objUser", userIn);
                 response.sendRedirect(request.getContextPath() + "/index.jsp");
             }else{
@@ -113,16 +143,18 @@ public class ControllerServlet extends HttpServlet {
                 // AQUI se debe agregar el msg de validación para el html
                 request.getRequestDispatcher("login.jsp").forward(request, response);
             }
+        }else if(userPath.equals("/tareas")){
+            
         }
         
         // use RequestDispatcher to forward request internally
-        String url = "/WEB-INF/view" + userPath + ".jsp";
+        //String url = "/WEB-INF/view" + userPath + ".jsp";
         
-        try{
-            request.getRequestDispatcher(url).forward(request, response);
-        }catch(Exception ex){
-            ex.printStackTrace();
-        }
+        //try{
+        //    request.getRequestDispatcher(url).forward(request, response);
+        //}catch(Exception ex){
+        //    ex.printStackTrace();
+        //}
     }
     
     public boolean verifUser(String name, String hash){

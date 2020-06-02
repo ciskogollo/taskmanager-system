@@ -6,9 +6,13 @@
 package com.taskmanager.session;
 
 import com.taskmanager.entity.Tarea;
+import com.taskmanager.entity.Usuario;
+import java.math.BigDecimal;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -29,4 +33,13 @@ public class TareaFacade extends AbstractFacade<Tarea> {
         super(Tarea.class);
     }
     
+    public List<Tarea> findByIdResponsable(Usuario idUser){
+        Query query = em.createNamedQuery("Tarea.findByIdResponsable");
+        return query.setParameter("usuarioIdUsuario",idUser).getResultList();
+    }
+    
+    public List<Tarea> findByIdTarea(BigDecimal idTarea){
+        Query query = em.createNamedQuery("Tarea.findByIdTarea");
+        return query.setParameter("idTarea", idTarea).getResultList();
+    }
 }

@@ -3,15 +3,36 @@
     Created on : 29-05-2020, 1:28:10
     Author     : cisko
 --%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- <head> -->
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <table class="">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Descripción</th>
+                    <th scope="col">Ingreso</th>
+                    <th scope="col">Plazo</th>
+                    <th scope="col">Antescesora</th>
+                    <th scope="col">Función</th>
+                    <th scope="col">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row"></th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+        <c:forEach items="${listTareas}" var="tarea">
+            <c:out value="${tarea}"/><br>
+        </c:forEach>
     </body>
 </html>

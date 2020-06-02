@@ -22,6 +22,7 @@
             <c:otherwise>
                 <p>Logueado de pana.</p>
                 <c:out value="${objUser}"/>
+                <c:out value="${idUser}"/>
                 <a href="tareas">-> TAREAS</a>
             </c:otherwise>
         </c:choose>

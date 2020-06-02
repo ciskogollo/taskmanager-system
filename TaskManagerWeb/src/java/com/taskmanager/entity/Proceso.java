@@ -35,9 +35,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Proceso.findAll", query = "SELECT p FROM Proceso p")
     , @NamedQuery(name = "Proceso.findByIdProceso", query = "SELECT p FROM Proceso p WHERE p.idProceso = :idProceso")
-    , @NamedQuery(name = "Proceso.findByTipoProceso", query = "SELECT p FROM Proceso p WHERE p.tipoProceso = :tipoProceso")
-    , @NamedQuery(name = "Proceso.findByResponsableIdResp", query = "SELECT p FROM Proceso p WHERE p.responsableIdResp = :responsableIdResp")
-    , @NamedQuery(name = "Proceso.findByIdResponsable", query = "SELECT p FROM Proceso p WHERE p.idResponsable = :idResponsable")})
+    , @NamedQuery(name = "Proceso.findByTipoProceso", query = "SELECT p FROM Proceso p WHERE p.tipoProceso = :tipoProceso")})
 public class Proceso implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -52,14 +50,6 @@ public class Proceso implements Serializable {
     @Size(min = 1, max = 25)
     @Column(name = "TIPO_PROCESO")
     private String tipoProceso;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "RESPONSABLE_ID_RESP")
-    private BigInteger responsableIdResp;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "ID_RESPONSABLE")
-    private BigInteger idResponsable;
     @JoinColumn(name = "CLIENTE_ID_CLIENTE", referencedColumnName = "ID_CLIENTE")
     @ManyToOne(optional = false)
     private Cliente clienteIdCliente;
@@ -76,11 +66,9 @@ public class Proceso implements Serializable {
         this.idProceso = idProceso;
     }
 
-    public Proceso(BigDecimal idProceso, String tipoProceso, BigInteger responsableIdResp, BigInteger idResponsable) {
+    public Proceso(BigDecimal idProceso, String tipoProceso) {
         this.idProceso = idProceso;
         this.tipoProceso = tipoProceso;
-        this.responsableIdResp = responsableIdResp;
-        this.idResponsable = idResponsable;
     }
 
     public BigDecimal getIdProceso() {
@@ -97,22 +85,6 @@ public class Proceso implements Serializable {
 
     public void setTipoProceso(String tipoProceso) {
         this.tipoProceso = tipoProceso;
-    }
-
-    public BigInteger getResponsableIdResp() {
-        return responsableIdResp;
-    }
-
-    public void setResponsableIdResp(BigInteger responsableIdResp) {
-        this.responsableIdResp = responsableIdResp;
-    }
-
-    public BigInteger getIdResponsable() {
-        return idResponsable;
-    }
-
-    public void setIdResponsable(BigInteger idResponsable) {
-        this.idResponsable = idResponsable;
     }
 
     public Cliente getClienteIdCliente() {
