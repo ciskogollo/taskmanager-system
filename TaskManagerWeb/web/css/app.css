@@ -1,0 +1,100 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 03-06-2020, 1:08:51
+    Author     : cisko
+*/
+html, body {
+    height: 100%;
+}
+body{
+    display: flex;
+    background: #fff;
+    width: 100%;
+    overflow-y: hidden;
+}
+
+#wrapper {
+    min-width: 180px !important;
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+}
+
+.left,
+.right{
+    top: 50%;
+    float: left;
+    margin-top: 10rem;
+    height: 100vh;
+    display: inline;
+}
+
+.left{
+    background: #3387b7;
+    display: inline-block;
+    white-space: nowrap;
+    width: 50px;
+    transition: width .5s;
+}
+
+.right{
+    background: #fff;
+    /*white-space: nowrap;*/
+    width: 100%;
+    transition: width 1s;
+    border-style: solid;
+    border-color:transparent;
+    border-width: 1px;
+    padding: 25px 0 15px 15px;
+    overflow-y: scroll;
+}
+
+.left:hover {
+    width:250px;
+}
+.left .fas {
+    margin: 15px;
+    width: 20px;
+    color: #fff;
+}
+
+.left .nav-link {
+    padding: 0;
+}
+
+.item {
+    height: 50px;
+    overflow: hidden;
+    color: #fff;
+}
+
+.item-title:hover {
+    background: #3385b3 !important;
+}
+
+.item a {
+    color: #fff;
+}
+
+.item:hover {
+    background: #222;
+}
+
+i .fas {
+    font-size: 17px;
+    vertical-align: middle !important;
+}
+
+@media (min-width: 576px){
+    .left,
+    .right{
+        margin-top: 5rem;
+    }
+}
+@media (min-width: 768px){
+    
+}

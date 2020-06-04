@@ -13,11 +13,15 @@
     <jsp-config>
         <jsp-property-group>
             <description>Header y Footer settings</description>
-            <url-pattern>/login.jsp</url-pattern>
             <url-pattern>/index.jsp</url-pattern>
             <url-pattern>/WEB-INF/view/*</url-pattern>
             <include-prelude>/WEB-INF/jspf/header.jspf</include-prelude>
             <include-coda>/WEB-INF/jspf/footer.jspf</include-coda>
+        </jsp-property-group>
+        <jsp-property-group>
+            <display-name>Login group</display-name>
+            <url-pattern>/login.jsp</url-pattern>
+            <include-prelude>/WEB-INF/jspf/header_login.jspf</include-prelude>
         </jsp-property-group>
     </jsp-config>
 </web-app>

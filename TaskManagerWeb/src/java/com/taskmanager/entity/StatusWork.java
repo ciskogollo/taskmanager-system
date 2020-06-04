@@ -109,7 +109,7 @@ public class StatusWork implements Serializable {
 
     @Override
     public String toString() {
-        return "com.taskmanager.entity.StatusWork[ idStatus=" + idStatus + " ]";
+        return "StatusWork[ idStatus=" + idStatus + " ]";
     }
     
 }

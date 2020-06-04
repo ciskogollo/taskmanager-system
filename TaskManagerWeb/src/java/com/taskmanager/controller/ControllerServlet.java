@@ -5,15 +5,26 @@
  */
 package com.taskmanager.controller;
 
+import com.taskmanager.entity.Funcion;
 import com.taskmanager.entity.Tarea;
 import com.taskmanager.entity.Usuario;
+import com.taskmanager.entity.StatusWork;
+import com.taskmanager.entity.Funcion;
 import com.taskmanager.session.ClienteFacade;
+import com.taskmanager.session.StatusWorkFacade;
+import com.taskmanager.session.FuncionFacade;
 import com.taskmanager.session.TareaFacade;
 import com.taskmanager.session.UsuarioFacade;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -29,8 +40,11 @@ import javax.servlet.http.HttpSession;
 @WebServlet(name = "ControllerServlet",
             loadOnStartup = 1,
             urlPatterns = {"/ControllerServlet",
+                           "/index",
                            "/login",
+                           "/logout",
                            "/tareas",
+                           "/add-tarea",
                            "/clientes"})
 public class ControllerServlet extends HttpServlet {
     
@@ -40,6 +54,10 @@ public class ControllerServlet extends HttpServlet {
     private TareaFacade tareaFacade;
     @EJB
     private ClienteFacade clienteFacade;
+    @EJB
+    private StatusWorkFacade statusWorkFacade;
+    @EJB
+    private FuncionFacade funcionFacade;
     
     public HttpSession session;
             
@@ -62,31 +80,54 @@ public class ControllerServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String userPath = request.getServletPath();
-        
+        if(userPath.equals("/index")){
+            getServletContext().setAttribute("Titulo", "Dashboard");
+            response.sendRedirect(request.getContextPath() + "/index.jsp");
+        }
         if(userPath.equals("/tareas")){
+            getServletContext().setAttribute("Titulo", "Tareas");
+            System.out.println("Listando Tareas del Usuario...");
+            
             Usuario idUserSession = (Usuario)session.getAttribute("objUser");
             Tarea tareaPP = new Tarea();
             tareaPP = tareaFacade.findAll().get(0);
-            //System.out.println("TAREA: "+tareaPP.getDescripcion());
-            //tareaPP.setUsuarioIdUsuario((Usuario)session.getAttribute("idUser"));
-            //System.out.println("IDUSER: "+idUserSession);
-            //System.out.println(session.getAttribute("idUser"));
+
             try{
-                //DEVUELVE NULL TODO EL RATO :((
                 List<Tarea> listTareas = tareaFacade.findByIdResponsable(idUserSession);
                 getServletContext().setAttribute("listTareas", listTareas);
             }catch(Exception e){
-                System.out.println("Error: "+e);
+                System.out.println("Error: Listando tareas del usuario. - "+e);
             }
+        }else if(userPath.equals("/add-tarea")){
+            getServletContext().setAttribute("Titulo", "Agregar Tarea");
+            
+            // Listar topdos los users registrados
+            try{
+                List<Usuario> listTotalUsers = usuarioFacade.findAll();
+                getServletContext().setAttribute("usuariosRegistrados", listTotalUsers);
+            }catch(Exception e){
+                System.out.println("Error: Listando usuarios regs. - "+e);
+            }
+            // Listar topdos los users registrados
+            try{
+                List<Tarea> listTotalTareas = tareaFacade.findAll();
+                getServletContext().setAttribute("tareasRegistradas", listTotalTareas);
+            }catch(Exception e){
+                System.out.println("Error: Listando tareas regs. - "+e);
+            }
+            
         }
         
         if(userPath.equals("/clientes")){
             System.out.println(clienteFacade.findAll().get(0));
+        }
+        else if(userPath.equals("/logout")){
+            session.invalidate();
+            response.sendRedirect(request.getContextPath() + "/index.jsp");
         }
         
         // use RequestDispatcher to forward request internally
@@ -114,6 +155,7 @@ public class ControllerServlet extends HttpServlet {
 
         // Si Login es requerida
         if (userPath.equals("/login")){
+            getServletContext().setAttribute("Titulo", "Login - TMS");
             //PROBANDO GETQUERYSTRING, NO FUNCA HAS5TA AHORA
             String formLogin = request.getQueryString();
             if(formLogin == null){
@@ -144,6 +186,52 @@ public class ControllerServlet extends HttpServlet {
                 request.getRequestDispatcher("login.jsp").forward(request, response);
             }
         }else if(userPath.equals("/tareas")){
+            
+        }else if(userPath.equals("/add-tarea")){
+            String formAddTarea = request.getQueryString();
+            System.out.println("Recibiendo datos de Nueva Tarea...");
+            
+            String descrip = request.getParameter("txtDescriTarea");
+            String fechaPlRaw = request.getParameter("datePlazoTarea");
+            BigDecimal idUserResp = new BigDecimal(request.getParameter("selResponsableTarea"));
+            Date fechaIngreso = new Date();
+            Date fechaPlazo = new Date();
+            try {
+                fechaPlazo = new SimpleDateFormat("ddMMyyyy").parse(fechaPlRaw);
+                System.out.println("FechaPPlazo: "+fechaPlazo);
+                /*SimpleDateFormat sdf = new SimpleDateFormat("ddMMyyyy");*/
+                /*fechaPlazo = sdf.format(fechaPlazo);*/
+            } catch (ParseException ex) {
+                Logger.getLogger(ControllerServlet.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            try{
+                /*tareaFacade.crearTarea(descrip,fechaPlazo,responsable,(Usuario)session.getAttribute("objUser"));*/
+                BigDecimal idUltimaTarea = new BigDecimal(tareaFacade.findAll().size()).add(new BigDecimal(1));
+                Usuario responsable = usuarioFacade.findByIdUsuario(idUserResp).get(0);
+                Funcion funcTareaInit = funcionFacade.findAll().get(0);
+                StatusWork statusTareaInit = statusWorkFacade.findAll().get(0);
+                
+                Tarea newTarea;
+                //newTarea = new Tarea(idUltimaTarea, descrip, fechaIngreso, fechaPlazo, null, null, null, null, responsable, statusTareaInit);
+                Tarea tr = new Tarea();
+                tr.setIdTarea(idUltimaTarea);
+                tr.setDescripcion(descrip);
+                tr.setFechaIngreso(fechaIngreso);
+                tr.setFechaPlazo(fechaPlazo);
+                tr.setFechaRecepcion(null);
+                tr.setIdAntes(null);
+                tr.setIdSuces(null);
+                tr.setIdTsuperior(BigInteger.ZERO);
+                tr.setFuncionIdFuncion(funcTareaInit);
+                tr.setStatusWorkIdStatus(statusTareaInit);
+                tr.setUsuarioIdUsuario(responsable);
+
+                //System.out.println("newTaarea: "+newTarea);
+                //tareaFacade.create(newTarea);
+                tareaFacade.create(tr);
+            }catch(Exception ex){
+                System.out.println("No se ha podido agregar la Tarea. "+ex);
+            }
             
         }
         

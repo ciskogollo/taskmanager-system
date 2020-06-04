@@ -6,6 +6,7 @@
 package com.taskmanager.session;
 
 import com.taskmanager.entity.Usuario;
+import java.math.BigDecimal;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -47,6 +48,11 @@ public class UsuarioFacade extends AbstractFacade<Usuario> {
             ex.printStackTrace();
         }
         return null;
+    }
+    
+    public List<Usuario> findByIdUsuario(BigDecimal idUser){
+        Query query = em.createNamedQuery("Usuario.findByIdUsuario");
+        return query.setParameter("idUsuario",idUser).getResultList();
     }
     
     public List<Usuario> findByName(String nameuser){

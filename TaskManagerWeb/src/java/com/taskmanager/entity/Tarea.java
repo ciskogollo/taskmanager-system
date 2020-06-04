@@ -65,7 +65,6 @@ public class Tarea implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaPlazo;
     @Basic(optional = false)
-    @NotNull
     @Column(name = "FECHA_RECEPCION")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaRecepcion;
@@ -92,11 +91,11 @@ public class Tarea implements Serializable {
         this.idTarea = idTarea;
     }
 
-    public Tarea(BigDecimal idTarea, String descripcion, Date fechaIngreso, Date fechaRecepcion) {
+    public Tarea(BigDecimal idTarea, String descripcion, Date fechaIngreso, Date fechaPlazo, Usuario responsable, StatusWork statusWorkIdStatus) {
         this.idTarea = idTarea;
         this.descripcion = descripcion;
         this.fechaIngreso = fechaIngreso;
-        this.fechaRecepcion = fechaRecepcion;
+        this.fechaPlazo = fechaPlazo;
     }
 
     public BigDecimal getIdTarea() {

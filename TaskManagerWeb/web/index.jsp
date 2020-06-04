@@ -3,10 +3,12 @@
     Created on : xx-08-2020, xx:xx::xx
     Author     : cisko
 --%>
-    <!-- <head> -->
-        <title>Task Manager</title>
-    </head>
-    <body>
+
+${pageContext.servletContext.setAttribute("Titulo","Dashboard")}
+<div class="row">
+    <div class="col-12">
+        <p class="text-right">Bienvenid@ <b><c:out value="${objUser.nombre}"/></b></p>
+        <p>Logueado de pana.</p>
         <h1>Home</h1>
         <div id="output"></div>
         <input type="text" id="txtinput" name="text"><br>
@@ -21,10 +23,10 @@
             </c:when>
             <c:otherwise>
                 <p>Logueado de pana.</p>
-                <c:out value="${objUser}"/>
-                <c:out value="${idUser}"/>
+                
                 <a href="tareas">-> TAREAS</a>
             </c:otherwise>
         </c:choose>
-    </body>
-</html>
+    </div>
+</div>
+                

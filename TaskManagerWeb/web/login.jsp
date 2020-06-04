@@ -3,11 +3,8 @@
     Created on : 16-05-2020, 21:12:03
     Author     : cisko
 --%>
-    <!-- <head> -->
-        <title>Login TM</title>
-        <link rel="stylesheet" href="css/login.css">
-    </head>
-<body class="text-center">
+
+
 <c:choose>
     <c:when test="${empty objUser}">
         <div class="row">
