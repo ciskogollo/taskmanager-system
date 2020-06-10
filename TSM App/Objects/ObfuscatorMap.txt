@@ -1,0 +1,14 @@
+Este fichero contiene las variables renombradas con los originales.
+v5=session
+v6=close
+v7=connect
+v0=sendeventtoendpoint
+vv1=ws
+vv2=callback
+vv3=eventname
+vv4=main
+vv5=starter
+vv6=dash
+vv7=wshand
+vv0=endpoint
+vvv1=updatestatus

@@ -1,0 +1,15 @@
+﻿ModuleBookmarks0=
+ModuleBookmarks1=
+ModuleBookmarks2=
+ModuleBookmarks3=
+ModuleBreakpoints0=
+ModuleBreakpoints1=
+ModuleBreakpoints2=
+ModuleBreakpoints3=
+ModuleClosedNodes0=1,6,8
+ModuleClosedNodes1=
+ModuleClosedNodes2=
+ModuleClosedNodes3=1,6
+NavigationStack=Main,Globals,23,0,Diseñador Visual,login.bal,-100,6,Main,Activity_Resume,77,0,Main,Activity_Create,32,2,Main,UpdateStatus,62,0,WebSocketHandler,ws_ReceiveMsg,51,0,Main,btnConectar_Click,68,3,WebSocketHandler,Class_Globals,2,0,WebSocketHandler,ws_Closed,58,0,WebSocketHandler,SendEventToEndPoint,33,4
+SelectedBuild=0
+VisibleModules=3,1

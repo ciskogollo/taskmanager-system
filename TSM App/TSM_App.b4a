@@ -1,0 +1,108 @@
+﻿Build1=Default,b4a.tsm
+File1=dashboard.bal
+File2=ex_index.bal
+File3=icon.bmp
+File4=login.bal
+FileGroup1=Default Group
+FileGroup2=Default Group
+FileGroup3=Default Group
+FileGroup4=Default Group
+Group=com.TaskManagerSystem
+Library1=core
+Library2=json
+Library3=websocket
+ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: https://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="11" android:targetSdkVersion="28"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~CreateResourceFromFile(Macro, Themes.DarkTheme)~\n~'End of default text.~\n~
+Module1=Dash
+Module2=Starter
+Module3=WebSocketHandler
+NumberOfFiles=4
+NumberOfLibraries=3
+NumberOfModules=3
+Version=9.801
+@EndOfDesignText@
+#Region  Project Attributes 
+	#ApplicationLabel: TaskManagerSystem Android
+	#VersionCode: 1
+	#VersionName: alpha.v1
+	'SupportedOrientations possible values: unspecified, landscape or portrait.
+	#SupportedOrientations: unspecified
+	#CanInstallToExternalStorage: True
+#End Region
+
+#Region  Activity Attributes 
+	#FullScreen: False
+	#IncludeTitle: False
+#End Region
+
+Sub Process_Globals
+	Private wshand As WebSocketHandler
+	Private endpoint As String = "ws://192.168.0.159:8080/TaskManagerWeb/LoginWs"
+	Public session As String
+End Sub
+
+Sub Globals
+	Private lblServerTime As Label
+	Private lblStatus As Label
+	Private btnConectar As Button
+	Private txtNombre As EditText
+	Private txtPass As EditText
+End Sub
+
+Sub Activity_Create(FirstTime As Boolean)
+	If FirstTime Then
+		wshand.Initialize(Me, "wshand")
+		session = "init"
+		Activity.LoadLayout("login")
+		wshand.Connect(endpoint)
+		lblStatus.Text = "Status: Conectando..."
+	Else
+		Activity.LoadLayout("dashboard")
+	End If
+End Sub
+
+Sub wshand_ServerTime(Params As List)
+	lblServerTime.Text = "ServerTime: " & Params.Get(0)
+End Sub
+
+Sub wshand_Connected
+	UpdateStatus
+End Sub
+
+Sub wshand_Closed(Reason As String)
+	UpdateStatus
+	ToastMessageShow(Reason, True)
+End Sub
+
+Sub UpdateStatus
+	If wshand.ws.Connected Then
+		lblStatus.Text = "Status: Conectado"
+	Else
+		lblStatus.Text = "Status: Desconectado"
+	End If
+	btnConectar.Enabled = Not(wshand.ws.Connected)
+	btnConectar.Enabled = wshand.ws.Connected
+End Sub
+
+Sub btnConectar_Click
+	lblStatus.Text = "Status: Consultando..."
+	Dim data As Map
+	data.Initialize
+	data.Put("user", txtNombre.Text)
+	data.Put("hash", txtPass.Text)
+	wshand.SendEventToEndPoint("Ingresar_movil", data)
+End Sub
+
+Sub Activity_Resume
+	'If session <> "" Then
+	'	StartActivity("Dash")
+	'End If
+	UpdateStatus
+End Sub
+
+Sub Activity_Pause (UserClosed As Boolean)
+	If UserClosed = True Then
+		session = Null
+	Else
+		Log(session)
+	End If
+End Sub
