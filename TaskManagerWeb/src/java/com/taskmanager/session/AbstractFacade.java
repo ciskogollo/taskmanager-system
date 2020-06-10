@@ -5,9 +5,12 @@
  */
 package com.taskmanager.session;
 
+import java.sql.SQLException;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
+import javax.ejb.CreateException;
+import javax.ejb.EJBException;
 import javax.persistence.EntityManager;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
@@ -27,6 +30,30 @@ public abstract class AbstractFacade<T> {
     }
 
     protected abstract EntityManager getEntityManager();
+    
+    private boolean constraintValidationsDetected(T entity){
+        ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+        Validator validator = factory.getValidator();
+        Set<ConstraintViolation<T>> constraintViolations = validator.validate(entity);
+        if(constraintViolations.size() > 0){
+            Iterator<ConstraintViolation<T>> iterator = constraintViolations.iterator();
+            while(iterator.hasNext()){
+                ConstraintViolation<T> cv = iterator.next();
+                System.err.println(cv.getRootBeanClass().getName()+"."+cv.getPropertyPath()+" "+cv.getMessage());
+                System.err.println(cv.getRootBeanClass().getSimpleName()+"."+cv.getPropertyPath()+" "+cv.getMessage());
+            }
+            return true;
+        }else{
+            return false;
+        }
+    }
+    
+    /*public void create(T entity) {
+        if (!constraintValidationsDetected(entity)) {
+            getEntityManager().persist(entity);
+        }
+      }
+    */
 
     public void create(T entity) {
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
@@ -37,6 +64,7 @@ public abstract class AbstractFacade<T> {
             while(iterator.hasNext()){
                 ConstraintViolation<T> cv = iterator.next();
                 System.err.println(cv.getRootBeanClass().getName()+"."+cv.getPropertyPath()+" "+cv.getMessage());
+                System.err.println(cv.getRootBeanClass().getSimpleName()+"."+cv.getPropertyPath()+" "+cv.getMessage());
             }
         }else{
             getEntityManager().persist(entity);
@@ -56,6 +84,16 @@ public abstract class AbstractFacade<T> {
     }
 
     public List<T> findAll() {
+        try{
+            javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
+            cq.select(cq.from(entityClass));
+            return getEntityManager().createQuery(cq).getResultList();
+        }catch(Exception e){
+            throw new RuntimeException("Listing Exception",e);
+        }
+    }
+    
+    public List<T> findAllOLD() {
         javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
         cq.select(cq.from(entityClass));
         return getEntityManager().createQuery(cq).getResultList();

@@ -18,6 +18,9 @@
         <link rel="stylesheet" href="css/login.css">
         <link rel="stylesheet" href="css/app.css">
         
+        <!-- Moment.Js -->
+        <script src="http://momentjs.com/downloads/moment.min.js"></script>
+        
         <!-- Jquery -->
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         
@@ -49,12 +52,6 @@
                     <a class="nav-link" href="tareas">
                         <i class="fas fa-fw fa-tasks"></i> Tareas
                     </a>
-                </div>
-                <div class="item">
-                    <i class="fas fa-fw fa-th"></i> Grid
-                </div>
-                <div class="item">
-                    <i class="fas fa-fw fa-user-circle"></i> Dash
                 </div>
             </div>
             <div class="right">

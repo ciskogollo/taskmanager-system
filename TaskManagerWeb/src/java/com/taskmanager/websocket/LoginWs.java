@@ -5,7 +5,6 @@
  */
 package com.taskmanager.websocket;
 
-import java.io.IOException;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.logging.Level;
@@ -18,7 +17,13 @@ import javax.websocket.OnMessage;
 import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
 import com.taskmanager.beans.LoginBean;
+import com.taskmanager.entity.Usuario;
+import com.taskmanager.session.UsuarioFacade;
+import javax.ejb.EJB;
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
+import org.json.JSONObject;
+import org.json.JSONException;
 
 /**
  *
@@ -32,8 +37,13 @@ public class LoginWs {
     /* Funcionalidades en Bean*/
     @Inject
     private LoginBean loginBean;
+    /*@EJB
+    private UsuarioFacade usuarioFacade;
+    */
     
     static Queue<Session> queue = new ConcurrentLinkedQueue<>();
+    //public HttpSession session;
+    JSONObject jsonObj;
 
     @OnOpen
     public void onOpen(Session peer){
@@ -44,7 +54,32 @@ public class LoginWs {
     @OnMessage
     public void onMessage(String msg, Session peer){
         System.out.println("(WS)Nuevo msg ==> " + msg);
-        //loginBean.enviar(peer, msg);
+        try {
+            jsonObj = new JSONObject(msg);
+            //System.out.println("PARAM:"+jsonObj.getJSONObject("param"));
+        } catch (JSONException e) {
+            System.err.println("Error: "+e.toString());
+        }
+        JSONObject usrOBj = new JSONObject(jsonObj.getJSONObject("param").toString());
+
+        String name = usrOBj.get("user").toString();
+        String pass = usrOBj.get("hash").toString();
+        Usuario userIn = new Usuario();
+        //userIn = usuarioFacade.verifUser(name, pass);
+        
+        if(userIn != null){
+            System.out.println("Accediendo '"+name+"'...");
+            /*session.setAttribute("peer", peer);
+            session.setMaxInactiveInterval(60*60);
+            session.setAttribute("nameUser", userIn.getNombre());
+            session.setAttribute("idUser", userIn.getIdUsuario());
+            session.setAttribute("tareasUser", userIn.getTareaList());
+            session.setAttribute("objUser", userIn);
+            */
+            
+        }else{
+            System.out.println("Datos erróneos >:(");
+        }
     }
     
     @OnError

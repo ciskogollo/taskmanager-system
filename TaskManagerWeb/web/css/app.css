@@ -89,6 +89,23 @@ i .fas {
     vertical-align: middle !important;
 }
 
+.punto-status {
+    width: 10px;
+    height: 10px;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+}
+.status-verde {
+    background: #5cb85c;
+}
+.status-amarillo {
+    background: #efef60;
+}
+.status-rojo {
+    background: #bd4949;
+}
+
 @media (min-width: 576px){
     .left,
     .right{

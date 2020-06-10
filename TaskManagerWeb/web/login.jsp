@@ -37,6 +37,6 @@
     </c:otherwise>
 </c:choose>
         
-<script type="text/javascript" src="js/websocket.js"></script>
+<!-- <script type="text/javascript" src="js/websocket.js"></script> -->
 </body>
 </html>
