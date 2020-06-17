@@ -31,30 +31,15 @@ public abstract class AbstractFacade<T> {
 
     protected abstract EntityManager getEntityManager();
     
-    private boolean constraintValidationsDetected(T entity){
-        ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
-        Validator validator = factory.getValidator();
-        Set<ConstraintViolation<T>> constraintViolations = validator.validate(entity);
-        if(constraintViolations.size() > 0){
-            Iterator<ConstraintViolation<T>> iterator = constraintViolations.iterator();
-            while(iterator.hasNext()){
-                ConstraintViolation<T> cv = iterator.next();
-                System.err.println(cv.getRootBeanClass().getName()+"."+cv.getPropertyPath()+" "+cv.getMessage());
-                System.err.println(cv.getRootBeanClass().getSimpleName()+"."+cv.getPropertyPath()+" "+cv.getMessage());
-            }
-            return true;
-        }else{
-            return false;
-        }
-    }
     
-    /*public void create(T entity) {
+    
+    public void create(T entity) {
         if (!constraintValidationsDetected(entity)) {
             getEntityManager().persist(entity);
         }
-      }
-    */
+    }
 
+    /*
     public void create(T entity) {
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
         Validator validator = factory.getValidator();
@@ -70,9 +55,12 @@ public abstract class AbstractFacade<T> {
             getEntityManager().persist(entity);
         }
     }
+    */
 
     public void edit(T entity) {
-        getEntityManager().merge(entity);
+        if (!constraintValidationsDetected(entity)) {
+            getEntityManager().merge(entity);
+        }
     }
 
     public void remove(T entity) {
@@ -116,4 +104,20 @@ public abstract class AbstractFacade<T> {
         return ((Long) q.getSingleResult()).intValue();
     }
     
+    private boolean constraintValidationsDetected(T entity){
+        ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+        Validator validator = factory.getValidator();
+        Set<ConstraintViolation<T>> constraintViolations = validator.validate(entity);
+        if(constraintViolations.size() > 0){
+            Iterator<ConstraintViolation<T>> iterator = constraintViolations.iterator();
+            while(iterator.hasNext()){
+                ConstraintViolation<T> cv = iterator.next();
+                System.err.println(cv.getRootBeanClass().getName()+"."+cv.getPropertyPath()+" "+cv.getMessage());
+                System.err.println(cv.getRootBeanClass().getSimpleName()+"."+cv.getPropertyPath()+" "+cv.getMessage());
+            }
+            return true;
+        }else{
+            return false;
+        }
+    }
 }

@@ -132,6 +132,8 @@ public class ControllerServlet extends HttpServlet {
                         Object tareaSelected = tareaFacade.findByIdTarea(new BigDecimal(idTarea));
                         //Tarea reTarSel = tareaFacade.findByIdTarea(new BigDecimal(idTarea)).get(0);
                         getServletContext().setAttribute("tareaSeleccionada", tareaFacade.findByIdTarea(new BigDecimal(idTarea)).get(0));
+                        session.setAttribute("idTareaSeleccionadaSES", tareaFacade.findByIdTarea(new BigDecimal(idTarea)).get(0).getIdTarea());
+                        session.setAttribute("IngresoTareaSeleccionadaSES", tareaFacade.findByIdTarea(new BigDecimal(idTarea)).get(0).getFechaIngreso());
                     } catch (Exception ex) {
                         ex.printStackTrace();
                     }
@@ -230,7 +232,8 @@ public class ControllerServlet extends HttpServlet {
                     /*fechaPlazo = sdf.format(fechaPlazo);*/
                 } catch (ParseException ex) {
                     Logger.getLogger(ControllerServlet.class.getName()).log(Level.SEVERE, null, ex);
-                }   try{
+                }
+                try{
                     /*tareaFacade.crearTarea(descrip,fechaPlazo,responsable,(Usuario)session.getAttribute("objUser"));*/
                     BigDecimal idUltimaTarea = new BigDecimal(tareaFacade.findAll().size()).add(new BigDecimal(1));
                     Usuario responsable = usuarioFacade.findByIdUsuario(idUserResp).get(0);
@@ -258,6 +261,46 @@ public class ControllerServlet extends HttpServlet {
                 }catch(Exception ex){
                     System.out.println("No se ha podido agregar la Tarea. "+ex);
                 }   break;
+            case "/edit-tarea":
+                String formEditTarea = request.getQueryString();
+                System.out.println("Recibiendo datos de Tarea Editada...");
+                String descr = request.getParameter("txtDescriTarea");
+                String fecPlRaw = request.getParameter("datePlazoTarea");
+                BigDecimal idUsResp = new BigDecimal(request.getParameter("selResponsableTarea"));
+                Date fecPlazo = new Date();
+                try {
+                    fecPlazo = new SimpleDateFormat("ddMMyyyy").parse(fecPlRaw);
+                    System.out.println("FechaPPlazo: "+fecPlazo);
+                }catch (ParseException ex) {
+                    Logger.getLogger(ControllerServlet.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                try{
+                    BigDecimal idTarea = (BigDecimal)session.getAttribute("tareaSeleccionadaSES");
+                    System.out.println("IDTAREA-EDITAR: "+idTarea);
+                    Date idIngTarea = (Date)session.getAttribute("IngresoTareaSeleccionadaSES");
+                    Usuario responsable = usuarioFacade.findByIdUsuario(idUsResp).get(0);
+                    Funcion funcTareaInit = funcionFacade.findAll().get(0);
+                    StatusWork statusTareaInit = statusWorkFacade.findAll().get(0);
+                    
+                    Tarea tr = new Tarea();
+                    tr.setIdTarea(idTarea);
+                    tr.setDescripcion(descr);
+                    tr.setFechaIngreso(idIngTarea);
+                    tr.setFechaPlazo(fecPlazo);
+                    tr.setFechaRecepcion(null);
+                    tr.setIdAntes(null);
+                    tr.setIdSuces(null);
+                    tr.setIdTsuperior(BigInteger.ZERO);
+                    tr.setFuncionIdFuncion(funcTareaInit);
+                    tr.setStatusWorkIdStatus(statusTareaInit);
+                    tr.setUsuarioIdUsuario(responsable);
+                    
+                    //System.out.println("newTaarea: "+newTarea);
+                    //tareaFacade.create(newTarea);
+                    tareaFacade.edit(tr);
+                }catch(Exception ex){
+                    System.out.println("No se ha podido editar la Tarea. "+ex);
+                }break;
             case "/ver-tarea":
                 
                 break;
