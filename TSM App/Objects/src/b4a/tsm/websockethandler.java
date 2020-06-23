@@ -10,7 +10,7 @@ public class websockethandler extends B4AClass.ImplB4AClass implements BA.SubDel
     private static java.util.HashMap<String, java.lang.reflect.Method> htSubs;
     private void innerInitialize(BA _ba) throws Exception {
         if (ba == null) {
-            ba = new BA(_ba, this, htSubs, "b4a.tsm.websockethandler");
+            ba = new anywheresoftware.b4a.ShellBA(_ba, this, htSubs, "b4a.tsm.websockethandler");
             if (htSubs == null) {
                 ba.loadHtSubs(this.getClass());
                 htSubs = ba.htSubs;
@@ -23,129 +23,221 @@ public class websockethandler extends B4AClass.ImplB4AClass implements BA.SubDel
             ba.raiseEvent2(null, true, "class_globals", false);
     }
 
- public anywheresoftware.b4a.keywords.Common __c = null;
-public anywheresoftware.b4a.objects.WebSocketWrapper _vv1 = null;
-public Object _vv2 = null;
-public String _vv3 = "";
-public b4a.tsm.main _vv4 = null;
-public b4a.tsm.starter _vv5 = null;
-public b4a.tsm.dash _vv6 = null;
-public String  _class_globals() throws Exception{
- //BA.debugLineNum = 3;BA.debugLine="Sub Class_Globals";
- //BA.debugLineNum = 4;BA.debugLine="Public ws As WebSocket";
-_vv1 = new anywheresoftware.b4a.objects.WebSocketWrapper();
- //BA.debugLineNum = 5;BA.debugLine="Private Callback As Object";
-_vv2 = new Object();
- //BA.debugLineNum = 6;BA.debugLine="Private EventName As String";
-_vv3 = "";
- //BA.debugLineNum = 7;BA.debugLine="End Sub";
-return "";
-}
-public String  _v6() throws Exception{
- //BA.debugLineNum = 19;BA.debugLine="Public Sub Close";
- //BA.debugLineNum = 20;BA.debugLine="If ws.Connected Then";
-if (_vv1.getConnected()) { 
- //BA.debugLineNum = 21;BA.debugLine="ws.Close";
-_vv1.Close();
- };
- //BA.debugLineNum = 23;BA.debugLine="End Sub";
-return "";
-}
-public String  _v7(String _url) throws Exception{
- //BA.debugLineNum = 15;BA.debugLine="Public Sub Connect(url As String)";
- //BA.debugLineNum = 16;BA.debugLine="ws.Connect(url)";
-_vv1.Connect(_url);
- //BA.debugLineNum = 17;BA.debugLine="End Sub";
-return "";
-}
-public String  _initialize(anywheresoftware.b4a.BA _ba,Object _vcallbk,String _vevtname) throws Exception{
+ 
+    public void  innerInitializeHelper(anywheresoftware.b4a.BA _ba) throws Exception{
+        innerInitialize(_ba);
+    }
+    public Object callSub(String sub, Object sender, Object[] args) throws Exception {
+        return BA.SubDelegator.SubNotFound;
+    }
+public anywheresoftware.b4a.keywords.Common __c = null;
+public anywheresoftware.b4a.objects.WebSocketWrapper _ws = null;
+public Object _callback = null;
+public String _eventname = "";
+public b4a.tsm.main _main = null;
+public b4a.tsm.dash _dash = null;
+public b4a.tsm.starter _starter = null;
+public String  _initialize(b4a.tsm.websockethandler __ref,anywheresoftware.b4a.BA _ba,Object _vcallbk,String _vevtname) throws Exception{
+__ref = this;
 innerInitialize(_ba);
- //BA.debugLineNum = 9;BA.debugLine="Public Sub Initialize (vCallbk As Object, vEvtName";
- //BA.debugLineNum = 10;BA.debugLine="Callback = vCallbk";
-_vv2 = _vcallbk;
- //BA.debugLineNum = 11;BA.debugLine="EventName = vEvtName";
-_vv3 = _vevtname;
- //BA.debugLineNum = 12;BA.debugLine="ws.Initialize(\"ws\")";
-_vv1.Initialize(ba,"ws");
- //BA.debugLineNum = 13;BA.debugLine="End Sub";
+RDebugUtils.currentModule="websockethandler";
+if (Debug.shouldDelegate(ba, "initialize", false))
+	 {return ((String) Debug.delegate(ba, "initialize", new Object[] {_ba,_vcallbk,_vevtname}));}
+RDebugUtils.currentLine=1114112;
+ //BA.debugLineNum = 1114112;BA.debugLine="Public Sub Initialize (vCallbk As Object, vEvtName";
+RDebugUtils.currentLine=1114113;
+ //BA.debugLineNum = 1114113;BA.debugLine="Callback = vCallbk";
+__ref._callback /*Object*/  = _vcallbk;
+RDebugUtils.currentLine=1114114;
+ //BA.debugLineNum = 1114114;BA.debugLine="EventName = vEvtName";
+__ref._eventname /*String*/  = _vevtname;
+RDebugUtils.currentLine=1114115;
+ //BA.debugLineNum = 1114115;BA.debugLine="ws.Initialize(\"ws\")";
+__ref._ws /*anywheresoftware.b4a.objects.WebSocketWrapper*/ .Initialize(ba,"ws");
+RDebugUtils.currentLine=1114116;
+ //BA.debugLineNum = 1114116;BA.debugLine="End Sub";
 return "";
 }
-public String  _v0(String _event,anywheresoftware.b4a.objects.collections.Map _data) throws Exception{
+public String  _connect(b4a.tsm.websockethandler __ref,String _url) throws Exception{
+__ref = this;
+RDebugUtils.currentModule="websockethandler";
+if (Debug.shouldDelegate(ba, "connect", false))
+	 {return ((String) Debug.delegate(ba, "connect", new Object[] {_url}));}
+RDebugUtils.currentLine=1179648;
+ //BA.debugLineNum = 1179648;BA.debugLine="Public Sub Connect(url As String)";
+RDebugUtils.currentLine=1179649;
+ //BA.debugLineNum = 1179649;BA.debugLine="ws.Connect(url)";
+__ref._ws /*anywheresoftware.b4a.objects.WebSocketWrapper*/ .Connect(_url);
+RDebugUtils.currentLine=1179650;
+ //BA.debugLineNum = 1179650;BA.debugLine="End Sub";
+return "";
+}
+public String  _sendeventtoendpoint(b4a.tsm.websockethandler __ref,String _event,anywheresoftware.b4a.objects.collections.Map _data) throws Exception{
+__ref = this;
+RDebugUtils.currentModule="websockethandler";
+if (Debug.shouldDelegate(ba, "sendeventtoendpoint", false))
+	 {return ((String) Debug.delegate(ba, "sendeventtoendpoint", new Object[] {_event,_data}));}
 anywheresoftware.b4a.objects.collections.Map _m = null;
 anywheresoftware.b4a.objects.collections.JSONParser.JSONGenerator _jsgen = null;
- //BA.debugLineNum = 26;BA.debugLine="Public Sub SendEventToEndPoint(Event As String, Da";
- //BA.debugLineNum = 27;BA.debugLine="Dim m As Map";
+RDebugUtils.currentLine=1310720;
+ //BA.debugLineNum = 1310720;BA.debugLine="Public Sub SendEventToEndPoint(Event As String, Da";
+RDebugUtils.currentLine=1310721;
+ //BA.debugLineNum = 1310721;BA.debugLine="Dim m As Map";
 _m = new anywheresoftware.b4a.objects.collections.Map();
- //BA.debugLineNum = 28;BA.debugLine="m.Initialize";
+RDebugUtils.currentLine=1310722;
+ //BA.debugLineNum = 1310722;BA.debugLine="m.Initialize";
 _m.Initialize();
- //BA.debugLineNum = 29;BA.debugLine="m.Put(\"type\",\"event\")";
+RDebugUtils.currentLine=1310723;
+ //BA.debugLineNum = 1310723;BA.debugLine="m.Put(\"type\",\"event\")";
 _m.Put((Object)("type"),(Object)("event"));
- //BA.debugLineNum = 30;BA.debugLine="m.Put(\"event\", Event)";
+RDebugUtils.currentLine=1310724;
+ //BA.debugLineNum = 1310724;BA.debugLine="m.Put(\"event\", Event)";
 _m.Put((Object)("event"),(Object)(_event));
- //BA.debugLineNum = 31;BA.debugLine="m.Put(\"param\", Data)";
+RDebugUtils.currentLine=1310725;
+ //BA.debugLineNum = 1310725;BA.debugLine="m.Put(\"param\", Data)";
 _m.Put((Object)("param"),(Object)(_data.getObject()));
- //BA.debugLineNum = 32;BA.debugLine="Dim jsgen As JSONGenerator";
+RDebugUtils.currentLine=1310726;
+ //BA.debugLineNum = 1310726;BA.debugLine="Dim jsgen As JSONGenerator";
 _jsgen = new anywheresoftware.b4a.objects.collections.JSONParser.JSONGenerator();
- //BA.debugLineNum = 33;BA.debugLine="jsgen.Initialize(m)";
+RDebugUtils.currentLine=1310727;
+ //BA.debugLineNum = 1310727;BA.debugLine="jsgen.Initialize(m)";
 _jsgen.Initialize(_m);
- //BA.debugLineNum = 34;BA.debugLine="Log(jsgen.ToString)";
-__c.LogImpl("01310728",_jsgen.ToString(),0);
- //BA.debugLineNum = 35;BA.debugLine="ws.SendText(jsgen.ToString)";
-_vv1.SendText(_jsgen.ToString());
- //BA.debugLineNum = 36;BA.debugLine="End Sub";
+RDebugUtils.currentLine=1310728;
+ //BA.debugLineNum = 1310728;BA.debugLine="Log(jsgen.ToString)";
+__c.LogImpl("71310728",_jsgen.ToString(),0);
+RDebugUtils.currentLine=1310729;
+ //BA.debugLineNum = 1310729;BA.debugLine="ws.SendText(jsgen.ToString)";
+__ref._ws /*anywheresoftware.b4a.objects.WebSocketWrapper*/ .SendText(_jsgen.ToString());
+RDebugUtils.currentLine=1310730;
+ //BA.debugLineNum = 1310730;BA.debugLine="End Sub";
 return "";
 }
-public String  _ws_closed(String _reason) throws Exception{
- //BA.debugLineNum = 58;BA.debugLine="Private Sub ws_Closed (Reason As String)";
- //BA.debugLineNum = 59;BA.debugLine="CallSub2(Callback, EventName & \"_Closed\", Reason)";
-__c.CallSubNew2(ba,_vv2,_vv3+"_Closed",(Object)(_reason));
- //BA.debugLineNum = 60;BA.debugLine="End Sub";
+public String  _class_globals(b4a.tsm.websockethandler __ref) throws Exception{
+__ref = this;
+RDebugUtils.currentModule="websockethandler";
+RDebugUtils.currentLine=1048576;
+ //BA.debugLineNum = 1048576;BA.debugLine="Sub Class_Globals";
+RDebugUtils.currentLine=1048577;
+ //BA.debugLineNum = 1048577;BA.debugLine="Public ws As WebSocket";
+_ws = new anywheresoftware.b4a.objects.WebSocketWrapper();
+RDebugUtils.currentLine=1048578;
+ //BA.debugLineNum = 1048578;BA.debugLine="Private Callback As Object";
+_callback = new Object();
+RDebugUtils.currentLine=1048579;
+ //BA.debugLineNum = 1048579;BA.debugLine="Private EventName As String";
+_eventname = "";
+RDebugUtils.currentLine=1048580;
+ //BA.debugLineNum = 1048580;BA.debugLine="End Sub";
 return "";
 }
-public String  _ws_connected() throws Exception{
- //BA.debugLineNum = 54;BA.debugLine="Private Sub ws_Connected";
- //BA.debugLineNum = 55;BA.debugLine="CallSub(Callback,  EventName & \"_Connected\")";
-__c.CallSubNew(ba,_vv2,_vv3+"_Connected");
- //BA.debugLineNum = 56;BA.debugLine="End Sub";
+public String  _close(b4a.tsm.websockethandler __ref) throws Exception{
+__ref = this;
+RDebugUtils.currentModule="websockethandler";
+if (Debug.shouldDelegate(ba, "close", false))
+	 {return ((String) Debug.delegate(ba, "close", null));}
+RDebugUtils.currentLine=1245184;
+ //BA.debugLineNum = 1245184;BA.debugLine="Public Sub Close";
+RDebugUtils.currentLine=1245185;
+ //BA.debugLineNum = 1245185;BA.debugLine="If ws.Connected Then";
+if (__ref._ws /*anywheresoftware.b4a.objects.WebSocketWrapper*/ .getConnected()) { 
+RDebugUtils.currentLine=1245186;
+ //BA.debugLineNum = 1245186;BA.debugLine="ws.Close";
+__ref._ws /*anywheresoftware.b4a.objects.WebSocketWrapper*/ .Close();
+ };
+RDebugUtils.currentLine=1245188;
+ //BA.debugLineNum = 1245188;BA.debugLine="End Sub";
 return "";
 }
-public String  _ws_receivemsg(String _msg) throws Exception{
+public String  _ws_closed(b4a.tsm.websockethandler __ref,String _reason) throws Exception{
+__ref = this;
+RDebugUtils.currentModule="websockethandler";
+if (Debug.shouldDelegate(ba, "ws_closed", false))
+	 {return ((String) Debug.delegate(ba, "ws_closed", new Object[] {_reason}));}
+RDebugUtils.currentLine=1507328;
+ //BA.debugLineNum = 1507328;BA.debugLine="Private Sub ws_Closed (Reason As String)";
+RDebugUtils.currentLine=1507329;
+ //BA.debugLineNum = 1507329;BA.debugLine="CallSub2(Callback, EventName & \"_Closed\", Reason)";
+__c.CallSubNew2(ba,__ref._callback /*Object*/ ,__ref._eventname /*String*/ +"_Closed",(Object)(_reason));
+RDebugUtils.currentLine=1507330;
+ //BA.debugLineNum = 1507330;BA.debugLine="End Sub";
+return "";
+}
+public String  _ws_connected(b4a.tsm.websockethandler __ref) throws Exception{
+__ref = this;
+RDebugUtils.currentModule="websockethandler";
+if (Debug.shouldDelegate(ba, "ws_connected", false))
+	 {return ((String) Debug.delegate(ba, "ws_connected", null));}
+RDebugUtils.currentLine=1441792;
+ //BA.debugLineNum = 1441792;BA.debugLine="Private Sub ws_Connected";
+RDebugUtils.currentLine=1441793;
+ //BA.debugLineNum = 1441793;BA.debugLine="CallSub(Callback,  EventName & \"_Connected\")";
+__c.CallSubNew(ba,__ref._callback /*Object*/ ,__ref._eventname /*String*/ +"_Connected");
+RDebugUtils.currentLine=1441794;
+ //BA.debugLineNum = 1441794;BA.debugLine="End Sub";
+return "";
+}
+public String  _ws_textmessage(b4a.tsm.websockethandler __ref,String _msg) throws Exception{
+__ref = this;
+RDebugUtils.currentModule="websockethandler";
+if (Debug.shouldDelegate(ba, "ws_textmessage", false))
+	 {return ((String) Debug.delegate(ba, "ws_textmessage", new Object[] {_msg}));}
 anywheresoftware.b4a.objects.collections.JSONParser _jspars = null;
 anywheresoftware.b4a.objects.collections.Map _m = null;
 String _etype = "";
-anywheresoftware.b4a.objects.collections.List _params = null;
 String _event = "";
- //BA.debugLineNum = 38;BA.debugLine="Private Sub ws_ReceiveMsg (msg As String)";
- //BA.debugLineNum = 39;BA.debugLine="Try";
-try { //BA.debugLineNum = 40;BA.debugLine="Dim jspars As JSONParser";
+String _param = "";
+RDebugUtils.currentLine=2097152;
+ //BA.debugLineNum = 2097152;BA.debugLine="Private Sub ws_TextMessage (msg As String)";
+RDebugUtils.currentLine=2097153;
+ //BA.debugLineNum = 2097153;BA.debugLine="Try";
+try {RDebugUtils.currentLine=2097154;
+ //BA.debugLineNum = 2097154;BA.debugLine="Dim jspars As JSONParser";
 _jspars = new anywheresoftware.b4a.objects.collections.JSONParser();
- //BA.debugLineNum = 41;BA.debugLine="jspars.Initialize(msg)";
+RDebugUtils.currentLine=2097155;
+ //BA.debugLineNum = 2097155;BA.debugLine="jspars.Initialize(msg)";
 _jspars.Initialize(_msg);
- //BA.debugLineNum = 42;BA.debugLine="Dim m As Map = jspars.NextObject";
+RDebugUtils.currentLine=2097156;
+ //BA.debugLineNum = 2097156;BA.debugLine="Dim m As Map = jspars.NextObject";
 _m = new anywheresoftware.b4a.objects.collections.Map();
 _m = _jspars.NextObject();
- //BA.debugLineNum = 43;BA.debugLine="Dim etype As String = m.get(\"etype\")";
-_etype = BA.ObjectToString(_m.Get((Object)("etype")));
- //BA.debugLineNum = 44;BA.debugLine="Dim params As List = m.Get(\"value\")";
-_params = new anywheresoftware.b4a.objects.collections.List();
-_params.setObject((java.util.List)(_m.Get((Object)("value"))));
- //BA.debugLineNum = 45;BA.debugLine="Dim event As String = m.Get(\"prop\")";
-_event = BA.ObjectToString(_m.Get((Object)("prop")));
- //BA.debugLineNum = 46;BA.debugLine="If etype = \"runFunction\" Then";
-if ((_etype).equals("runFunction")) { 
- //BA.debugLineNum = 47;BA.debugLine="CallSub2(Callback, EventName & \"_\" & event, par";
-__c.CallSubNew2(ba,_vv2,_vv3+"_"+_event,(Object)(_params));
- };
+RDebugUtils.currentLine=2097157;
+ //BA.debugLineNum = 2097157;BA.debugLine="Log(\"Mapa: \"&m)";
+__c.LogImpl("72097157","Mapa: "+BA.ObjectToString(_m),0);
+RDebugUtils.currentLine=2097158;
+ //BA.debugLineNum = 2097158;BA.debugLine="Dim etype As String = m.get(\"type\")";
+_etype = BA.ObjectToString(_m.Get((Object)("type")));
+RDebugUtils.currentLine=2097159;
+ //BA.debugLineNum = 2097159;BA.debugLine="Dim event As String = m.Get(\"event\")";
+_event = BA.ObjectToString(_m.Get((Object)("event")));
+RDebugUtils.currentLine=2097160;
+ //BA.debugLineNum = 2097160;BA.debugLine="Dim param As String = m.Get(\"param\")";
+_param = BA.ObjectToString(_m.Get((Object)("param")));
+RDebugUtils.currentLine=2097163;
+ //BA.debugLineNum = 2097163;BA.debugLine="If event = \"runFunction\" Then";
+if ((_event).equals("runFunction")) { 
+RDebugUtils.currentLine=2097164;
+ //BA.debugLineNum = 2097164;BA.debugLine="CallSub2(Callback, EventName & \"_\" & event, par";
+__c.CallSubNew2(ba,__ref._callback /*Object*/ ,__ref._eventname /*String*/ +"_"+_event,(Object)(_param));
+RDebugUtils.currentLine=2097165;
+ //BA.debugLineNum = 2097165;BA.debugLine="Log(\"Evento: \"&CallSub2(Callback, EventName & \"";
+__c.LogImpl("72097165","Evento: "+BA.ObjectToString(__c.CallSubNew2(ba,__ref._callback /*Object*/ ,__ref._eventname /*String*/ +"_"+_event,(Object)(_param))),0);
+ }else 
+{RDebugUtils.currentLine=2097166;
+ //BA.debugLineNum = 2097166;BA.debugLine="Else If event = \"notice\" Then";
+if ((_event).equals("notice")) { 
+RDebugUtils.currentLine=2097167;
+ //BA.debugLineNum = 2097167;BA.debugLine="Log(\"Noticia: \"&param)";
+__c.LogImpl("72097167","Noticia: "+_param,0);
+ }}
+;
  } 
-       catch (Exception e12) {
-			ba.setLastException(e12); //BA.debugLineNum = 50;BA.debugLine="Log(\"Error: \" & LastException)";
-__c.LogImpl("01376268","Error: "+BA.ObjectToString(__c.LastException(getActivityBA())),0);
+       catch (Exception e16) {
+			ba.setLastException(e16);RDebugUtils.currentLine=2097170;
+ //BA.debugLineNum = 2097170;BA.debugLine="Log(\"TextMsg Error: \" & LastException)";
+__c.LogImpl("72097170","TextMsg Error: "+BA.ObjectToString(__c.LastException(getActivityBA())),0);
  };
- //BA.debugLineNum = 52;BA.debugLine="End Sub";
+RDebugUtils.currentLine=2097172;
+ //BA.debugLineNum = 2097172;BA.debugLine="End Sub";
 return "";
-}
-public Object callSub(String sub, Object sender, Object[] args) throws Exception {
-BA.senderHolder.set(sender);
-return BA.SubDelegator.SubNotFound;
 }
 }

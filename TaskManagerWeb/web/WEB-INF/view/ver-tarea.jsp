@@ -6,6 +6,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <div class="row my-3">
     <div class="col-12">
+        <a class="btn btn-outline-dark" href="tareas">Volver</a>
         <h1>Tarea: </h1>
     </div>
 </div>
@@ -51,7 +52,8 @@
                 <input type="checkbox" class="form-check-input" id="checkEdit">
                 <label class="form-check-label" for="checkEdit">Editar</label>
             </div>
-            <button id="btnUpdate" type="submit" class="btn btn-success" disabled>Actualizar</button>
+            <button id="btnUpdate" type="submit" class="btn btn-outline-success" disabled>Actualizar</button>
+            <a id="btnDelete" class="btn btn-outline-danger" href="del-tarea?id=${tareaSeleccionada.idTarea}" disabled>Eliminar</a>
         </form>
             <script>
                 /*Enabling edition mode xd*/

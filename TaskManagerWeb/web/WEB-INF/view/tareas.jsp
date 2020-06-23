@@ -9,6 +9,8 @@
             <a href="add-tarea" class="btn btn-secondary">Agregar</a>
         </div>
     </div>
+</div>
+<div class="row">
     <div class="col-12">
         <table class="table table-striped table-hover">
             <thead class="thead-dark">
@@ -29,7 +31,7 @@
                         <td><a href="ver-tarea?id=${tarea.idTarea}">${tarea.descripcion}</a></td>
                         <td>${tarea.fechaIngreso}</td>
                         <td>${tarea.fechaPlazo}</td>
-                        <td>${tarea.idAntes}</td>
+                        <td><a href="ver-tarea?id=${tarea.idAntes}">${tarea.idAntes}</a></td>
                         <td>${tarea.funcionIdFuncion.idFuncion}</td>
                         <td>${tarea.statusWorkIdStatus.tipoStatus}</td>
                     </tr>

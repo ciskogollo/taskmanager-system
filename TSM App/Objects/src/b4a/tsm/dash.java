@@ -25,7 +25,7 @@ public class dash extends Activity implements B4AActivity{
     ActivityWrapper _activity;
     java.util.ArrayList<B4AMenuItem> menuItems;
 	public static final boolean fullScreen = false;
-	public static final boolean includeTitle = true;
+	public static final boolean includeTitle = false;
     public static WeakReference<Activity> previousOne;
 
 	@Override
@@ -33,7 +33,7 @@ public class dash extends Activity implements B4AActivity{
 		super.onCreate(savedInstanceState);
         mostCurrent = this;
 		if (processBA == null) {
-			processBA = new BA(this.getApplicationContext(), null, null, "b4a.tsm", "b4a.tsm.dash");
+			processBA = new anywheresoftware.b4a.ShellBA(this.getApplicationContext(), null, null, "b4a.tsm", "b4a.tsm.dash");
 			processBA.loadHtSubs(this.getClass());
 	        float deviceScale = getApplicationContext().getResources().getDisplayMetrics().density;
 	        BALayout.setDeviceScale(deviceScale);
@@ -328,9 +328,7 @@ public class dash extends Activity implements B4AActivity{
             
     }
 
-public anywheresoftware.b4a.keywords.Common __c = null;
-public b4a.tsm.main _vv4 = null;
-public b4a.tsm.starter _vv5 = null;
+
 
 public static void initializeProcessGlobals() {
              try {
@@ -339,31 +337,101 @@ public static void initializeProcessGlobals() {
                 throw new RuntimeException(e);
             }
 }
+public anywheresoftware.b4a.keywords.Common __c = null;
+public static b4a.tsm.websockethandler _wshand = null;
+public static String _endpoint = "";
+public b4a.tsm.main _main = null;
+public b4a.tsm.starter _starter = null;
 public static String  _activity_create(boolean _firsttime) throws Exception{
- //BA.debugLineNum = 18;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
- //BA.debugLineNum = 19;BA.debugLine="Activity.LoadLayout(\"dashboard\")";
+RDebugUtils.currentModule="dash";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "activity_create", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "activity_create", new Object[] {_firsttime}));}
+RDebugUtils.currentLine=1703936;
+ //BA.debugLineNum = 1703936;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
+RDebugUtils.currentLine=1703937;
+ //BA.debugLineNum = 1703937;BA.debugLine="If FirstTime Then";
+if (_firsttime) { 
+RDebugUtils.currentLine=1703938;
+ //BA.debugLineNum = 1703938;BA.debugLine="wshand.Initialize(Me, \"wshand\")";
+_wshand._initialize /*String*/ (null,processBA,dash.getObject(),"wshand");
+RDebugUtils.currentLine=1703939;
+ //BA.debugLineNum = 1703939;BA.debugLine="wshand.Connect(endpoint)";
+_wshand._connect /*String*/ (null,_endpoint);
+RDebugUtils.currentLine=1703940;
+ //BA.debugLineNum = 1703940;BA.debugLine="If Main.session.Get(\"state\") = \"signed\" Then";
+if ((mostCurrent._main._session /*anywheresoftware.b4a.objects.collections.Map*/ .Get((Object)("state"))).equals((Object)("signed"))) { 
+RDebugUtils.currentLine=1703941;
+ //BA.debugLineNum = 1703941;BA.debugLine="Activity.LoadLayout(\"dashboard\")";
 mostCurrent._activity.LoadLayout("dashboard",mostCurrent.activityBA);
- //BA.debugLineNum = 20;BA.debugLine="End Sub";
+ }else {
+RDebugUtils.currentLine=1703943;
+ //BA.debugLineNum = 1703943;BA.debugLine="Main.session.Put(\"state\",\"empty\")";
+mostCurrent._main._session /*anywheresoftware.b4a.objects.collections.Map*/ .Put((Object)("state"),(Object)("empty"));
+RDebugUtils.currentLine=1703944;
+ //BA.debugLineNum = 1703944;BA.debugLine="StartActivity(\"Main\")";
+anywheresoftware.b4a.keywords.Common.StartActivity(processBA,(Object)("Main"));
+ };
+ };
+RDebugUtils.currentLine=1703947;
+ //BA.debugLineNum = 1703947;BA.debugLine="Activity.AddMenuItem(\"Usuarios\",\"\")";
+mostCurrent._activity.AddMenuItem(BA.ObjectToCharSequence("Usuarios"),"");
+RDebugUtils.currentLine=1703948;
+ //BA.debugLineNum = 1703948;BA.debugLine="UpdateStatus";
+_updatestatus();
+RDebugUtils.currentLine=1703949;
+ //BA.debugLineNum = 1703949;BA.debugLine="End Sub";
+return "";
+}
+public static String  _updatestatus() throws Exception{
+RDebugUtils.currentModule="dash";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "updatestatus", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "updatestatus", null));}
+anywheresoftware.b4a.objects.collections.Map _data = null;
+RDebugUtils.currentLine=5701632;
+ //BA.debugLineNum = 5701632;BA.debugLine="Sub UpdateStatus";
+RDebugUtils.currentLine=5701633;
+ //BA.debugLineNum = 5701633;BA.debugLine="If wshand.ws.Connected Then";
+if (_wshand._ws /*anywheresoftware.b4a.objects.WebSocketWrapper*/ .getConnected()) { 
+RDebugUtils.currentLine=5701634;
+ //BA.debugLineNum = 5701634;BA.debugLine="Log(\"Conectado: \"&endpoint)";
+anywheresoftware.b4a.keywords.Common.LogImpl("75701634","Conectado: "+_endpoint,0);
+RDebugUtils.currentLine=5701635;
+ //BA.debugLineNum = 5701635;BA.debugLine="Dim data As Map";
+_data = new anywheresoftware.b4a.objects.collections.Map();
+RDebugUtils.currentLine=5701636;
+ //BA.debugLineNum = 5701636;BA.debugLine="data.Initialize";
+_data.Initialize();
+RDebugUtils.currentLine=5701637;
+ //BA.debugLineNum = 5701637;BA.debugLine="data.Put(\"obj\",\"usuario\")";
+_data.Put((Object)("obj"),(Object)("usuario"));
+RDebugUtils.currentLine=5701638;
+ //BA.debugLineNum = 5701638;BA.debugLine="wshand.SendEventToEndPoint(\"listar\", data)";
+_wshand._sendeventtoendpoint /*String*/ (null,"listar",_data);
+ }else {
+RDebugUtils.currentLine=5701640;
+ //BA.debugLineNum = 5701640;BA.debugLine="Log(\"Websocket Desconectado.\")";
+anywheresoftware.b4a.keywords.Common.LogImpl("75701640","Websocket Desconectado.",0);
+ };
+RDebugUtils.currentLine=5701642;
+ //BA.debugLineNum = 5701642;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_pause(boolean _userclosed) throws Exception{
- //BA.debugLineNum = 26;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
- //BA.debugLineNum = 28;BA.debugLine="End Sub";
+RDebugUtils.currentModule="dash";
+RDebugUtils.currentLine=1835008;
+ //BA.debugLineNum = 1835008;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
+RDebugUtils.currentLine=1835010;
+ //BA.debugLineNum = 1835010;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_resume() throws Exception{
- //BA.debugLineNum = 22;BA.debugLine="Sub Activity_Resume";
- //BA.debugLineNum = 24;BA.debugLine="End Sub";
-return "";
-}
-public static String  _globals() throws Exception{
- //BA.debugLineNum = 12;BA.debugLine="Sub Globals";
- //BA.debugLineNum = 16;BA.debugLine="End Sub";
-return "";
-}
-public static String  _process_globals() throws Exception{
- //BA.debugLineNum = 6;BA.debugLine="Sub Process_Globals";
- //BA.debugLineNum = 10;BA.debugLine="End Sub";
+RDebugUtils.currentModule="dash";
+if (Debug.shouldDelegate(mostCurrent.activityBA, "activity_resume", false))
+	 {return ((String) Debug.delegate(mostCurrent.activityBA, "activity_resume", null));}
+RDebugUtils.currentLine=1769472;
+ //BA.debugLineNum = 1769472;BA.debugLine="Sub Activity_Resume";
+RDebugUtils.currentLine=1769474;
+ //BA.debugLineNum = 1769474;BA.debugLine="End Sub";
 return "";
 }
 }

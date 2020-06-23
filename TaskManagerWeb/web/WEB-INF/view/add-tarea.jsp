@@ -5,6 +5,7 @@
 --%>
     <div class="row my-3">
         <div class="col-12">
+            <a class="btn btn-outline-dark" href="tareas">Volver</a>
             <h1>Nueva Tarea</h1>
         </div>
     </div>
@@ -28,7 +29,7 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="selTareaAntes">Dependiente</label>
+                    <label for="selTareaAntes">Dependiente de</label>
                     <select multiple class="form-control" id="selTareaAntes" name="selTareaAntes">
                         <c:forEach items="${tareasRegistradas}" var="tareaReg">
                             <option><c:out value="${tareaReg.descripcion}"/></option>
@@ -38,7 +39,7 @@
                 </div>
                 <div class="form-check">
                     <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                    <label class="form-check-label" for="exampleCheck1">Estoy seguro de registrar</label>
                 </div>
                 <button type="submit" class="btn btn-success">Registrar</button>
               </form>

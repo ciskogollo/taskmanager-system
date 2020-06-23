@@ -41,19 +41,27 @@ Public Sub SendEventToEndPoint(Event As String, Data As Map)
 	ws.SendText(jsgen.ToString)
 End Sub
 
-Private Sub ws_ReceiveMsg (msg As String)
+Private Sub ws_TextMessage (msg As String)
 	Try
 		Dim jspars As JSONParser
 		jspars.Initialize(msg)
 		Dim m As Map = jspars.NextObject
-		Dim etype As String = m.get("etype")
-		Dim params As List = m.Get("value")
-		Dim event As String = m.Get("prop")
-		If etype = "runFunction" Then
-			CallSub2(Callback, EventName & "_" & event, params)
+		Log("Mapa: "&m)
+		Dim etype As String = m.get("type")
+		Dim event As String = m.Get("event")
+		Dim param As String = m.Get("param")
+		'Log("MSGRecibido: "& param)
+		
+		If event = "runFunction" Then
+			CallSub2(Callback, EventName & "_" & event, param)
+			Log("Evento: "&CallSub2(Callback, EventName & "_" & event, param))
+		Else If event = "list" Then
+			'AQUI SE DEBE RECIBIR DATOS JSON DEL SERVER
+		Else If event = "notice" Then
+			Log("Noticia: "&param)
 		End If
 	Catch
-		Log("Error: " & LastException)
+		Log("TextMsg Error: " & LastException)
 	End Try
 End Sub
 

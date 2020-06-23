@@ -46,6 +46,7 @@ import javax.servlet.http.HttpSession;
                            "/tareas",
                            "/add-tarea",
                            "/edit-tarea",
+                           "/del-tarea",
                            "/ver-tarea",
                            "/clientes"})
 public class ControllerServlet extends HttpServlet {
@@ -116,7 +117,7 @@ public class ControllerServlet extends HttpServlet {
                     listUsersRegistred();
                     listTasksRegistered();
                     
-                    response.sendRedirect(request.getContextPath() + "/tareas.jsp");
+                    //response.sendRedirect(request.getContextPath() + "/add-tarea.jsp");
                     break;
                 case "/edit-tarea":
                     
@@ -137,6 +138,17 @@ public class ControllerServlet extends HttpServlet {
                     } catch (Exception ex) {
                         ex.printStackTrace();
                     }
+                    break;
+                case "/del-tarea":
+                    String idTareaDel = request.getParameter("id");
+                    try{
+                        BigInteger idTareaDelFmt = new BigInteger(idTareaDel);
+                        eliminarTarea(idTareaDelFmt);
+                    }catch(Exception ex){
+                        ex.printStackTrace();
+                    }
+                    
+                    
                     break;
                 case "/clientes":
                     System.out.println(clienteFacade.findAll().get(0));
@@ -167,7 +179,7 @@ public class ControllerServlet extends HttpServlet {
                 ex.printStackTrace();
             }
         }else{
-            System.err.println("La <<sesion>> esta vacia. Operación anulada.");
+            System.err.println("La <<sesion>> no esta disponible. Operación anulada.");
         }
     }
 
@@ -275,9 +287,10 @@ public class ControllerServlet extends HttpServlet {
                     Logger.getLogger(ControllerServlet.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 try{
-                    BigDecimal idTarea = (BigDecimal)session.getAttribute("tareaSeleccionadaSES");
+                    BigDecimal idTarea = (BigDecimal)session.getAttribute("idTareaSeleccionadaSES");
                     System.out.println("IDTAREA-EDITAR: "+idTarea);
-                    Date idIngTarea = (Date)session.getAttribute("IngresoTareaSeleccionadaSES");
+                    Date FecIngTarea = (Date)session.getAttribute("IngresoTareaSeleccionadaSES");
+                    System.out.println("FECHA-INGRESO-TAREA-EDITAR: "+FecIngTarea);
                     Usuario responsable = usuarioFacade.findByIdUsuario(idUsResp).get(0);
                     Funcion funcTareaInit = funcionFacade.findAll().get(0);
                     StatusWork statusTareaInit = statusWorkFacade.findAll().get(0);
@@ -285,7 +298,7 @@ public class ControllerServlet extends HttpServlet {
                     Tarea tr = new Tarea();
                     tr.setIdTarea(idTarea);
                     tr.setDescripcion(descr);
-                    tr.setFechaIngreso(idIngTarea);
+                    tr.setFechaIngreso(FecIngTarea);
                     tr.setFechaPlazo(fecPlazo);
                     tr.setFechaRecepcion(null);
                     tr.setIdAntes(null);
@@ -299,7 +312,7 @@ public class ControllerServlet extends HttpServlet {
                     //tareaFacade.create(newTarea);
                     tareaFacade.edit(tr);
                 }catch(Exception ex){
-                    System.out.println("No se ha podido editar la Tarea. "+ex);
+                    System.out.println("ERROR: No se ha podido editar la Tarea - "+ex);
                 }break;
             case "/ver-tarea":
                 
@@ -367,6 +380,11 @@ public class ControllerServlet extends HttpServlet {
         }catch(Exception e){
             System.out.println("Error: Listando tareas regs. - "+e);
         }
+    }
+    
+    public void eliminarTarea(BigInteger id){
+        Tarea objToDel = tareaFacade.find(id);
+        tareaFacade.remove(objToDel);
     }
 
     /**

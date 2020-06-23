@@ -44,8 +44,8 @@ public class UsuarioFacade extends AbstractFacade<Usuario> {
                     System.out.println("Usuario no accedido.");
             }
         }catch(Exception ex){
-            System.out.println("Imposible iniciar el usuario.");
-            ex.printStackTrace();
+            System.err.println("Error: Usuario no encontrado. ");
+            //System.err.println(ex.toString());
         }
         return null;
     }

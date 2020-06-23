@@ -36,8 +36,8 @@ Version=9.801
 
 Sub Process_Globals
 	Private wshand As WebSocketHandler
-	Private endpoint As String = "ws://192.168.0.159:8080/TaskManagerWeb/LoginWs"
-	Public session As String
+	Private endpoint As String = "ws://192.168.0.159:8080/TaskManagerWeb/loginws"
+	Public session As Map
 End Sub
 
 Sub Globals
@@ -51,7 +51,8 @@ End Sub
 Sub Activity_Create(FirstTime As Boolean)
 	If FirstTime Then
 		wshand.Initialize(Me, "wshand")
-		session = "init"
+		session.Initialize
+		session.Put("state","init")
 		Activity.LoadLayout("login")
 		wshand.Connect(endpoint)
 		lblStatus.Text = "Status: Conectando..."
@@ -73,8 +74,18 @@ Sub wshand_Closed(Reason As String)
 	ToastMessageShow(Reason, True)
 End Sub
 
+Sub wshand_runFunction(Param As String)
+	If(Param = "logued") Then
+		session.Put("state","signed")
+		session.Put("username",txtNombre.Text)
+		StartActivity("Dash")
+		Log(session.Values)
+	End If
+End Sub
+
 Sub UpdateStatus
 	If wshand.ws.Connected Then
+		Log("Conectado: "&endpoint)
 		lblStatus.Text = "Status: Conectado"
 	Else
 		lblStatus.Text = "Status: Desconectado"
@@ -103,6 +114,6 @@ Sub Activity_Pause (UserClosed As Boolean)
 	If UserClosed = True Then
 		session = Null
 	Else
-		Log(session)
+		Log("Sesion: "&session.Values)
 	End If
 End Sub

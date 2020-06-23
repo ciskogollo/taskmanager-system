@@ -5,7 +5,7 @@
  */
 package com.taskmanager.websocket;
 
-import java.util.Queue;
+import java.util.Set;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -19,9 +19,12 @@ import javax.websocket.server.ServerEndpoint;
 import com.taskmanager.beans.LoginBean;
 import com.taskmanager.entity.Usuario;
 import com.taskmanager.session.UsuarioFacade;
+import java.io.IOException;
+import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.HashSet;
 import javax.ejb.EJB;
 import javax.inject.Inject;
-import javax.servlet.http.HttpSession;
 import org.json.JSONObject;
 import org.json.JSONException;
 
@@ -30,19 +33,18 @@ import org.json.JSONException;
  * @author cisko
  */
 @ApplicationScoped
-@ServerEndpoint("/LoginWs")
-public class LoginWs {
-    private static final Logger logger = Logger.getLogger("LoginWs");
-   
+@ServerEndpoint("/loginws")
+public class LoginWs extends AbstractWs {
     /* Funcionalidades en Bean*/
     @Inject
     private LoginBean loginBean;
-    /*@EJB
+    @EJB
     private UsuarioFacade usuarioFacade;
-    */
     
-    static Queue<Session> queue = new ConcurrentLinkedQueue<>();
-    //public HttpSession session;
+    public static final Logger logger = Logger.getLogger("LoginWS");
+    public static final Set<Session> queue = new HashSet<>();
+    private ArrayList<Usuario> userList = new ArrayList<Usuario>();
+    
     JSONObject jsonObj;
 
     @OnOpen
@@ -54,6 +56,7 @@ public class LoginWs {
     @OnMessage
     public void onMessage(String msg, Session peer){
         System.out.println("(WS)Nuevo msg ==> " + msg);
+        /*
         try {
             jsonObj = new JSONObject(msg);
             //System.out.println("PARAM:"+jsonObj.getJSONObject("param"));
@@ -61,24 +64,54 @@ public class LoginWs {
             System.err.println("Error: "+e.toString());
         }
         JSONObject usrOBj = new JSONObject(jsonObj.getJSONObject("param").toString());
-
+        */
+        jsonObj = parseToJson(msg);
+        Usuario userIn = new Usuario();
+        String name="", pass="";
+        if(jsonObj != null){
+            //Tomar datos recibidos del ws
+            name = jsonObj.get("user").toString();
+            pass = jsonObj.get("hash").toString();
+            userIn = usuarioFacade.verifUser(name, pass);
+        }
+        /*
         String name = usrOBj.get("user").toString();
         String pass = usrOBj.get("hash").toString();
-        Usuario userIn = new Usuario();
-        //userIn = usuarioFacade.verifUser(name, pass);
-        
+        */
+
         if(userIn != null){
-            System.out.println("Accediendo '"+name+"'...");
-            /*session.setAttribute("peer", peer);
-            session.setMaxInactiveInterval(60*60);
-            session.setAttribute("nameUser", userIn.getNombre());
-            session.setAttribute("idUser", userIn.getIdUsuario());
-            session.setAttribute("tareasUser", userIn.getTareaList());
-            session.setAttribute("objUser", userIn);
-            */
+            System.out.println("(WS)Accediendo '"+name+"'...");
+            if(userIn.getRolIdRol().getNombreRol().equals("Administrador")){
+                userList.add(userIn);
+                String response = "logued";
+                
+                JSONObject jsonObjResp = new JSONObject();
+                jsonObjResp.put("type", "event");
+                jsonObjResp.put("event", "runFunction");
+                jsonObjResp.put("param", response);
+                
+                replyMsg(peer,jsonObjResp.toString());
+                System.out.println("(WS)USER ACCEPTED");
+            }else{
+                System.out.println("(WS)USER DENIED");
+            }
             
         }else{
             System.out.println("Datos erróneos >:(");
+            JSONObject jsonObjResp = new JSONObject();
+            jsonObjResp.put("type", "event");
+            jsonObjResp.put("event", "notice");
+            jsonObjResp.put("param", "user_incorrect");
+            replyMsg(peer,jsonObjResp.toString());
+        }
+    }
+    
+    public void replyMsg(Session peer, String msg){
+        try{
+            peer.getBasicRemote().sendText(msg);
+            System.out.println("(WS)SUCCESS: Enviado '"+msg+"'");
+        }catch(IOException e){
+            System.out.println("(WS)ERROR:" + e.toString());
         }
     }
     

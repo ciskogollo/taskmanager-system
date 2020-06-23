@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-var wsUri = "ws://" + document.location.hostname + ":8080/TaskManagerWeb/" + "LoginWs";
+var wsUri = "ws://" + document.location.hostname + ":8080/TaskManagerWeb/" + "loginws";
 var ws = new WebSocket(wsUri);
 var output = document.getElementById("output");
 

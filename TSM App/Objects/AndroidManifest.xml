@@ -29,10 +29,6 @@
 			</intent-filter>
 			
 		</activity>
-		<service android:name=".starter">
-		</service>
-		<receiver android:name=".starter$starter_BR">
-		</receiver>
 		<activity
 			android:windowSoftInputMode="stateHidden"
 			android:launchMode="singleTop"
@@ -40,5 +36,9 @@
 			android:label="TaskManagerSystem Android"
 			android:screenOrientation="unspecified">
 		</activity>
+		<service android:name=".starter">
+		</service>
+		<receiver android:name=".starter$starter_BR">
+		</receiver>
 	</application>
 </manifest>

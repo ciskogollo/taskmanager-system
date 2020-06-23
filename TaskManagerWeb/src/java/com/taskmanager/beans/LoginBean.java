@@ -26,26 +26,26 @@ public class LoginBean {
     private Random random;
     private volatile double price = 100.0;
     private volatile int volume = 300000;
-    private static final Logger logger = Logger.getLogger("LoginBean");
+    private static final Logger loger = Logger.getLogger("LoginBean");
     
     private static final Set<Session> peers = new HashSet<>();
     
     @PostConstruct
     public void init() {
         /* Initialize the EJB and create a timer */
-        logger.log(Level.INFO, "(WS)Initializing EJB.");
+        loger.log(Level.INFO, "(WS)Initializing EJB.");
         random = new Random();
         System.out.println("varRandom: "+random.toString());
         //tservice.createIntervalTimer(500, 1000, new TimerConfig());
     }
     
     public void addSession(Session peer) {
-        logger.log(Level.INFO, "(WS)Conexión abierta.");
+        loger.log(Level.INFO, "(WS)Conexión abierta.");
         peers.add(peer);
     }
     
     public void removeSession(Session peer) {
-        logger.log(Level.INFO, "(WS)Conexión cerrada.");
+        loger.log(Level.INFO, "(WS)Conexión cerrada.");
         System.out.println("Conn close: ("+peer.getId()+").");
         peers.remove(peer);
     }
@@ -74,7 +74,7 @@ public class LoginBean {
             }catch(IOException ex){
                 peers.remove(peer);
                 System.out.println("(WS)ERROR:" + ex.toString());
-                logger.log(Level.SEVERE, "(WS)Error al enviar msg al cliente(" + peer.getId() + ")", ex);
+                loger.log(Level.SEVERE, "(WS)Error al enviar msg al cliente(" + peer.getId() + ")", ex);
             }
         };
     }

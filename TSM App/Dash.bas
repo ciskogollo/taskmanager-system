@@ -6,13 +6,12 @@ Version=9.801
 @EndOfDesignText@
 #Region  Activity Attributes 
 	#FullScreen: False
-	#IncludeTitle: True
+	#IncludeTitle: False
 #End Region
 
 Sub Process_Globals
-	'These global variables will be declared once when the application starts.
-	'These variables can be accessed from all modules.
-
+	Public wshand As WebSocketHandler
+	Private endpoint As String = "ws://192.168.0.159:8080/TaskManagerWeb/userws"
 End Sub
 
 Sub Globals
@@ -22,7 +21,30 @@ Sub Globals
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
-	Activity.LoadLayout("dashboard")
+	If FirstTime Then
+		wshand.Initialize(Me, "wshand")
+		wshand.Connect(endpoint)
+		If Main.session.Get("state") = "signed" Then
+			Activity.LoadLayout("dashboard")
+		Else
+			Main.session.Put("state","empty")
+			StartActivity("Main")
+		End If
+	End If
+	Activity.AddMenuItem("Usuarios","")
+	UpdateStatus
+End Sub
+
+Sub UpdateStatus
+	If wshand.ws.Connected Then
+		Log("Conectado: "&endpoint)
+		Dim data As Map
+		data.Initialize
+		data.Put("obj","usuario")
+		wshand.SendEventToEndPoint("listar", data)
+	Else
+		Log("Websocket Desconectado.")
+	End If
 End Sub
 
 Sub Activity_Resume
