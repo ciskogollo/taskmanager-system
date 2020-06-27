@@ -40,12 +40,14 @@ import javax.servlet.http.HttpSession;
 @WebServlet(name = "ControllerServlet",
             loadOnStartup = 1,
             urlPatterns = {"/ControllerServlet",
+                           "",
                            "/index",
                            "/login",
                            "/logout",
                            "/tareas",
                            "/add-tarea",
                            "/edit-tarea",
+                           "/confirmar-tarea",
                            "/del-tarea",
                            "/ver-tarea",
                            "/clientes"})
@@ -76,7 +78,7 @@ public class ControllerServlet extends HttpServlet {
                 throw new RuntimeException("Error consulting database. xd: ", e);
             }
         }else{
-            System.err.println("La <<sesion>> esta vacia.");
+            System.err.println("La <<conexion>> ha sido imposible. Xxd");
         }
     }
 
@@ -96,9 +98,12 @@ public class ControllerServlet extends HttpServlet {
         
         if(session != null){
             switch(userPath){
+                case "":
+                    listarTareasUsuario(request);
+                    break;
                 case "/index":
                     getServletContext().setAttribute("Titulo", "Dashboard");
-                    listarTareasUsuario();
+                    listarTareasUsuario(request);
                     /*try{
                         request.getRequestDispatcher(url).forward(request, response);
                     } catch (Exception ex) {
@@ -109,7 +114,7 @@ public class ControllerServlet extends HttpServlet {
                     break;
                 case "/tareas":
                     getServletContext().setAttribute("Titulo", "Tareas");
-
+                    listarTareasUsuario(request);
                     break;
                 case "/add-tarea":
                     getServletContext().setAttribute("Titulo", "Agregar Tarea");
@@ -127,15 +132,25 @@ public class ControllerServlet extends HttpServlet {
                     
                     listUsersRegistred();
                     listTasksRegistered();
+                    listStatusWorks();
                     
                     String idTarea = request.getParameter("id");
                     try {
                         Object tareaSelected = tareaFacade.findByIdTarea(new BigDecimal(idTarea));
                         //Tarea reTarSel = tareaFacade.findByIdTarea(new BigDecimal(idTarea)).get(0);
-                        getServletContext().setAttribute("tareaSeleccionada", tareaFacade.findByIdTarea(new BigDecimal(idTarea)).get(0));
+                        request.setAttribute("tareaSeleccionada", tareaFacade.findByIdTarea(new BigDecimal(idTarea)).get(0));
                         session.setAttribute("idTareaSeleccionadaSES", tareaFacade.findByIdTarea(new BigDecimal(idTarea)).get(0).getIdTarea());
                         session.setAttribute("IngresoTareaSeleccionadaSES", tareaFacade.findByIdTarea(new BigDecimal(idTarea)).get(0).getFechaIngreso());
                     } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+                    break;
+                case "/confirmar-tarea":
+                    String idTareaConf = request.getParameter("id");
+                    try{
+                        BigDecimal idTareaConfFmt = new BigDecimal(idTareaConf);
+                        confirmarTarea(idTareaConfFmt);
+                    }catch(Exception ex){
                         ex.printStackTrace();
                     }
                     break;
@@ -147,7 +162,6 @@ public class ControllerServlet extends HttpServlet {
                     }catch(Exception ex){
                         ex.printStackTrace();
                     }
-                    
                     
                     break;
                 case "/clientes":
@@ -164,15 +178,19 @@ public class ControllerServlet extends HttpServlet {
                     break;
             }
             // use RequestDispatcher to forward request internally
-            //System.out.println("userPath: "+userPath);
-            if(userPath.equals("/index")){
-                url = userPath + ".jsp";
-                //System.out.println("urL: "+url);
-            }else{
-                url = "/WEB-INF/view" + userPath + ".jsp";
-                //System.out.println("urL: "+url);
+            switch (userPath) {
+                case "":
+                    url = userPath + "index.jsp";
+                    break;
+                case "/index":
+                    url = userPath + ".jsp";
+                    //System.out.println("urL: "+url);
+                    break;
+                default:
+                    url = "/WEB-INF/view" + userPath + ".jsp";
+                    break;
             }
-            
+            System.out.println("urL: "+url);
             try{
                 request.getRequestDispatcher(url).forward(request, response);
             } catch (Exception ex) {
@@ -180,6 +198,7 @@ public class ControllerServlet extends HttpServlet {
             }
         }else{
             System.err.println("La <<sesion>> no esta disponible. Operación anulada.");
+            response.sendRedirect(request.getContextPath() + "/login.jsp");
         }
     }
 
@@ -198,6 +217,10 @@ public class ControllerServlet extends HttpServlet {
 
         // Si Login es requerida
         switch (userPath) {
+            case "/index":
+                getServletContext().setAttribute("Titulo", "Dashboard");
+                listarTareasUsuario(request);
+                break;
             case "/login":
                 getServletContext().setAttribute("Titulo", "Login - TMS");
                 //PROBANDO GETQUERYSTRING, NO FUNCA HAS5TA AHORA
@@ -270,22 +293,28 @@ public class ControllerServlet extends HttpServlet {
                     //System.out.println("newTaarea: "+newTarea);
                     //tareaFacade.create(newTarea);
                     tareaFacade.create(tr);
+                    response.sendRedirect(request.getContextPath() + "/index");
                 }catch(Exception ex){
                     System.out.println("No se ha podido agregar la Tarea. "+ex);
                 }   break;
             case "/edit-tarea":
                 String formEditTarea = request.getQueryString();
                 System.out.println("Recibiendo datos de Tarea Editada...");
+                System.out.println("- "+formEditTarea);
+                
                 String descr = request.getParameter("txtDescriTarea");
                 String fecPlRaw = request.getParameter("datePlazoTarea");
-                BigDecimal idUsResp = new BigDecimal(request.getParameter("selResponsableTarea"));
+                System.out.println("INFO: fecPlazoRaw= " + fecPlRaw);
                 Date fecPlazo = new Date();
                 try {
-                    fecPlazo = new SimpleDateFormat("ddMMyyyy").parse(fecPlRaw);
-                    System.out.println("FechaPPlazo: "+fecPlazo);
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                    fecPlazo = new SimpleDateFormat("yyyy-MM-dd").parse(fecPlRaw);
+                    System.out.println("INFO: fecPlazoFmtd= " + fecPlRaw);
                 }catch (ParseException ex) {
                     Logger.getLogger(ControllerServlet.class.getName()).log(Level.SEVERE, null, ex);
                 }
+                BigDecimal idUsResp = new BigDecimal(request.getParameter("selResponsableTarea"));
+                BigInteger idTarResp = new BigInteger(request.getParameter("selTareaAntes"));
                 try{
                     BigDecimal idTarea = (BigDecimal)session.getAttribute("idTareaSeleccionadaSES");
                     System.out.println("IDTAREA-EDITAR: "+idTarea);
@@ -301,7 +330,7 @@ public class ControllerServlet extends HttpServlet {
                     tr.setFechaIngreso(FecIngTarea);
                     tr.setFechaPlazo(fecPlazo);
                     tr.setFechaRecepcion(null);
-                    tr.setIdAntes(null);
+                    tr.setIdAntes(idTarResp);
                     tr.setIdSuces(null);
                     tr.setIdTsuperior(BigInteger.ZERO);
                     tr.setFuncionIdFuncion(funcTareaInit);
@@ -313,7 +342,9 @@ public class ControllerServlet extends HttpServlet {
                     tareaFacade.edit(tr);
                 }catch(Exception ex){
                     System.out.println("ERROR: No se ha podido editar la Tarea - "+ex);
-                }break;
+                }
+                response.sendRedirect(request.getContextPath() + "/index");
+                break;
             case "/ver-tarea":
                 
                 break;
@@ -330,7 +361,12 @@ public class ControllerServlet extends HttpServlet {
         //}
     }
     
+    /****************/
+    /*    MÉTODOS   */
+    /****************/
+    
     public boolean verifUser(String name, String hash){
+        System.out.println("Solicitando acceso '"+name+"'...");
         try{
             String nameResult = usuarioFacade.findByName(name).get(0).getNombre();
             String hashResult = usuarioFacade.findByName(name).get(0).getHash();
@@ -347,8 +383,8 @@ public class ControllerServlet extends HttpServlet {
         return false;
     }
     
-    public void listarTareasUsuario(){
-        System.out.println("Listando Tareas del Usuario...");
+    public void listarTareasUsuario(HttpServletRequest request){
+        System.out.println("Notice: Listando tareas del Usuario...");
 
         Usuario idUserSession = (Usuario)session.getAttribute("objUser");
         Tarea tareaPP = new Tarea();
@@ -356,7 +392,7 @@ public class ControllerServlet extends HttpServlet {
 
         try{
             List<Tarea> listTareas = tareaFacade.findByIdResponsable(idUserSession);
-            getServletContext().setAttribute("listTareas", listTareas);
+            request.setAttribute("listTareas", listTareas);
         }catch(Exception e){
             System.out.println("Error: Listando tareas del usuario. - "+e);
         }
@@ -367,8 +403,9 @@ public class ControllerServlet extends HttpServlet {
         try{
             List<Usuario> listTotalUsers = usuarioFacade.findAll();
             getServletContext().setAttribute("usuariosRegistrados", listTotalUsers);
+            System.out.println("Notice: Listados usuarios registrados.");
         }catch(Exception e){
-            System.out.println("Error: Listando usuarios regs. - "+e);
+            System.err.println("Error: Listando usuarios regs. - "+e);
         }
     }
     
@@ -382,9 +419,29 @@ public class ControllerServlet extends HttpServlet {
         }
     }
     
+    public void listStatusWorks(){
+        // Listar todos los estados de tareas posibles
+        try{
+            List<StatusWork> listTotalStatus = statusWorkFacade.findAll();
+            getServletContext().setAttribute("estadosRegistrados", listTotalStatus);
+        }catch(Exception e){
+            System.out.println("Error: Listando estados regs. - "+e);
+        }
+    }
+    
     public void eliminarTarea(BigInteger id){
         Tarea objToDel = tareaFacade.find(id);
         tareaFacade.remove(objToDel);
+    }
+    
+    public void confirmarTarea(BigDecimal id){
+        System.out.println("Notice: Confirmando tarea...");
+        Tarea objToConf = tareaFacade.find(id);
+        StatusWork objStatus = statusWorkFacade.find(new BigDecimal(4));
+        System.out.println("STATUS (4): "+objStatus);
+        objToConf.setStatusWorkIdStatus(objStatus);
+        System.out.println("TAREA Confirmada: "+objToConf);
+        tareaFacade.edit(objToConf);
     }
 
     /**

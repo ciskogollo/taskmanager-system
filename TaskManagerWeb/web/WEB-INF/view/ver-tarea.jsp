@@ -26,26 +26,45 @@
             <div class="form-group">
                 <label for="selResponsableTarea">Responsable</label>
                 <select multiple class="form-control" id="selResponsableTarea" name="selResponsableTarea" disabled>
-                    <c:forEach items="${usuariosRegistrados}" var="usuarioReg">
+                    <c:forEach items="${usuariosRegistrados}" var="userReg">
                         <c:choose>
-                            <c:when test="${usuarioReg} == ${tareaSeleccionada.usuarioIdUsuario}">
-                                <option value="<c:out value='${tareaSeleccionada.usuarioIdUsuario.idUsuario}'/>" selected="true"><c:out value='${tareaSeleccionada.usuarioIdUsuario.nombre}'/></option>
+                            <c:when test="${tareaSeleccionada.usuarioIdUsuario.idUsuario == userReg.idUsuario}">
+                                <option value="<c:out value="${userReg.idUsuario}"/>" selected> <c:out value="${userReg.nombre}"/> </option>
                             </c:when>
                             <c:otherwise>
-                                <option value="<c:out value="${usuarioReg.idUsuario}"/>"><c:out value="${usuarioReg.nombre}"/></option>
+                                <option value="<c:out value="${userReg.idUsuario}"/>"> <c:out value="${userReg.nombre}"/> </option>
                             </c:otherwise>
                         </c:choose>
                     </c:forEach>
                 </select>
             </div>
             <div class="form-group">
-                <label for="selTareaAntes">Dependiente</label>
+                <label for="selTareaAntes">Dependiente de</label>
                 <select multiple class="form-control" id="selTareaAntes" name="selTareaAntes" disabled>
                     <c:forEach items="${tareasRegistradas}" var="tareaReg">
-                        <option><c:out value="${tareaReg.descripcion}"/></option>
+                        <c:choose>
+                            <c:when test="${tareaSeleccionada.idAntes == tareaReg.idTarea}">
+                                <option value="<c:out value="${tareaReg.idTarea}"/>" selected> <c:out value="${tareaReg.descripcion}"/> </option>
+                            </c:when>
+                            <c:otherwise>
+                                <option value="<c:out value="${tareaReg.idTarea}"/>"> <c:out value="${tareaReg.descripcion}"/> </option>
+                            </c:otherwise>
+                        </c:choose>
                     </c:forEach>
                 </select>
                 <small id="emailHelp" class="form-text text-muted">No es obligatoria una tarea antescesora.</small>
+            </div>
+            <div class="form-group">
+                <label for="selStatusWork">Estado</label>
+                <select class="form-control" id="selStatusWork" name="selStatusWork" disabled>
+                    <c:forEach items="${estadosRegistrados}" var="estadoReg">
+                        <c:choose>
+                            <c:when test="">
+                                
+                            </c:when>
+                        </c:choose>
+                    </c:forEach>
+                </select>
             </div>
             
             <div class="form-check">
@@ -55,28 +74,28 @@
             <button id="btnUpdate" type="submit" class="btn btn-outline-success" disabled>Actualizar</button>
             <a id="btnDelete" class="btn btn-outline-danger" href="del-tarea?id=${tareaSeleccionada.idTarea}" disabled>Eliminar</a>
         </form>
-            <script>
-                /*Enabling edition mode xd*/
-                var modeEdition = document.getElementById('checkEdit');
-                modeEdition.addEventListener('change', validarModEd, false);
-                function validarModEd(){
-                    var checked = modeEdition.checked;
-                    if(modeEdition.checked){
-                        console.log('Modo Edición activado.');
-                        $("#txtDescriTarea").prop("disabled", false);
-                        $("#datePlazoTarea").prop("disabled", false);
-                        $("#selResponsableTarea").prop("disabled", false);
-                        $("#selTareaAntes").prop("disabled", false);
-                        $("#btnUpdate").prop("disabled", false);
-                    }else{
-                        console.log('Modo Edición desactivado.');
-                        $("#txtDescriTarea").prop("disabled", true);
-                        $("#datePlazoTarea").prop("disabled", true);
-                        $("#selResponsableTarea").prop("disabled", true);
-                        $("#selTareaAntes").prop("disabled", true);
-                        $("#btnUpdate").prop("disabled", true);
-                    }
+        <script>
+            /*Enabling edition mode xd*/
+            var modeEdition = document.getElementById('checkEdit');
+            modeEdition.addEventListener('change', validarModEd, false);
+            function validarModEd(){
+                var checked = modeEdition.checked;
+                if(modeEdition.checked){
+                    console.log('Modo Edición activado.');
+                    $("#txtDescriTarea").prop("disabled", false);
+                    $("#datePlazoTarea").prop("disabled", false);
+                    $("#selResponsableTarea").prop("disabled", false);
+                    $("#selTareaAntes").prop("disabled", false);
+                    $("#btnUpdate").prop("disabled", false);
+                }else{
+                    console.log('Modo Edición desactivado.');
+                    $("#txtDescriTarea").prop("disabled", true);
+                    $("#datePlazoTarea").prop("disabled", true);
+                    $("#selResponsableTarea").prop("disabled", true);
+                    $("#selTareaAntes").prop("disabled", true);
+                    $("#btnUpdate").prop("disabled", true);
                 }
-            </script>
+            }
+        </script>
     </div>
 </div>
