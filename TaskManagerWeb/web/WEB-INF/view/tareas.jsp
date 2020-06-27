@@ -33,7 +33,25 @@
                         <td>${tarea.fechaPlazo}</td>
                         <td><a href="ver-tarea?id=${tarea.idAntes}">${tarea.idAntes}</a></td>
                         <td>${tarea.funcionIdFuncion.idFuncion}</td>
-                        <td>${tarea.statusWorkIdStatus.tipoStatus}</td>
+                        <td>
+                            <c:choose>
+                                <c:when test="${tarea.statusWorkIdStatus.idStatus == 1}">
+                                    <span class="badge badge-pill badge-primary m-1">${tarea.statusWorkIdStatus.tipoStatus}</span>
+                                </c:when>
+                                <c:when test="${tarea.statusWorkIdStatus.idStatus == 2}">
+                                    <span class="badge badge-pill badge-secondary m-1">${tarea.statusWorkIdStatus.tipoStatus}</span>
+                                </c:when>
+                                <c:when test="${tarea.statusWorkIdStatus.idStatus == 3}">
+                                    <span class="badge badge-pill badge-danger m-1">${tarea.statusWorkIdStatus.tipoStatus}</span>
+                                </c:when>
+                                <c:otherwise>
+                                    <span class="badge badge-pill badge-info m-1">${tarea.statusWorkIdStatus.tipoStatus}</span>
+                                </c:otherwise>
+                            </c:choose>
+                            <c:if test="${tarea.statusWorkIdStatus.tipoStatus == 'Activo'}">
+                                <a class="btn btn-outline-success m-1" href="confirmar-tarea?id=${tarea.idTarea}" role="button">Ok</a>
+                            </c:if>
+                        </td>
                     </tr>
                 </c:forEach>
             </tbody>
