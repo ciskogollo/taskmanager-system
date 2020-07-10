@@ -44,24 +44,76 @@ End Sub
 Private Sub ws_TextMessage (msg As String)
 	Try
 		Dim jspars As JSONParser
+		Dim jsonParam As JSONGenerator
+		Dim m As Map
 		jspars.Initialize(msg)
-		Dim m As Map = jspars.NextObject
-		Log("Mapa: "&m)
+		Try
+			m = jspars.NextObject
+		Catch
+			Log("No se ha podido parsear de JSON a MAP .- "&LastException)
+		End Try
+		
+		'Log("Mapa: "&m)
 		Dim etype As String = m.get("type")
 		Dim event As String = m.Get("event")
 		Dim param As String = m.Get("param")
-		'Log("MSGRecibido: "& param)
+		Log(param)
 		
-		If event = "runFunction" Then
-			CallSub2(Callback, EventName & "_" & event, param)
-			Log("Evento: "&CallSub2(Callback, EventName & "_" & event, param))
-		Else If event = "list" Then
-			'AQUI SE DEBE RECIBIR DATOS JSON DEL SERVER
-		Else If event = "notice" Then
-			Log("Noticia: "&param)
+		'AQUI SE DEBE RECIBIR DATOS JSON DEL SERVER
+		Log("---------------")
+		Log("eType: "&etype)
+		If etype = "event" Then
+			Select event
+				Case "runFunction"
+					CallSub2(Callback, EventName & "_" & event, param)
+					Log("Evento: "&CallSub2(Callback, EventName & "_" & event, param))
+			End Select
+			
+		Else If etype = "response" Then
+			Dim paramMap As Map = m.Get("param")
+		
+			' IMPRIMIENDO MSG RECIBIDO
+			Log("MSGRecibido: "& param)
+			For i=0 To paramMap.Size -1
+				Log("ParamMap-Keys: "&paramMap.getKeyAt(i))
+			Next
+			
+			Try
+				Dim usuariosMap As Map = paramMap.Get("userlist")
+				Dim unidadesMap As Map = paramMap.Get("unitlist")
+				Dim rolesMap As Map = paramMap.Get("rolelist")
+				Dim procesosMap As Map = paramMap.Get("processlist")
+			Catch
+				Log("Maps Error: " & LastException)
+			End Try
+			
+			Select event
+				Case "dashboard"
+					'CallSub2(Callback, EventName & "_" & paramMap.ContainsKey("userlist"), usuariosMap)
+					'CallSub2(Callback, EventName & "_" & paramMap.ContainsKey("unitlist"), usuariosMap)
+					
+					'CallSub2(Callback, EventName & "_" & paramMap.getKeyAt(0), usuariosMap)
+					'CallSub2(Callback, EventName & "_" & paramMap.getKeyAt(1), unidadesMap)
+					
+					CallSub2(Callback, EventName & "_" & "userlist", usuariosMap)
+					CallSub2(Callback, EventName & "_" & "unitlist",unidadesMap)
+					CallSub2(Callback, EventName & "_" & "rolelist", rolesMap)
+					CallSub2(Callback, EventName & "_" & "processlist", procesosMap)
+					
+					
+					Log("Function: CallSub2(" & EventName & "_" & paramMap.getKeyAt(0) & ", param(" & usuariosMap&")")
+					Log("Function: CallSub2(" & EventName & "_" & paramMap.getKeyAt(1) & ", param(" & procesosMap&")")
+					Log("Function: CallSub2(" & EventName & "_" & paramMap.getKeyAt(2) & ", param(" & rolesMap&")")
+					Log("Function: CallSub2(" & EventName & "_" & paramMap.getKeyAt(3) & ", param(" & unidadesMap&")")
+					
+					
+					'Log("Function: CallSub2(" & EventName & "_" & paramMap.getKeyAt(1) & ", param(" & unidadesMap&")")
+					
+			End Select
 		End If
+		
 	Catch
-		Log("TextMsg Error: " & LastException)
+		Log("TextMessage Error: " & LastException)
 	End Try
 End Sub
 

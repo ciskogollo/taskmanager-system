@@ -10,10 +10,17 @@ package b4a.tsm;
 public final class R {
     public static final class attr {
     }
+    public static final class color {
+        public static final int actionbar=0x7f030000;
+        public static final int navigationBar=0x7f030003;
+        public static final int statusbar=0x7f030001;
+        public static final int textColorPrimary=0x7f030002;
+    }
     public static final class drawable {
         public static final int icon=0x7f020000;
     }
     public static final class style {
-        public static final int DarkTheme=0x7f030000;
+        public static final int CustomActionBarStyle=0x7f040001;
+        public static final int LightTheme=0x7f040000;
     }
 }

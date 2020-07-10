@@ -431,64 +431,64 @@ return "";
 }
 public static String  _activity_pause(boolean _userclosed) throws Exception{
 RDebugUtils.currentModule="main";
-RDebugUtils.currentLine=262144;
- //BA.debugLineNum = 262144;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
-RDebugUtils.currentLine=262145;
- //BA.debugLineNum = 262145;BA.debugLine="If UserClosed = True Then";
+RDebugUtils.currentLine=655360;
+ //BA.debugLineNum = 655360;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
+RDebugUtils.currentLine=655361;
+ //BA.debugLineNum = 655361;BA.debugLine="If UserClosed = True Then";
 if (_userclosed==anywheresoftware.b4a.keywords.Common.True) { 
-RDebugUtils.currentLine=262146;
- //BA.debugLineNum = 262146;BA.debugLine="session = Null";
+RDebugUtils.currentLine=655362;
+ //BA.debugLineNum = 655362;BA.debugLine="session = Null";
 _session.setObject((anywheresoftware.b4a.objects.collections.Map.MyMap)(anywheresoftware.b4a.keywords.Common.Null));
  }else {
-RDebugUtils.currentLine=262148;
- //BA.debugLineNum = 262148;BA.debugLine="Log(\"Sesion: \"&session.Values)";
-anywheresoftware.b4a.keywords.Common.LogImpl("7262148","Sesion: "+BA.ObjectToString(_session.Values()),0);
+RDebugUtils.currentLine=655364;
+ //BA.debugLineNum = 655364;BA.debugLine="Log(\"Sesion: \"&session.Values)";
+anywheresoftware.b4a.keywords.Common.LogImpl("1655364","Sesion: "+BA.ObjectToString(_session.Values()),0);
  };
-RDebugUtils.currentLine=262150;
- //BA.debugLineNum = 262150;BA.debugLine="End Sub";
+RDebugUtils.currentLine=655366;
+ //BA.debugLineNum = 655366;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_resume() throws Exception{
 RDebugUtils.currentModule="main";
 if (Debug.shouldDelegate(mostCurrent.activityBA, "activity_resume", false))
 	 {return ((String) Debug.delegate(mostCurrent.activityBA, "activity_resume", null));}
-RDebugUtils.currentLine=196608;
- //BA.debugLineNum = 196608;BA.debugLine="Sub Activity_Resume";
-RDebugUtils.currentLine=196612;
- //BA.debugLineNum = 196612;BA.debugLine="UpdateStatus";
+RDebugUtils.currentLine=589824;
+ //BA.debugLineNum = 589824;BA.debugLine="Sub Activity_Resume";
+RDebugUtils.currentLine=589828;
+ //BA.debugLineNum = 589828;BA.debugLine="UpdateStatus";
 _updatestatus();
-RDebugUtils.currentLine=196613;
- //BA.debugLineNum = 196613;BA.debugLine="End Sub";
+RDebugUtils.currentLine=589829;
+ //BA.debugLineNum = 589829;BA.debugLine="End Sub";
 return "";
 }
 public static String  _updatestatus() throws Exception{
 RDebugUtils.currentModule="main";
 if (Debug.shouldDelegate(mostCurrent.activityBA, "updatestatus", false))
 	 {return ((String) Debug.delegate(mostCurrent.activityBA, "updatestatus", null));}
-RDebugUtils.currentLine=917504;
- //BA.debugLineNum = 917504;BA.debugLine="Sub UpdateStatus";
-RDebugUtils.currentLine=917505;
- //BA.debugLineNum = 917505;BA.debugLine="If wshand.ws.Connected Then";
+RDebugUtils.currentLine=458752;
+ //BA.debugLineNum = 458752;BA.debugLine="Sub UpdateStatus";
+RDebugUtils.currentLine=458753;
+ //BA.debugLineNum = 458753;BA.debugLine="If wshand.ws.Connected Then";
 if (_wshand._ws /*anywheresoftware.b4a.objects.WebSocketWrapper*/ .getConnected()) { 
-RDebugUtils.currentLine=917506;
- //BA.debugLineNum = 917506;BA.debugLine="Log(\"Conectado: \"&endpoint)";
-anywheresoftware.b4a.keywords.Common.LogImpl("7917506","Conectado: "+_endpoint,0);
-RDebugUtils.currentLine=917507;
- //BA.debugLineNum = 917507;BA.debugLine="lblStatus.Text = \"Status: Conectado\"";
+RDebugUtils.currentLine=458754;
+ //BA.debugLineNum = 458754;BA.debugLine="Log(\"Conectado: \"&endpoint)";
+anywheresoftware.b4a.keywords.Common.LogImpl("1458754","Conectado: "+_endpoint,0);
+RDebugUtils.currentLine=458755;
+ //BA.debugLineNum = 458755;BA.debugLine="lblStatus.Text = \"Status: Conectado\"";
 mostCurrent._lblstatus.setText(BA.ObjectToCharSequence("Status: Conectado"));
  }else {
-RDebugUtils.currentLine=917509;
- //BA.debugLineNum = 917509;BA.debugLine="lblStatus.Text = \"Status: Desconectado\"";
+RDebugUtils.currentLine=458757;
+ //BA.debugLineNum = 458757;BA.debugLine="lblStatus.Text = \"Status: Desconectado\"";
 mostCurrent._lblstatus.setText(BA.ObjectToCharSequence("Status: Desconectado"));
  };
-RDebugUtils.currentLine=917511;
- //BA.debugLineNum = 917511;BA.debugLine="btnConectar.Enabled = Not(wshand.ws.Connected)";
+RDebugUtils.currentLine=458759;
+ //BA.debugLineNum = 458759;BA.debugLine="btnConectar.Enabled = Not(wshand.ws.Connected)";
 mostCurrent._btnconectar.setEnabled(anywheresoftware.b4a.keywords.Common.Not(_wshand._ws /*anywheresoftware.b4a.objects.WebSocketWrapper*/ .getConnected()));
-RDebugUtils.currentLine=917512;
- //BA.debugLineNum = 917512;BA.debugLine="btnConectar.Enabled = wshand.ws.Connected";
+RDebugUtils.currentLine=458760;
+ //BA.debugLineNum = 458760;BA.debugLine="btnConectar.Enabled = wshand.ws.Connected";
 mostCurrent._btnconectar.setEnabled(_wshand._ws /*anywheresoftware.b4a.objects.WebSocketWrapper*/ .getConnected());
-RDebugUtils.currentLine=917513;
- //BA.debugLineNum = 917513;BA.debugLine="End Sub";
+RDebugUtils.currentLine=458761;
+ //BA.debugLineNum = 458761;BA.debugLine="End Sub";
 return "";
 }
 public static String  _btnconectar_click() throws Exception{
@@ -496,96 +496,104 @@ RDebugUtils.currentModule="main";
 if (Debug.shouldDelegate(mostCurrent.activityBA, "btnconectar_click", false))
 	 {return ((String) Debug.delegate(mostCurrent.activityBA, "btnconectar_click", null));}
 anywheresoftware.b4a.objects.collections.Map _data = null;
-RDebugUtils.currentLine=983040;
- //BA.debugLineNum = 983040;BA.debugLine="Sub btnConectar_Click";
-RDebugUtils.currentLine=983041;
- //BA.debugLineNum = 983041;BA.debugLine="lblStatus.Text = \"Status: Consultando...\"";
+RDebugUtils.currentLine=524288;
+ //BA.debugLineNum = 524288;BA.debugLine="Sub btnConectar_Click";
+RDebugUtils.currentLine=524289;
+ //BA.debugLineNum = 524289;BA.debugLine="lblStatus.Text = \"Status: Consultando...\"";
 mostCurrent._lblstatus.setText(BA.ObjectToCharSequence("Status: Consultando..."));
-RDebugUtils.currentLine=983042;
- //BA.debugLineNum = 983042;BA.debugLine="Dim data As Map";
+RDebugUtils.currentLine=524290;
+ //BA.debugLineNum = 524290;BA.debugLine="Dim data As Map";
 _data = new anywheresoftware.b4a.objects.collections.Map();
-RDebugUtils.currentLine=983043;
- //BA.debugLineNum = 983043;BA.debugLine="data.Initialize";
+RDebugUtils.currentLine=524291;
+ //BA.debugLineNum = 524291;BA.debugLine="data.Initialize";
 _data.Initialize();
-RDebugUtils.currentLine=983044;
- //BA.debugLineNum = 983044;BA.debugLine="data.Put(\"user\", txtNombre.Text)";
+RDebugUtils.currentLine=524292;
+ //BA.debugLineNum = 524292;BA.debugLine="data.Put(\"user\", txtNombre.Text)";
 _data.Put((Object)("user"),(Object)(mostCurrent._txtnombre.getText()));
-RDebugUtils.currentLine=983045;
- //BA.debugLineNum = 983045;BA.debugLine="data.Put(\"hash\", txtPass.Text)";
+RDebugUtils.currentLine=524293;
+ //BA.debugLineNum = 524293;BA.debugLine="data.Put(\"hash\", txtPass.Text)";
 _data.Put((Object)("hash"),(Object)(mostCurrent._txtpass.getText()));
-RDebugUtils.currentLine=983046;
- //BA.debugLineNum = 983046;BA.debugLine="wshand.SendEventToEndPoint(\"Ingresar_movil\", data";
+RDebugUtils.currentLine=524294;
+ //BA.debugLineNum = 524294;BA.debugLine="wshand.SendEventToEndPoint(\"Ingresar_movil\", data";
 _wshand._sendeventtoendpoint /*String*/ (null,"Ingresar_movil",_data);
-RDebugUtils.currentLine=983047;
- //BA.debugLineNum = 983047;BA.debugLine="End Sub";
+RDebugUtils.currentLine=524295;
+ //BA.debugLineNum = 524295;BA.debugLine="End Sub";
 return "";
 }
 public static String  _wshand_closed(String _reason) throws Exception{
 RDebugUtils.currentModule="main";
 if (Debug.shouldDelegate(mostCurrent.activityBA, "wshand_closed", false))
 	 {return ((String) Debug.delegate(mostCurrent.activityBA, "wshand_closed", new Object[] {_reason}));}
-RDebugUtils.currentLine=851968;
- //BA.debugLineNum = 851968;BA.debugLine="Sub wshand_Closed(Reason As String)";
-RDebugUtils.currentLine=851969;
- //BA.debugLineNum = 851969;BA.debugLine="UpdateStatus";
+RDebugUtils.currentLine=327680;
+ //BA.debugLineNum = 327680;BA.debugLine="Sub wshand_Closed(Reason As String)";
+RDebugUtils.currentLine=327681;
+ //BA.debugLineNum = 327681;BA.debugLine="UpdateStatus";
 _updatestatus();
-RDebugUtils.currentLine=851970;
- //BA.debugLineNum = 851970;BA.debugLine="ToastMessageShow(Reason, True)";
+RDebugUtils.currentLine=327682;
+ //BA.debugLineNum = 327682;BA.debugLine="ToastMessageShow(Reason, True)";
 anywheresoftware.b4a.keywords.Common.ToastMessageShow(BA.ObjectToCharSequence(_reason),anywheresoftware.b4a.keywords.Common.True);
-RDebugUtils.currentLine=851971;
- //BA.debugLineNum = 851971;BA.debugLine="End Sub";
+RDebugUtils.currentLine=327683;
+ //BA.debugLineNum = 327683;BA.debugLine="End Sub";
 return "";
 }
 public static String  _wshand_connected() throws Exception{
 RDebugUtils.currentModule="main";
 if (Debug.shouldDelegate(mostCurrent.activityBA, "wshand_connected", false))
 	 {return ((String) Debug.delegate(mostCurrent.activityBA, "wshand_connected", null));}
-RDebugUtils.currentLine=786432;
- //BA.debugLineNum = 786432;BA.debugLine="Sub wshand_Connected";
-RDebugUtils.currentLine=786433;
- //BA.debugLineNum = 786433;BA.debugLine="UpdateStatus";
+RDebugUtils.currentLine=262144;
+ //BA.debugLineNum = 262144;BA.debugLine="Sub wshand_Connected";
+RDebugUtils.currentLine=262145;
+ //BA.debugLineNum = 262145;BA.debugLine="UpdateStatus";
 _updatestatus();
-RDebugUtils.currentLine=786434;
- //BA.debugLineNum = 786434;BA.debugLine="End Sub";
+RDebugUtils.currentLine=262146;
+ //BA.debugLineNum = 262146;BA.debugLine="End Sub";
 return "";
 }
 public static String  _wshand_runfunction(String _param) throws Exception{
 RDebugUtils.currentModule="main";
 if (Debug.shouldDelegate(mostCurrent.activityBA, "wshand_runfunction", false))
 	 {return ((String) Debug.delegate(mostCurrent.activityBA, "wshand_runfunction", new Object[] {_param}));}
-RDebugUtils.currentLine=4849664;
- //BA.debugLineNum = 4849664;BA.debugLine="Sub wshand_runFunction(Param As String)";
-RDebugUtils.currentLine=4849665;
- //BA.debugLineNum = 4849665;BA.debugLine="If(Param = \"logued\") Then";
+RDebugUtils.currentLine=393216;
+ //BA.debugLineNum = 393216;BA.debugLine="Sub wshand_runFunction(Param As String)";
+RDebugUtils.currentLine=393217;
+ //BA.debugLineNum = 393217;BA.debugLine="If(Param = \"logued\") Then";
 if (((_param).equals("logued"))) { 
-RDebugUtils.currentLine=4849666;
- //BA.debugLineNum = 4849666;BA.debugLine="session.Put(\"state\",\"signed\")";
+RDebugUtils.currentLine=393218;
+ //BA.debugLineNum = 393218;BA.debugLine="session.Put(\"state\",\"signed\")";
 _session.Put((Object)("state"),(Object)("signed"));
-RDebugUtils.currentLine=4849667;
- //BA.debugLineNum = 4849667;BA.debugLine="session.Put(\"username\",txtNombre.Text)";
+RDebugUtils.currentLine=393219;
+ //BA.debugLineNum = 393219;BA.debugLine="session.Put(\"username\",txtNombre.Text)";
 _session.Put((Object)("username"),(Object)(mostCurrent._txtnombre.getText()));
-RDebugUtils.currentLine=4849668;
- //BA.debugLineNum = 4849668;BA.debugLine="StartActivity(\"Dash\")";
+RDebugUtils.currentLine=393220;
+ //BA.debugLineNum = 393220;BA.debugLine="StartActivity(\"Dash\")";
 anywheresoftware.b4a.keywords.Common.StartActivity(processBA,(Object)("Dash"));
-RDebugUtils.currentLine=4849669;
- //BA.debugLineNum = 4849669;BA.debugLine="Log(session.Values)";
-anywheresoftware.b4a.keywords.Common.LogImpl("74849669",BA.ObjectToString(_session.Values()),0);
- };
-RDebugUtils.currentLine=4849671;
- //BA.debugLineNum = 4849671;BA.debugLine="End Sub";
+RDebugUtils.currentLine=393221;
+ //BA.debugLineNum = 393221;BA.debugLine="Log(session.Values)";
+anywheresoftware.b4a.keywords.Common.LogImpl("1393221",BA.ObjectToString(_session.Values()),0);
+ }else 
+{RDebugUtils.currentLine=393222;
+ //BA.debugLineNum = 393222;BA.debugLine="Else If (Param = \"user_incorrect\") Then";
+if (((_param).equals("user_incorrect"))) { 
+RDebugUtils.currentLine=393223;
+ //BA.debugLineNum = 393223;BA.debugLine="Log(\"Usuario y/o contraseña incorrectos\")";
+anywheresoftware.b4a.keywords.Common.LogImpl("1393223","Usuario y/o contraseña incorrectos",0);
+ }}
+;
+RDebugUtils.currentLine=393225;
+ //BA.debugLineNum = 393225;BA.debugLine="End Sub";
 return "";
 }
 public static String  _wshand_servertime(anywheresoftware.b4a.objects.collections.List _params) throws Exception{
 RDebugUtils.currentModule="main";
 if (Debug.shouldDelegate(mostCurrent.activityBA, "wshand_servertime", false))
 	 {return ((String) Debug.delegate(mostCurrent.activityBA, "wshand_servertime", new Object[] {_params}));}
-RDebugUtils.currentLine=720896;
- //BA.debugLineNum = 720896;BA.debugLine="Sub wshand_ServerTime(Params As List)";
-RDebugUtils.currentLine=720897;
- //BA.debugLineNum = 720897;BA.debugLine="lblServerTime.Text = \"ServerTime: \" & Params.Get(";
+RDebugUtils.currentLine=196608;
+ //BA.debugLineNum = 196608;BA.debugLine="Sub wshand_ServerTime(Params As List)";
+RDebugUtils.currentLine=196609;
+ //BA.debugLineNum = 196609;BA.debugLine="lblServerTime.Text = \"ServerTime: \" & Params.Get(";
 mostCurrent._lblservertime.setText(BA.ObjectToCharSequence("ServerTime: "+BA.ObjectToString(_params.Get((int) (0)))));
-RDebugUtils.currentLine=720898;
- //BA.debugLineNum = 720898;BA.debugLine="End Sub";
+RDebugUtils.currentLine=196610;
+ //BA.debugLineNum = 196610;BA.debugLine="End Sub";
 return "";
 }
 }

@@ -57,9 +57,13 @@ public boolean isSingleton() {
 public static RemoteObject __c = RemoteObject.declareNull("anywheresoftware.b4a.keywords.Common");
 public static RemoteObject _wshand = RemoteObject.declareNull("b4a.tsm.websockethandler");
 public static RemoteObject _endpoint = RemoteObject.createImmutable("");
+public static RemoteObject _listviewusuarios = RemoteObject.declareNull("anywheresoftware.b4a.objects.ListViewWrapper");
+public static RemoteObject _listviewunidades = RemoteObject.declareNull("anywheresoftware.b4a.objects.ListViewWrapper");
+public static RemoteObject _listviewroles = RemoteObject.declareNull("anywheresoftware.b4a.objects.ListViewWrapper");
+public static RemoteObject _listviewprocesos = RemoteObject.declareNull("anywheresoftware.b4a.objects.ListViewWrapper");
 public static b4a.tsm.main _main = null;
 public static b4a.tsm.starter _starter = null;
   public Object[] GetGlobals() {
-		return new Object[] {"Activity",dash.mostCurrent._activity,"endpoint",dash._endpoint,"Main",Debug.moduleToString(b4a.tsm.main.class),"Starter",Debug.moduleToString(b4a.tsm.starter.class),"wshand",dash._wshand};
+		return new Object[] {"Activity",dash.mostCurrent._activity,"endpoint",dash._endpoint,"ListViewProcesos",dash.mostCurrent._listviewprocesos,"ListViewRoles",dash.mostCurrent._listviewroles,"ListViewUnidades",dash.mostCurrent._listviewunidades,"ListViewUsuarios",dash.mostCurrent._listviewusuarios,"Main",Debug.moduleToString(b4a.tsm.main.class),"Starter",Debug.moduleToString(b4a.tsm.starter.class),"wshand",dash._wshand};
 }
 }

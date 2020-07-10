@@ -3,47 +3,47 @@ b4a.tsm
 1
 websockethandler
 0
-main,activity_create,1,0,29,40
+main,activity_create,1,0,30,41
 ,wshand,,session,,btnconectar,,lblservertime,,lblstatus,,txtnombre,,txtpass,,endpoint
 ,btnconectar,,lblservertime,,lblstatus,,txtnombre,,txtpass
 websockethandler,initialize,websockethandler,connect
-main,activity_pause,0,0,91,97
+main,activity_pause,0,0,94,100
 ,session
 ,session
 
-main,activity_resume,0,0,84,89
+main,activity_resume,0,0,87,92
 ,wshand,,endpoint,,lblstatus,,btnconectar
 
 ,updatestatus
-main,updatestatus,0,0,64,73
+main,updatestatus,0,0,67,76
 ,wshand,,endpoint,,lblstatus,,btnconectar
 
 
-main,btnconectar_click,0,0,75,82
+main,btnconectar_click,0,0,78,85
 ,lblstatus,,txtnombre,,txtpass,,wshand
 
 websockethandler,sendeventtoendpoint
-main,globals,0,1,21,27
+main,globals,0,1,22,28
 
 
 
-main,process_globals,0,1,15,19
+main,process_globals,0,1,16,20
 ,endpoint
 ,endpoint
 
-main,wshand_closed,0,0,50,53
+main,wshand_closed,0,0,51,54
 ,wshand,,endpoint,,lblstatus,,btnconectar
 
 ,updatestatus
-main,wshand_connected,0,0,46,48
+main,wshand_connected,0,0,47,49
 ,wshand,,endpoint,,lblstatus,,btnconectar
 
 ,updatestatus
-main,wshand_runfunction,0,1,55,62
+main,wshand_runfunction,0,0,56,65
 ,session,,txtnombre
 
 
-main,wshand_servertime,0,0,42,44
+main,wshand_servertime,0,0,43,45
 ,lblservertime
 
 
@@ -67,41 +67,57 @@ websockethandler,close,0,0,19,23
 
 
 
-websockethandler,ws_closed,1,0,66,68
+websockethandler,ws_closed,1,0,118,120
 
 
 
-websockethandler,ws_connected,1,0,62,64
+websockethandler,ws_connected,1,0,114,116
 
 
 
-websockethandler,ws_textmessage,1,1,38,60
+websockethandler,ws_textmessage,1,1,38,112
 
 
 
-dash,activity_create,1,0,17,30
-,wshand,,endpoint,main,session
-
+dash,activity_create,1,0,20,37
+,wshand,,endpoint,main,session,,listviewprocesos,,listviewroles,,listviewunidades,,listviewusuarios
+,listviewprocesos,,listviewroles,,listviewunidades,,listviewusuarios
 websockethandler,initialize,websockethandler,connect,,updatestatus,websockethandler,sendeventtoendpoint
-dash,updatestatus,0,1,32,42
+dash,updatestatus,0,0,39,50
 ,wshand,,endpoint
 
 websockethandler,sendeventtoendpoint
-dash,activity_pause,0,0,48,50
+dash,activity_pause,0,0,56,58
 
 
 
-dash,activity_resume,0,0,44,46
+dash,activity_resume,0,0,52,54
 
 
 
-dash,globals,0,1,11,15
+dash,globals,0,1,11,18
 
 
 
 dash,process_globals,0,1,6,9
 ,endpoint
 ,endpoint
+
+dash,wshand_processlist,0,1,95,104
+,listviewprocesos
+
+
+dash,wshand_rolelist,0,1,84,93
+,listviewroles
+
+
+dash,wshand_unitlist,0,1,73,82
+,listviewunidades
+
+
+dash,wshand_userlist,0,1,60,71
+,listviewusuarios
+
 
 starter,application_error,0,0,27,29
 
