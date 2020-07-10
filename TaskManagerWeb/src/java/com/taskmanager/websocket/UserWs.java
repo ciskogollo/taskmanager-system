@@ -6,7 +6,13 @@
 package com.taskmanager.websocket;
 
 import com.taskmanager.entity.Usuario;
+import com.taskmanager.entity.Unidad;
+import com.taskmanager.entity.Rol;
+import com.taskmanager.entity.Proceso;
 import com.taskmanager.session.UsuarioFacade;
+import com.taskmanager.session.UnidadFacade;
+import com.taskmanager.session.RolFacade;
+import com.taskmanager.session.ProcesoFacade;
 import static com.taskmanager.websocket.LoginWs.queue;
 import static com.taskmanager.websocket.LoginWs.logger;
 import java.io.IOException;
@@ -15,6 +21,7 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.stream.Collectors;
 import javax.ejb.EJB;
+import javax.enterprise.context.ApplicationScoped;
 import javax.websocket.OnError;
 import javax.websocket.OnMessage;
 import javax.websocket.OnOpen;
@@ -26,31 +33,85 @@ import org.json.JSONObject;
  *
  * @author cisko
  */
+@ApplicationScoped
 @ServerEndpoint("/userws")
 public class UserWs extends AbstractWs {
     
     @EJB
     private UsuarioFacade usuarioFacade;
+    @EJB
+    private UnidadFacade unidadFacade;
+    @EJB
+    private RolFacade rolFacade;
+    @EJB
+    private ProcesoFacade procesoFacade;
     
     @OnMessage
     public void onMessage(String msg, Session peer) {
-        System.out.println("(WS)Nuevo msg ==> " + msg);
+        System.out.println("(WS)Nueva solicitud ==> " + msg);
         jsonObj = parseToJson(msg);
+        
         String event = jsonObj.get("event").toString();
         String objParam = jsonObj.get("obj").toString();
         if(jsonObj != null){
             switch(event){
                 case "listar":
                     switch(objParam){
-                        case "usuario":
+                        case "dashboard":
+                            JSONObject jsonObjAll = new JSONObject();
+                            //JSONObject jsonObjTemp = new JSONObject();
                             JSONObject jsonObjUser = new JSONObject();
+                            JSONObject jsonObjUnit = new JSONObject();
+                            JSONObject jsonObjRole = new JSONObject();
+                            JSONObject jsonObjProcess = new JSONObject();
+                            
+                            //Crear Json con Usuarios
                             for(Usuario usr : listarUsuarios()){
-                                jsonObjUser.put(usr.getIdUsuario().toString(), usr.getNombre());
+                                JSONObject jsonUserTemp = new JSONObject();
+                                jsonUserTemp.put("id", usr.getIdUsuario().toString());
+                                jsonUserTemp.put("nombre", usr.getNombre());
+                                jsonUserTemp.put("rut", usr.getRut());
+                                jsonUserTemp.put("correo", usr.getCorreo());
+                                
+                                jsonObjUser.put("user"+usr.getIdUsuario().toString(), jsonUserTemp);
                             }
+                            //Crear Json con Unidades
+                            for(Unidad und : listarUnidades()){
+                                JSONObject jsonUnitTemp = new JSONObject();
+                                jsonUnitTemp.put("id", und.getIdUnidad().toString());
+                                jsonUnitTemp.put("nombre", und.getTipoUnidad());
+                                jsonUnitTemp.put("proceso", und.getIdProceso().toString());
+                                
+                                jsonObjUnit.put("unit"+und.getIdUnidad().toString(), jsonUnitTemp);
+                            }
+                            //Crear Json con Roles
+                            for(Rol role : listarRoles()){
+                                JSONObject jsonRoleTemp = new JSONObject();
+                                jsonRoleTemp.put("id", role.getIdRol().toString());
+                                jsonRoleTemp.put("nombre", role.getNombreRol());
+                                
+                                jsonObjRole.put("role"+role.getIdRol().toString(), jsonRoleTemp);
+                            }
+                            //Crear Json con Procesos
+                            for(Proceso prc : listarProcesos()){
+                                JSONObject jsonProcTemp = new JSONObject();
+                                jsonProcTemp.put("id", prc.getIdProceso().toString());
+                                jsonProcTemp.put("nombre", prc.getTipoProceso());
+                                jsonProcTemp.put("nombreusuario", prc.getUsuarioIdUsuario().getNombre());
+                                
+                                jsonObjProcess.put("process"+prc.getIdProceso().toString(), jsonProcTemp);
+                            }
+                            
+                            //Empaquetando en Json los json-lsit
+                            jsonObjAll.put("userlist", jsonObjUser);
+                            jsonObjAll.put("unitlist", jsonObjUnit);
+                            jsonObjAll.put("rolelist", jsonObjRole);
+                            jsonObjAll.put("processlist", jsonObjProcess);
+                            
                             JSONObject jsonObjResp = new JSONObject();
-                            jsonObjResp.put("type", "event");
-                            jsonObjResp.put("event", "list");
-                            jsonObjResp.put("param", jsonObjResp);
+                            jsonObjResp.put("type", "response");
+                            jsonObjResp.put("event", "dashboard");
+                            jsonObjResp.put("param", jsonObjAll);
                             
                             replyMsg(peer, jsonObjResp.toString());
                             break;
@@ -85,9 +146,47 @@ public class UserWs extends AbstractWs {
     public List<Usuario> listarUsuarios(){
         try{
             List<Usuario> listUsers;
-            return listUsers = usuarioFacade.findAll();
+            listUsers = usuarioFacade.findAll();
+            System.out.println("Listando usuarios: " + listUsers.toString());
+            return listUsers;
         }catch(Exception ex){
-            System.err.println("(WS)No se ha podido listar los usuarios. "+ex.toString());
+            System.err.println("(WS)No se han podido listar los usuarios. "+ex.toString());
+            throw new RuntimeException("Listing Exception",ex);
+        }
+    }
+    
+    public List<Unidad> listarUnidades(){
+        try{
+            List<Unidad> listUnidades;
+            listUnidades = unidadFacade.findAll();
+            System.out.println("Listando unidades: " + listUnidades.toString());
+            return listUnidades;
+        }catch(Exception ex){
+            System.err.println("(WS)No se han podido listar las unidades. "+ex.toString());
+            throw new RuntimeException("Listing Exception",ex);
+        }
+    }
+    
+    public List<Rol> listarRoles(){
+        try{
+            List<Rol> listRoles;
+            listRoles = rolFacade.findAll();
+            System.out.println("Listando roles: " + listRoles.toString());
+            return listRoles;
+        }catch(Exception ex){
+            System.err.println("(WS)No se han podido listar los roles. "+ex.toString());
+            throw new RuntimeException("Listing Exception",ex);
+        }
+    }
+    
+    public List<Proceso> listarProcesos(){
+        try{
+            List<Proceso> listProcesos;
+            listProcesos = procesoFacade.findAll();
+            System.out.println("Listando procesos: " + listProcesos.toString());
+            return listProcesos;
+        }catch(Exception ex){
+            System.err.println("(WS)No se han podido listar los procesos. "+ex.toString());
             throw new RuntimeException("Listing Exception",ex);
         }
     }

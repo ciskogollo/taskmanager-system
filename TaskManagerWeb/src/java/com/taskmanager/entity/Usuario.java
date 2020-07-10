@@ -192,6 +192,7 @@ public class Usuario implements Serializable {
         if (!(object instanceof Usuario)) {
             return false;
         }
+        
         Usuario other = (Usuario) object;
         if ((this.idUsuario == null && other.idUsuario != null) || (this.idUsuario != null && !this.idUsuario.equals(other.idUsuario))) {
             return false;

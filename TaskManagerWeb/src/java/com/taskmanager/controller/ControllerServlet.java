@@ -10,9 +10,11 @@ import com.taskmanager.entity.Tarea;
 import com.taskmanager.entity.Usuario;
 import com.taskmanager.entity.StatusWork;
 import com.taskmanager.entity.Funcion;
+import com.taskmanager.entity.Problema;
 import com.taskmanager.session.ClienteFacade;
 import com.taskmanager.session.StatusWorkFacade;
 import com.taskmanager.session.FuncionFacade;
+import com.taskmanager.session.ProblemaFacade;
 import com.taskmanager.session.TareaFacade;
 import com.taskmanager.session.UsuarioFacade;
 import java.io.IOException;
@@ -50,7 +52,8 @@ import javax.servlet.http.HttpSession;
                            "/confirmar-tarea",
                            "/del-tarea",
                            "/ver-tarea",
-                           "/clientes"})
+                           "/clientes",
+                           "/problema"})
 public class ControllerServlet extends HttpServlet {
     
     @EJB
@@ -63,6 +66,8 @@ public class ControllerServlet extends HttpServlet {
     private StatusWorkFacade statusWorkFacade;
     @EJB
     private FuncionFacade funcionFacade;
+    @EJB
+    private ProblemaFacade problemaFacade;
     
     public HttpSession session;
     String userPath;
@@ -121,6 +126,7 @@ public class ControllerServlet extends HttpServlet {
                     
                     listUsersRegistred();
                     listTasksRegistered();
+                    listStatusWorks();
                     
                     //response.sendRedirect(request.getContextPath() + "/add-tarea.jsp");
                     break;
@@ -150,6 +156,7 @@ public class ControllerServlet extends HttpServlet {
                     try{
                         BigDecimal idTareaConfFmt = new BigDecimal(idTareaConf);
                         confirmarTarea(idTareaConfFmt);
+                        response.sendRedirect(request.getContextPath() + "/tareas");
                     }catch(Exception ex){
                         ex.printStackTrace();
                     }
@@ -157,8 +164,9 @@ public class ControllerServlet extends HttpServlet {
                 case "/del-tarea":
                     String idTareaDel = request.getParameter("id");
                     try{
-                        BigInteger idTareaDelFmt = new BigInteger(idTareaDel);
+                        BigDecimal idTareaDelFmt = new BigDecimal(idTareaDel);
                         eliminarTarea(idTareaDelFmt);
+                        response.sendRedirect(request.getContextPath() + "/tareas");
                     }catch(Exception ex){
                         ex.printStackTrace();
                     }
@@ -166,6 +174,10 @@ public class ControllerServlet extends HttpServlet {
                     break;
                 case "/clientes":
                     System.out.println(clienteFacade.findAll().get(0));
+                    break;
+                case "/problema":
+                    listProblems();
+                    
                     break;
                 case "/logout":
                     try{
@@ -184,13 +196,14 @@ public class ControllerServlet extends HttpServlet {
                     break;
                 case "/index":
                     url = userPath + ".jsp";
-                    //System.out.println("urL: "+url);
                     break;
                 default:
                     url = "/WEB-INF/view" + userPath + ".jsp";
                     break;
             }
             System.out.println("urL: "+url);
+
+            
             try{
                 request.getRequestDispatcher(url).forward(request, response);
             } catch (Exception ex) {
@@ -296,7 +309,7 @@ public class ControllerServlet extends HttpServlet {
                     response.sendRedirect(request.getContextPath() + "/index");
                 }catch(Exception ex){
                     System.out.println("No se ha podido agregar la Tarea. "+ex);
-                }   break;
+                }break;
             case "/edit-tarea":
                 String formEditTarea = request.getQueryString();
                 System.out.println("Recibiendo datos de Tarea Editada...");
@@ -315,6 +328,7 @@ public class ControllerServlet extends HttpServlet {
                 }
                 BigDecimal idUsResp = new BigDecimal(request.getParameter("selResponsableTarea"));
                 BigInteger idTarResp = new BigInteger(request.getParameter("selTareaAntes"));
+                BigDecimal idStatusResp = new BigDecimal(request.getParameter("selStatusWork"));
                 try{
                     BigDecimal idTarea = (BigDecimal)session.getAttribute("idTareaSeleccionadaSES");
                     System.out.println("IDTAREA-EDITAR: "+idTarea);
@@ -322,7 +336,9 @@ public class ControllerServlet extends HttpServlet {
                     System.out.println("FECHA-INGRESO-TAREA-EDITAR: "+FecIngTarea);
                     Usuario responsable = usuarioFacade.findByIdUsuario(idUsResp).get(0);
                     Funcion funcTareaInit = funcionFacade.findAll().get(0);
-                    StatusWork statusTareaInit = statusWorkFacade.findAll().get(0);
+                    //StatusWork statusTareaInit = statusWorkFacade.findAll().get(0);
+                    System.out.println("IDSTATUS-EDITAR: "+idStatusResp);
+                    StatusWork statusTarea = statusWorkFacade.findByIdStatus(idStatusResp).get(0);
                     
                     Tarea tr = new Tarea();
                     tr.setIdTarea(idTarea);
@@ -334,7 +350,7 @@ public class ControllerServlet extends HttpServlet {
                     tr.setIdSuces(null);
                     tr.setIdTsuperior(BigInteger.ZERO);
                     tr.setFuncionIdFuncion(funcTareaInit);
-                    tr.setStatusWorkIdStatus(statusTareaInit);
+                    tr.setStatusWorkIdStatus(statusTarea);
                     tr.setUsuarioIdUsuario(responsable);
                     
                     //System.out.println("newTaarea: "+newTarea);
@@ -347,6 +363,29 @@ public class ControllerServlet extends HttpServlet {
                 break;
             case "/ver-tarea":
                 
+                break;
+            case "/problema":
+                String formAddProblem = request.getQueryString();
+                System.out.println("Recibiendo datos de Nuevo Problema...");
+                String comentario = request.getParameter("txtComentario");
+                //idUserResp = new BigDecimal(request.getParameter("selResponsableTarea"));
+                try{
+                    BigDecimal idUltimoProblema = new BigDecimal(problemaFacade.findAll().size()).add(new BigDecimal(1));
+                    idUserResp = new BigDecimal(session.getAttribute("idUser").toString());
+                    Usuario responsable = usuarioFacade.findByIdUsuario(idUserResp).get(0);
+                    
+                    Problema pr = new Problema();
+                    pr.setIdProblema(idUltimoProblema);
+                    pr.setComentario(comentario);
+                    pr.setUsuarioIdUsuario(responsable);
+                    
+                    System.out.println("newProblema: "+pr);
+                    problemaFacade.create(pr);
+                    
+                    response.sendRedirect(request.getContextPath() + "/index");
+                }catch(Exception ex){
+                    System.out.println("No se ha podido agregar la Tarea. "+ex);
+                }
                 break;
             default:
                 break;
@@ -424,12 +463,23 @@ public class ControllerServlet extends HttpServlet {
         try{
             List<StatusWork> listTotalStatus = statusWorkFacade.findAll();
             getServletContext().setAttribute("estadosRegistrados", listTotalStatus);
+            System.out.println("Notice: Listados Status registrados.");
         }catch(Exception e){
             System.out.println("Error: Listando estados regs. - "+e);
         }
     }
     
-    public void eliminarTarea(BigInteger id){
+    public void listProblems(){
+        // Listar todos los problemas registrados
+        try{
+            List<Problema> listTotalProblems = problemaFacade.findAll();
+            getServletContext().setAttribute("problemasRegistrados", listTotalProblems);
+        }catch(Exception e){
+            System.out.println("Error: Listando problemas regs. - "+e);
+        }
+    }
+    
+    public void eliminarTarea(BigDecimal id){
         Tarea objToDel = tareaFacade.find(id);
         tareaFacade.remove(objToDel);
     }

@@ -13,10 +13,9 @@ ${pageContext.servletContext.setAttribute("Titulo","Dashboard")}
         <c:redirect url="/login.jsp"/>
     </c:when>
     <c:otherwise>
-        <div class="row">
+        <div class="row mb-3">
             <div class="col-12">
                 <p class="text-right">Bienvenid@ <b><c:out value="${objUser.nombre}"/></b></p>
-                <p>Logueado de pana.</p>
                 <h1>Dashboard</h1>
             </div>
         </div>
@@ -40,8 +39,22 @@ ${pageContext.servletContext.setAttribute("Titulo","Dashboard")}
                                 <td><a href="ver-tarea?id=${tarea.idTarea}">${tarea.descripcion}</a></td>
                                 <td><fmt:formatDate value="${tarea.fechaIngreso}" pattern="dd-MM-yyyy" /></td>
                                 <td><fmt:formatDate value="${tarea.fechaPlazo}" pattern="dd-MM-yyyy" /></td>
-                                <td>${tarea.statusWorkIdStatus.tipoStatus}</td>
-                                <!--<td><fmt:formatDate value="${tarea.fechaIngreso}" pattern="dd-MM-yyyy" />-<fmt:formatDate value="${tarea.fechaPlazo}" pattern="dd-MM-yyyy" /></td>-->
+                                <td>
+                                    <c:choose>
+                                        <c:when test="${tarea.statusWorkIdStatus.idStatus == 1}">
+                                            <span class="badge badge-pill badge-primary m-1">${tarea.statusWorkIdStatus.tipoStatus}</span>
+                                        </c:when>
+                                        <c:when test="${tarea.statusWorkIdStatus.idStatus == 2}">
+                                            <span class="badge badge-pill badge-secondary m-1">${tarea.statusWorkIdStatus.tipoStatus}</span>
+                                        </c:when>
+                                        <c:when test="${tarea.statusWorkIdStatus.idStatus == 3}">
+                                            <span class="badge badge-pill badge-danger m-1">${tarea.statusWorkIdStatus.tipoStatus}</span>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <span class="badge badge-pill badge-info m-1">${tarea.statusWorkIdStatus.tipoStatus}</span>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </td>
                                 <td id="fechcumplimiento-${tarea.idTarea}">
                                     <!-- ${tarea.fechaPlazo} - ${tarea.fechaIngreso} -->
                                     <script>

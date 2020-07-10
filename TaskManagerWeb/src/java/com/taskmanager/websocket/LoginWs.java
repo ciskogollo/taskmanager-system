@@ -55,7 +55,7 @@ public class LoginWs extends AbstractWs {
     
     @OnMessage
     public void onMessage(String msg, Session peer){
-        System.out.println("(WS)Nuevo msg ==> " + msg);
+        System.out.println("(WS)Nueva conexión ==> " + msg);
         /*
         try {
             jsonObj = new JSONObject(msg);
@@ -78,12 +78,13 @@ public class LoginWs extends AbstractWs {
         String name = usrOBj.get("user").toString();
         String pass = usrOBj.get("hash").toString();
         */
-
+        String response;
+        
         if(userIn != null){
             System.out.println("(WS)Accediendo '"+name+"'...");
             if(userIn.getRolIdRol().getNombreRol().equals("Administrador")){
                 userList.add(userIn);
-                String response = "logued";
+                response = "logued";
                 
                 JSONObject jsonObjResp = new JSONObject();
                 jsonObjResp.put("type", "event");
@@ -97,11 +98,12 @@ public class LoginWs extends AbstractWs {
             }
             
         }else{
+            response = "user_incorrect";
             System.out.println("Datos erróneos >:(");
             JSONObject jsonObjResp = new JSONObject();
             jsonObjResp.put("type", "event");
             jsonObjResp.put("event", "notice");
-            jsonObjResp.put("param", "user_incorrect");
+            jsonObjResp.put("param", response);
             replyMsg(peer,jsonObjResp.toString());
         }
     }

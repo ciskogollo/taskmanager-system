@@ -6,13 +6,13 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <div class="row my-3">
     <div class="col-12">
-        <a class="btn btn-outline-dark" href="tareas">Volver</a>
-        <h1>Tarea: </h1>
+        <a class="btn btn-outline-dark mb-3" href="tareas">Volver</a>
+        <h2 class="float-right">Tarea: ${tareaSeleccionada.descripcion}</h2>
     </div>
 </div>
 <div class="row">
     <div class="col-12">
-        <form action="edit-tarea" method="POST">
+        <form name="formEditTarea" id="formEditTarea" action="edit-tarea" method="POST">
             <div class="form-group">
                 <label for="txtDescriTarea">Descripción</label>
                 <input type="text" class="form-control" id="txtDescriTarea" name="txtDescriTarea" placeholder="Nombre de la Tarea" value="${tareaSeleccionada.descripcion}" disabled>
@@ -55,25 +55,34 @@
                 <small id="emailHelp" class="form-text text-muted">No es obligatoria una tarea antescesora.</small>
             </div>
             <div class="form-group">
-                <label for="selStatusWork">Estado</label>
-                <select class="form-control" id="selStatusWork" name="selStatusWork" disabled>
+                <label for="selStatusWork">Estado</label>                
+                <select multiple class="form-control" id="selStatusWork" name="selStatusWork" disabled>
                     <c:forEach items="${estadosRegistrados}" var="estadoReg">
                         <c:choose>
-                            <c:when test="">
-                                
+                            <c:when test="${tareaSeleccionada.statusWorkIdStatus.idStatus == estadoReg.idStatus}">
+                                <option value="<c:out value="${estadoReg.idStatus}"/>" selected> <c:out value="${estadoReg.tipoStatus}"/> </option>
                             </c:when>
+                            <c:otherwise>
+                                <option value="<c:out value="${estadoReg.idStatus}"/>"> <c:out value="${estadoReg.tipoStatus}"/> </option>
+                            </c:otherwise>
                         </c:choose>
                     </c:forEach>
                 </select>
             </div>
-            
             <div class="form-check">
                 <input type="checkbox" class="form-check-input" id="checkEdit">
                 <label class="form-check-label" for="checkEdit">Editar</label>
             </div>
-            <button id="btnUpdate" type="submit" class="btn btn-outline-success" disabled>Actualizar</button>
-            <a id="btnDelete" class="btn btn-outline-danger" href="del-tarea?id=${tareaSeleccionada.idTarea}" disabled>Eliminar</a>
+            <div class="form-group my-3">
+                <!--
+                <button id="btnUpdate" type="submit" class="btn btn-outline-success" disabled>Actualizar</button>
+                <a id="btnDelete" class="btn btn-outline-danger" href="del-tarea?id=${tareaSeleccionada.idTarea}" disabled>Eliminar</a>
+                -->
+                <button id="btnUpdate" class="btn btn-outline-success" type="button" onclick="confirmar()" disabled>Actualizar</button>
+                <button id="btnDelete" class="btn btn-outline-danger" type="button" onclick="eliminar()" disabled>Eliminar</button>
+            </div>
         </form>
+        
         <script>
             /*Enabling edition mode xd*/
             var modeEdition = document.getElementById('checkEdit');
@@ -86,14 +95,34 @@
                     $("#datePlazoTarea").prop("disabled", false);
                     $("#selResponsableTarea").prop("disabled", false);
                     $("#selTareaAntes").prop("disabled", false);
+                    $("#selStatusWork").prop("disabled", false);
                     $("#btnUpdate").prop("disabled", false);
+                    $("#btnDelete").prop("disabled", false);
                 }else{
                     console.log('Modo Edición desactivado.');
                     $("#txtDescriTarea").prop("disabled", true);
                     $("#datePlazoTarea").prop("disabled", true);
                     $("#selResponsableTarea").prop("disabled", true);
                     $("#selTareaAntes").prop("disabled", true);
+                    $("#selStatusWork").prop("disabled", true);
                     $("#btnUpdate").prop("disabled", true);
+                    $("#btnDelete").prop("disabled", true);
+                }
+            }
+            
+            function confirmar(){
+                //varhref="del-tarea?id=${tareaSeleccionada.idTarea}";
+                let confirma = confirm('Está a punto de editar esta tarea...');
+                if(confirma === false){
+                    return false;
+                }else{
+                    document.formEditTarea.submit();
+                }
+            }
+            function eliminar(){
+                let confirma = confirm('¿Realmente desea eliminar esta tarea?');
+                if(confirma === true){
+                    location.href = "del-tarea?id=${tareaSeleccionada.idTarea}";
                 }
             }
         </script>

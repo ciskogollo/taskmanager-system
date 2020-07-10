@@ -6,9 +6,12 @@
 package com.taskmanager.session;
 
 import com.taskmanager.entity.StatusWork;
+import java.math.BigDecimal;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -29,4 +32,8 @@ public class StatusWorkFacade extends AbstractFacade<StatusWork> {
         super(StatusWork.class);
     }
     
+    public List<StatusWork> findByIdStatus(BigDecimal idStat){
+        Query query = em.createNamedQuery("StatusWork.findByIdStatus");
+        return query.setParameter("idStatus",idStat).getResultList();
+    }
 }

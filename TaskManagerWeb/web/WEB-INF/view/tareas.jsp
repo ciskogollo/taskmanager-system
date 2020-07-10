@@ -3,11 +3,13 @@
     Created on : 29-05-2020, 1:28:10
     Author     : cisko
 --%>
-<div class="row">
+
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+<div class="row my-3">
     <div class="col-12">
-        <div class="btn-group" role="group" aria-label="Opciones">
-            <a href="add-tarea" class="btn btn-secondary">Agregar</a>
-        </div>
+        <a class="btn btn-outline-primary float-right" href="add-tarea">Agregar</a>
+        <h1>Mis Tareas</h1>
     </div>
 </div>
 <div class="row">
@@ -29,8 +31,8 @@
                     <tr>
                         <th scope="row"><c:out value="${tarea.idTarea}"/></th>
                         <td><a href="ver-tarea?id=${tarea.idTarea}">${tarea.descripcion}</a></td>
-                        <td>${tarea.fechaIngreso}</td>
-                        <td>${tarea.fechaPlazo}</td>
+                        <td><fmt:formatDate value="${tarea.fechaIngreso}" pattern="EEEE dd, MMMM yyyy" /></td>
+                        <td><fmt:formatDate value="${tarea.fechaPlazo}" pattern="EEEE dd, MMMM yyyy" /></td>
                         <td><a href="ver-tarea?id=${tarea.idAntes}">${tarea.idAntes}</a></td>
                         <td>${tarea.funcionIdFuncion.idFuncion}</td>
                         <td>
@@ -49,7 +51,7 @@
                                 </c:otherwise>
                             </c:choose>
                             <c:if test="${tarea.statusWorkIdStatus.tipoStatus == 'Activo'}">
-                                <a class="btn btn-outline-success m-1" href="confirmar-tarea?id=${tarea.idTarea}" role="button">Ok</a>
+                                <a class="btn btn-outline-warning btn-sm m-1" href="confirmar-tarea?id=${tarea.idTarea}" role="button">Terminar</a>
                             </c:if>
                         </td>
                     </tr>

@@ -20,6 +20,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
+
 /**
  *
  * @author cisko
@@ -107,7 +108,7 @@ public class Problema implements Serializable {
 
     @Override
     public String toString() {
-        return "com.taskmanager.entity.Problema[ idProblema=" + idProblema + " ]";
+        return "{Problema: {ID:" +idProblema+", Comentario:"+comentario+" }}";
     }
     
 }
