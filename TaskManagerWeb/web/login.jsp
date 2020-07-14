@@ -11,7 +11,7 @@ ${pageContext.servletContext.setAttribute("Titulo","Login - TMS")}
         <div class="row">
             <div class="col">
                 <form action="login" class="form-signin" method="POST">
-                    <img class="mb-4" src="${initParam.images}TMS_login.jpeg" alt="" width="72" height="72">
+                    <img class="mb-4" src="${initParam.images}icon.bmp" alt="" width="120" height="120">
                     <h1 class="h3 mb-3 font-weight-normal">Acceder</h1>
                     <label for="inputEmail" class="sr-only">Nombre de usuario</label>
                     <input type="text" name="inputEmail" id="inputEmail" class="form-control" placeholder="Nombre de usuario" required autofocus>
