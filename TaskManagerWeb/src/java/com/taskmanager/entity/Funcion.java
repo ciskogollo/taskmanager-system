@@ -34,7 +34,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Funcion.findAll", query = "SELECT f FROM Funcion f")
     , @NamedQuery(name = "Funcion.findByIdFuncion", query = "SELECT f FROM Funcion f WHERE f.idFuncion = :idFuncion")
-    , @NamedQuery(name = "Funcion.findByIdTipofunc", query = "SELECT f FROM Funcion f WHERE f.idTipofunc = :idTipofunc")})
+    , @NamedQuery(name = "Funcion.findByIdTipofunc", query = "SELECT f FROM Funcion f WHERE f.nombreFunc = :nombreFunc")})
 public class Funcion implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -46,8 +46,8 @@ public class Funcion implements Serializable {
     private BigDecimal idFuncion;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "ID_TIPOFUNC")
-    private BigInteger idTipofunc;
+    @Column(name = "NOMBRE_FUNC")
+    private String nombreFunc;
     @JoinColumn(name = "TIPO_FUNCION_ID_TIPOFUNC", referencedColumnName = "ID_TIPOFUNC")
     @ManyToOne(optional = false)
     private TipoFuncion tipoFuncionIdTipofunc;
@@ -64,9 +64,9 @@ public class Funcion implements Serializable {
         this.idFuncion = idFuncion;
     }
 
-    public Funcion(BigDecimal idFuncion, BigInteger idTipofunc) {
+    public Funcion(BigDecimal idFuncion, String nombreFunc) {
         this.idFuncion = idFuncion;
-        this.idTipofunc = idTipofunc;
+        this.nombreFunc = nombreFunc;
     }
 
     public BigDecimal getIdFuncion() {
@@ -77,12 +77,12 @@ public class Funcion implements Serializable {
         this.idFuncion = idFuncion;
     }
 
-    public BigInteger getIdTipofunc() {
-        return idTipofunc;
+    public String getIdTipofunc() {
+        return nombreFunc;
     }
 
-    public void setIdTipofunc(BigInteger idTipofunc) {
-        this.idTipofunc = idTipofunc;
+    public void setIdTipofunc(String nombreFunc) {
+        this.nombreFunc = nombreFunc;
     }
 
     public TipoFuncion getTipoFuncionIdTipofunc() {
