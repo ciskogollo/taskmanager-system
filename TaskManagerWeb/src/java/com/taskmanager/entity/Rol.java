@@ -94,7 +94,7 @@ public class Rol implements Serializable {
 
     @Override
     public String toString() {
-        return "com.taskmanager.entity.Rol[ idRol=" + idRol + " ]";
+        return "Rol: {ID:" + idRol + ", Nombre:" + "}";
     }
     
 }

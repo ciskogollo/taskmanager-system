@@ -71,9 +71,9 @@ public class Tarea implements Serializable {
     @Column(name = "ID_TSUPERIOR")
     private BigInteger idTsuperior;
     @Column(name = "ID_ANTES")
-    private BigInteger idAntes;
+    private BigDecimal idAntes;
     @Column(name = "ID_SUCES")
-    private BigInteger idSuces;
+    private BigDecimal idSuces;
     @JoinColumn(name = "FUNCION_ID_FUNCION", referencedColumnName = "ID_FUNCION")
     @ManyToOne(optional = false)
     private Funcion funcionIdFuncion;
@@ -146,19 +146,19 @@ public class Tarea implements Serializable {
         this.idTsuperior = idTsuperior;
     }
 
-    public BigInteger getIdAntes() {
+    public BigDecimal getIdAntes() {
         return idAntes;
     }
 
-    public void setIdAntes(BigInteger idAntes) {
+    public void setIdAntes(BigDecimal idAntes) {
         this.idAntes = idAntes;
     }
 
-    public BigInteger getIdSuces() {
+    public BigDecimal getIdSuces() {
         return idSuces;
     }
 
-    public void setIdSuces(BigInteger idSuces) {
+    public void setIdSuces(BigDecimal idSuces) {
         this.idSuces = idSuces;
     }
 
