@@ -268,16 +268,15 @@ public class ControllerServlet extends HttpServlet {
                 String formAddTarea = request.getQueryString();
                 System.out.println("Recibiendo datos de Nueva Tarea...");
                 String descrip = request.getParameter("txtDescriTarea");
-                String fechaPlRaw = request.getParameter("datePlazoTarea");
                 BigDecimal idUserResp = new BigDecimal(request.getParameter("selResponsableTarea"));
+                BigDecimal idAntesces = new BigDecimal(request.getParameter("selTareaAntes"));
                 Date fechaIngreso = new Date();
+                String fechaPlRaw = request.getParameter("datePlazoTarea");
+                System.out.println("INFO: fecPlazoRaw= " + fechaPlRaw);
                 Date fechaPlazo = new Date();
                 try {
-                    //fechaPlazo = new SimpleDateFormat("ddMMyyyy").parse(fechaPlRaw);
-                    fechaPlazo = new SimpleDateFormat("ddMMyyyy").parse(fechaPlRaw);
-                    System.out.println("FechaPPlazo: "+fechaPlazo);
-                    /*SimpleDateFormat sdf = new SimpleDateFormat("ddMMyyyy");*/
-                    /*fechaPlazo = sdf.format(fechaPlazo);*/
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                    fechaPlazo = new SimpleDateFormat("yyyy-MM-dd").parse(fechaPlRaw);
                 } catch (ParseException ex) {
                     Logger.getLogger(ControllerServlet.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -296,7 +295,7 @@ public class ControllerServlet extends HttpServlet {
                     tr.setFechaIngreso(fechaIngreso);
                     tr.setFechaPlazo(fechaPlazo);
                     tr.setFechaRecepcion(null);
-                    tr.setIdAntes(null);
+                    tr.setIdAntes(idAntesces);
                     tr.setIdSuces(null);
                     tr.setIdTsuperior(BigInteger.ZERO);
                     tr.setFuncionIdFuncion(funcTareaInit);
@@ -327,7 +326,7 @@ public class ControllerServlet extends HttpServlet {
                     Logger.getLogger(ControllerServlet.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 BigDecimal idUsResp = new BigDecimal(request.getParameter("selResponsableTarea"));
-                BigInteger idTarResp = new BigInteger(request.getParameter("selTareaAntes"));
+                BigDecimal idTarResp = new BigDecimal(request.getParameter("selTareaAntes"));
                 BigDecimal idStatusResp = new BigDecimal(request.getParameter("selStatusWork"));
                 try{
                     BigDecimal idTarea = (BigDecimal)session.getAttribute("idTareaSeleccionadaSES");
