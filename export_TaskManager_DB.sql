@@ -1,6 +1,16 @@
 --------------------------------------------------------
 -- Archivo creado  - viernes-julio-10-2020   
 --------------------------------------------------------
+DROP TABLE "ADMINTM"."CLIENTE" cascade constraints;
+DROP TABLE "ADMINTM"."FUNCION" cascade constraints;
+DROP TABLE "ADMINTM"."PROBLEMA" cascade constraints;
+DROP TABLE "ADMINTM"."PROCESO" cascade constraints;
+DROP TABLE "ADMINTM"."ROL" cascade constraints;
+DROP TABLE "ADMINTM"."STATUS_WORK" cascade constraints;
+DROP TABLE "ADMINTM"."TAREA" cascade constraints;
+DROP TABLE "ADMINTM"."TIPO_FUNCION" cascade constraints;
+DROP TABLE "ADMINTM"."UNIDAD" cascade constraints;
+DROP TABLE "ADMINTM"."USUARIO" cascade constraints;
 --------------------------------------------------------
 --  DDL for Table CLIENTE
 --------------------------------------------------------
