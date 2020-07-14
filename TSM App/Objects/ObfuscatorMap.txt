@@ -1,0 +1,24 @@
+Este fichero contiene las variables renombradas con los originales.
+v5=wshand
+v6=session
+v7=timerconnect
+v0=countadd
+vv1=close
+vv2=connect
+vv3=sendeventtoendpoint
+vv4=ws
+vv5=callback
+vv6=eventname
+vv7=main
+vv0=dash
+vvv1=starter
+vvv2=crearusuario
+vvv3=crearunidad
+vvv4=crearrol
+vvv5=crearproceso
+vvv6=ips
+vvv7=endpoint
+vvv0=updatestatus
+vvvv1=ipformuled
+vvvv2=btncerrarmenu
+vvvv3=updatedata

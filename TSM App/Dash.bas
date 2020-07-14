@@ -15,12 +15,12 @@ Sub Process_Globals
 End Sub
 
 Sub Globals
-	'These global variables will be redeclared each time the activity is created.
-	'These variables can only be accessed from this module.
 	Private ListViewUsuarios As ListView
 	Private ListViewUnidades As ListView
 	Private ListViewRoles As ListView
 	Private ListViewProcesos As ListView
+	Private btnAbrirMenu As Button
+	Private btnCerrarMenu As Button
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
@@ -35,10 +35,11 @@ Sub Activity_Create(FirstTime As Boolean)
 		End If
 	End If
 	
-	Activity.AddMenuItem("Usuarios","Usuarios")
-	Activity.AddMenuItem("Unidades","Unidades")
-	Activity.AddMenuItem("Roles","Roles")
-	Activity.AddMenuItem("Flujos","Flujos")
+	Activity.AddMenuItem("Usuarios", "CrearUsuarios")
+	Activity.AddMenuItem("Unidades","CrearUnidades")
+	Activity.AddMenuItem("Roles","CrearRoles")
+	Activity.AddMenuItem("Flujos","CrearFlujos")
+	
 	UpdateStatus
 End Sub
 
@@ -105,6 +106,30 @@ Sub wshand_processlist(paramap As Map)
 		mapProcess = paramap.Get("process"&i)
 		Log("Map:Process"&i&"= "&mapProcess)
 		
-		ListViewProcesos.AddTwoLines(mapProcess.Get("nombre"), "ID: "& mapProcess.Get("id")&" | "&"ENcargado: "&mapProcess.Get("nombreusuario"))
+		ListViewProcesos.AddTwoLines(mapProcess.Get("nombre"), "ID: "& mapProcess.Get("id")&" | "&"Encargado: "&mapProcess.Get("nombreusuario"))
 	Next
+End Sub
+
+Sub btnAbrirMenu_Click
+	Activity.OpenMenu
+End Sub
+
+Sub CrearUsuarios_Click
+	Msgbox("Estás a punto de crear un Usuario","¡Atención!")
+	StartActivity("CrearUsuario")
+End Sub
+
+Sub CrearUnidades_Click
+	Msgbox("Estás a punto de crear una Unidad","¡Atención!")
+	StartActivity("CrearUnidad")
+End Sub
+
+Sub CrearRoles_Click
+	Msgbox("Estás a punto de crear un Rol","¡Atención!")
+	StartActivity("CrearRol")
+End Sub
+
+Sub CrearFlujos_Click
+	Msgbox("Estás a punto de crear un Proceso","¡Atención!")
+	StartActivity("CrearProceso")
 End Sub

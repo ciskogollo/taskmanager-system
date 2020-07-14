@@ -2,8 +2,8 @@
 <manifest
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	package="b4a.tsm"
-	android:versionCode="1"
-	android:versionName="alpha.v1"
+	android:versionCode="8"
+	android:versionName="beta.v1"
 	android:installLocation="preferExternal">
 	
 	<uses-sdk android:minSdkVersion="11" android:targetSdkVersion="28"/>
@@ -40,5 +40,33 @@
 		</service>
 		<receiver android:name=".starter$starter_BR">
 		</receiver>
+		<activity
+			android:windowSoftInputMode="stateHidden"
+			android:launchMode="singleTop"
+			android:name=".crearusuario"
+			android:label="TaskManagerSystem Android"
+			android:screenOrientation="unspecified">
+		</activity>
+		<activity
+			android:windowSoftInputMode="stateHidden"
+			android:launchMode="singleTop"
+			android:name=".crearunidad"
+			android:label="TaskManagerSystem Android"
+			android:screenOrientation="unspecified">
+		</activity>
+		<activity
+			android:windowSoftInputMode="stateHidden"
+			android:launchMode="singleTop"
+			android:name=".crearrol"
+			android:label="TaskManagerSystem Android"
+			android:screenOrientation="unspecified">
+		</activity>
+		<activity
+			android:windowSoftInputMode="stateHidden"
+			android:launchMode="singleTop"
+			android:name=".crearproceso"
+			android:label="TaskManagerSystem Android"
+			android:screenOrientation="unspecified">
+		</activity>
 	</application>
 </manifest>

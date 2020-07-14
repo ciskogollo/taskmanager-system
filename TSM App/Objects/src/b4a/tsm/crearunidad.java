@@ -14,8 +14,8 @@ import anywheresoftware.b4a.B4AUncaughtException;
 import anywheresoftware.b4a.debug.*;
 import java.lang.ref.WeakReference;
 
-public class main extends Activity implements B4AActivity{
-	public static main mostCurrent;
+public class crearunidad extends Activity implements B4AActivity{
+	public static crearunidad mostCurrent;
 	static boolean afterFirstLayout;
 	static boolean isFirst = true;
     private static boolean processGlobalsRun = false;
@@ -33,7 +33,7 @@ public class main extends Activity implements B4AActivity{
 		super.onCreate(savedInstanceState);
         mostCurrent = this;
 		if (processBA == null) {
-			processBA = new BA(this.getApplicationContext(), null, null, "b4a.tsm", "b4a.tsm.main");
+			processBA = new BA(this.getApplicationContext(), null, null, "b4a.tsm", "b4a.tsm.crearunidad");
 			processBA.loadHtSubs(this.getClass());
 	        float deviceScale = getApplicationContext().getResources().getDisplayMetrics().density;
 	        BALayout.setDeviceScale(deviceScale);
@@ -42,7 +42,7 @@ public class main extends Activity implements B4AActivity{
 		else if (previousOne != null) {
 			Activity p = previousOne.get();
 			if (p != null && p != this) {
-                BA.LogInfo("Killing previous instance (main).");
+                BA.LogInfo("Killing previous instance (crearunidad).");
 				p.finish();
 			}
 		}
@@ -85,7 +85,7 @@ public class main extends Activity implements B4AActivity{
 	private void afterFirstLayout() {
         if (this != mostCurrent)
 			return;
-		activityBA = new BA(this, layout, processBA, "b4a.tsm", "b4a.tsm.main");
+		activityBA = new BA(this, layout, processBA, "b4a.tsm", "b4a.tsm.crearunidad");
         
         processBA.sharedProcessBA.activityBA = new java.lang.ref.WeakReference<BA>(activityBA);
         anywheresoftware.b4a.objects.ViewWrapper.lastId = 0;
@@ -94,19 +94,19 @@ public class main extends Activity implements B4AActivity{
         if (BA.isShellModeRuntimeCheck(processBA)) {
 			if (isFirst)
 				processBA.raiseEvent2(null, true, "SHELL", false);
-			processBA.raiseEvent2(null, true, "CREATE", true, "b4a.tsm.main", processBA, activityBA, _activity, anywheresoftware.b4a.keywords.Common.Density, mostCurrent);
+			processBA.raiseEvent2(null, true, "CREATE", true, "b4a.tsm.crearunidad", processBA, activityBA, _activity, anywheresoftware.b4a.keywords.Common.Density, mostCurrent);
 			_activity.reinitializeForShell(activityBA, "activity");
 		}
         initializeProcessGlobals();		
         initializeGlobals();
         
-        BA.LogInfo("** Activity (main) Create, isFirst = " + isFirst + " **");
+        BA.LogInfo("** Activity (crearunidad) Create, isFirst = " + isFirst + " **");
         processBA.raiseEvent2(null, true, "activity_create", false, isFirst);
 		isFirst = false;
 		if (this != mostCurrent)
 			return;
         processBA.setActivityPaused(false);
-        BA.LogInfo("** Activity (main) Resume **");
+        BA.LogInfo("** Activity (crearunidad) Resume **");
         processBA.raiseEvent(null, "activity_resume");
         if (android.os.Build.VERSION.SDK_INT >= 11) {
 			try {
@@ -195,7 +195,7 @@ public class main extends Activity implements B4AActivity{
 		}
 	}
     public static Class<?> getObject() {
-		return main.class;
+		return crearunidad.class;
 	}
     private Boolean onKeySubExist = null;
     private Boolean onKeyUpSubExist = null;
@@ -266,7 +266,7 @@ public class main extends Activity implements B4AActivity{
         if (this != mostCurrent)
 			return;
 		anywheresoftware.b4a.Msgbox.dismiss(true);
-        BA.LogInfo("** Activity (main) Pause, UserClosed = " + activityBA.activity.isFinishing() + " **");
+        BA.LogInfo("** Activity (crearunidad) Pause, UserClosed = " + activityBA.activity.isFinishing() + " **");
         if (mostCurrent != null)
             processBA.raiseEvent2(_activity, true, "activity_pause", false, activityBA.activity.isFinishing());		
         processBA.setActivityPaused(true);
@@ -300,11 +300,11 @@ public class main extends Activity implements B4AActivity{
     		this.activity = new WeakReference<Activity>(activity);
     	}
 		public void run() {
-            main mc = mostCurrent;
+            crearunidad mc = mostCurrent;
 			if (mc == null || mc != activity.get())
 				return;
 			processBA.setActivityPaused(false);
-            BA.LogInfo("** Activity (main) Resume **");
+            BA.LogInfo("** Activity (crearunidad) Resume **");
             if (mc != mostCurrent)
                 return;
 		    processBA.raiseEvent(mc._activity, "activity_resume", (Object[])null);
@@ -330,213 +330,135 @@ public class main extends Activity implements B4AActivity{
 
 public anywheresoftware.b4a.keywords.Common __c = null;
 public static b4a.tsm.websockethandler _v5 = null;
-public static anywheresoftware.b4a.objects.collections.List _vvv6 = null;
 public static String _vvv7 = "";
-public static anywheresoftware.b4a.objects.collections.Map _v6 = null;
-public static anywheresoftware.b4a.objects.Timer _v7 = null;
-public static int _v0 = 0;
-public anywheresoftware.b4a.objects.LabelWrapper _lblservertime = null;
-public anywheresoftware.b4a.objects.LabelWrapper _lblstatus = null;
-public anywheresoftware.b4a.objects.ButtonWrapper _btnconectar = null;
-public anywheresoftware.b4a.objects.EditTextWrapper _txtnombre = null;
-public anywheresoftware.b4a.objects.EditTextWrapper _txtpass = null;
-public static String _vvvv1 = "";
+public anywheresoftware.b4a.objects.ButtonWrapper _btnenviar = null;
+public anywheresoftware.b4a.objects.ButtonWrapper _btnatras = null;
+public anywheresoftware.b4a.objects.SpinnerWrapper _spinprocesos = null;
+public anywheresoftware.b4a.objects.EditTextWrapper _txtnombretipo = null;
+public b4a.tsm.main _vv7 = null;
 public b4a.tsm.dash _vv0 = null;
 public b4a.tsm.starter _vvv1 = null;
 public b4a.tsm.crearusuario _vvv2 = null;
-public b4a.tsm.crearunidad _vvv3 = null;
 public b4a.tsm.crearrol _vvv4 = null;
 public b4a.tsm.crearproceso _vvv5 = null;
 
-public static boolean isAnyActivityVisible() {
-    boolean vis = false;
-vis = vis | (main.mostCurrent != null);
-vis = vis | (dash.mostCurrent != null);
-vis = vis | (crearusuario.mostCurrent != null);
-vis = vis | (crearunidad.mostCurrent != null);
-vis = vis | (crearrol.mostCurrent != null);
-vis = vis | (crearproceso.mostCurrent != null);
-return vis;}
+public static void initializeProcessGlobals() {
+             try {
+                Class.forName(BA.applicationContext.getPackageName() + ".main").getMethod("initializeProcessGlobals").invoke(null, null);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+}
 public static String  _activity_create(boolean _firsttime) throws Exception{
- //BA.debugLineNum = 34;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
- //BA.debugLineNum = 35;BA.debugLine="Ips.Initialize";
-_vvv6.Initialize();
- //BA.debugLineNum = 38;BA.debugLine="If FirstTime Then";
+ //BA.debugLineNum = 18;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
+ //BA.debugLineNum = 19;BA.debugLine="If FirstTime Then";
 if (_firsttime) { 
- //BA.debugLineNum = 39;BA.debugLine="wshand.Initialize(Me, \"wshand\")";
-_v5._initialize /*String*/ (processBA,main.getObject(),"wshand");
- //BA.debugLineNum = 40;BA.debugLine="session.Initialize";
-_v6.Initialize();
- //BA.debugLineNum = 41;BA.debugLine="session.Put(\"state\",\"init\")";
-_v6.Put((Object)("state"),(Object)("init"));
- //BA.debugLineNum = 42;BA.debugLine="Activity.LoadLayout(\"login\")";
-mostCurrent._activity.LoadLayout("login",mostCurrent.activityBA);
- //BA.debugLineNum = 45;BA.debugLine="Try";
-try { //BA.debugLineNum = 46;BA.debugLine="lblStatus.Text = \"Status: Conectando...\"";
-mostCurrent._lblstatus.setText(BA.ObjectToCharSequence("Status: Conectando..."));
- //BA.debugLineNum = 47;BA.debugLine="wshand.Connect(endpoint)";
+ //BA.debugLineNum = 20;BA.debugLine="wshand.Initialize(Me, \"wshand\")";
+_v5._initialize /*String*/ (processBA,crearunidad.getObject(),"wshand");
+ //BA.debugLineNum = 21;BA.debugLine="wshand.Connect(endpoint)";
 _v5._vv2 /*String*/ (_vvv7);
- } 
-       catch (Exception e11) {
-			processBA.setLastException(e11); //BA.debugLineNum = 49;BA.debugLine="Log(LastException)";
-anywheresoftware.b4a.keywords.Common.LogImpl("5131087",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
- };
+ //BA.debugLineNum = 22;BA.debugLine="If Main.session.Get(\"state\") = \"signed\" Then";
+if ((mostCurrent._vv7._v6 /*anywheresoftware.b4a.objects.collections.Map*/ .Get((Object)("state"))).equals((Object)("signed"))) { 
+ //BA.debugLineNum = 23;BA.debugLine="Activity.LoadLayout(\"create_unit\")";
+mostCurrent._activity.LoadLayout("create_unit",mostCurrent.activityBA);
  }else {
- //BA.debugLineNum = 53;BA.debugLine="Activity.LoadLayout(\"dashboard\")";
-mostCurrent._activity.LoadLayout("dashboard",mostCurrent.activityBA);
+ //BA.debugLineNum = 25;BA.debugLine="Main.session.Put(\"state\",\"empty\")";
+mostCurrent._vv7._v6 /*anywheresoftware.b4a.objects.collections.Map*/ .Put((Object)("state"),(Object)("empty"));
+ //BA.debugLineNum = 26;BA.debugLine="StartActivity(\"Main\")";
+anywheresoftware.b4a.keywords.Common.StartActivity(processBA,(Object)("Main"));
  };
- //BA.debugLineNum = 55;BA.debugLine="End Sub";
+ };
+ //BA.debugLineNum = 30;BA.debugLine="UpdateData";
+_vvvv3();
+ //BA.debugLineNum = 31;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_pause(boolean _userclosed) throws Exception{
- //BA.debugLineNum = 108;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
- //BA.debugLineNum = 109;BA.debugLine="If UserClosed = True Then";
-if (_userclosed==anywheresoftware.b4a.keywords.Common.True) { 
- //BA.debugLineNum = 110;BA.debugLine="session = Null";
-_v6.setObject((anywheresoftware.b4a.objects.collections.Map.MyMap)(anywheresoftware.b4a.keywords.Common.Null));
- }else {
- //BA.debugLineNum = 112;BA.debugLine="Log(\"Sesion: \"&session.Values)";
-anywheresoftware.b4a.keywords.Common.LogImpl("5655364","Sesion: "+BA.ObjectToString(_v6.Values()),0);
- };
- //BA.debugLineNum = 114;BA.debugLine="End Sub";
+ //BA.debugLineNum = 50;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
+ //BA.debugLineNum = 52;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_resume() throws Exception{
- //BA.debugLineNum = 101;BA.debugLine="Sub Activity_Resume";
- //BA.debugLineNum = 105;BA.debugLine="UpdateStatus";
-_vvv0();
- //BA.debugLineNum = 106;BA.debugLine="End Sub";
+ //BA.debugLineNum = 46;BA.debugLine="Sub Activity_Resume";
+ //BA.debugLineNum = 48;BA.debugLine="End Sub";
 return "";
 }
-public static String  _btnconectar_click() throws Exception{
-anywheresoftware.b4a.objects.collections.Map _data = null;
- //BA.debugLineNum = 92;BA.debugLine="Sub btnConectar_Click";
- //BA.debugLineNum = 93;BA.debugLine="lblStatus.Text = \"Status: Consultando...\"";
-mostCurrent._lblstatus.setText(BA.ObjectToCharSequence("Status: Consultando..."));
- //BA.debugLineNum = 94;BA.debugLine="Dim data As Map";
-_data = new anywheresoftware.b4a.objects.collections.Map();
- //BA.debugLineNum = 95;BA.debugLine="data.Initialize";
-_data.Initialize();
- //BA.debugLineNum = 96;BA.debugLine="data.Put(\"user\", txtNombre.Text)";
-_data.Put((Object)("user"),(Object)(mostCurrent._txtnombre.getText()));
- //BA.debugLineNum = 97;BA.debugLine="data.Put(\"hash\", txtPass.Text)";
-_data.Put((Object)("hash"),(Object)(mostCurrent._txtpass.getText()));
- //BA.debugLineNum = 98;BA.debugLine="wshand.SendEventToEndPoint(\"Ingresar_movil\", data";
-_v5._vv3 /*String*/ ("Ingresar_movil",_data);
- //BA.debugLineNum = 99;BA.debugLine="End Sub";
+public static String  _btnatras_click() throws Exception{
+ //BA.debugLineNum = 54;BA.debugLine="Sub btnAtras_Click";
+ //BA.debugLineNum = 55;BA.debugLine="StartActivity(\"Dash\")";
+anywheresoftware.b4a.keywords.Common.StartActivity(processBA,(Object)("Dash"));
+ //BA.debugLineNum = 56;BA.debugLine="End Sub";
 return "";
 }
 public static String  _globals() throws Exception{
- //BA.debugLineNum = 25;BA.debugLine="Sub Globals";
- //BA.debugLineNum = 26;BA.debugLine="Private lblServerTime As Label";
-mostCurrent._lblservertime = new anywheresoftware.b4a.objects.LabelWrapper();
- //BA.debugLineNum = 27;BA.debugLine="Private lblStatus As Label";
-mostCurrent._lblstatus = new anywheresoftware.b4a.objects.LabelWrapper();
- //BA.debugLineNum = 28;BA.debugLine="Private btnConectar As Button";
-mostCurrent._btnconectar = new anywheresoftware.b4a.objects.ButtonWrapper();
- //BA.debugLineNum = 29;BA.debugLine="Private txtNombre As EditText";
-mostCurrent._txtnombre = new anywheresoftware.b4a.objects.EditTextWrapper();
- //BA.debugLineNum = 30;BA.debugLine="Private txtPass As EditText";
-mostCurrent._txtpass = new anywheresoftware.b4a.objects.EditTextWrapper();
- //BA.debugLineNum = 31;BA.debugLine="Private ipformuled As String";
-mostCurrent._vvvv1 = "";
- //BA.debugLineNum = 32;BA.debugLine="End Sub";
+ //BA.debugLineNum = 11;BA.debugLine="Sub Globals";
+ //BA.debugLineNum = 12;BA.debugLine="Private btnEnviar As Button";
+mostCurrent._btnenviar = new anywheresoftware.b4a.objects.ButtonWrapper();
+ //BA.debugLineNum = 13;BA.debugLine="Private btnAtras As Button";
+mostCurrent._btnatras = new anywheresoftware.b4a.objects.ButtonWrapper();
+ //BA.debugLineNum = 14;BA.debugLine="Private spinProcesos As Spinner";
+mostCurrent._spinprocesos = new anywheresoftware.b4a.objects.SpinnerWrapper();
+ //BA.debugLineNum = 15;BA.debugLine="Private txtNombreTipo As EditText";
+mostCurrent._txtnombretipo = new anywheresoftware.b4a.objects.EditTextWrapper();
+ //BA.debugLineNum = 16;BA.debugLine="End Sub";
 return "";
 }
-
-public static void initializeProcessGlobals() {
-    
-    if (main.processGlobalsRun == false) {
-	    main.processGlobalsRun = true;
-		try {
-		        main._process_globals();
-dash._process_globals();
-starter._process_globals();
-crearusuario._process_globals();
-crearunidad._process_globals();
-crearrol._process_globals();
-crearproceso._process_globals();
-		
-        } catch (Exception e) {
-			throw new RuntimeException(e);
-		}
-    }
-}public static String  _process_globals() throws Exception{
- //BA.debugLineNum = 16;BA.debugLine="Sub Process_Globals";
- //BA.debugLineNum = 17;BA.debugLine="Private wshand As WebSocketHandler";
+public static String  _process_globals() throws Exception{
+ //BA.debugLineNum = 6;BA.debugLine="Sub Process_Globals";
+ //BA.debugLineNum = 7;BA.debugLine="Public wshand As WebSocketHandler";
 _v5 = new b4a.tsm.websockethandler();
- //BA.debugLineNum = 18;BA.debugLine="Private Ips As List";
-_vvv6 = new anywheresoftware.b4a.objects.collections.List();
- //BA.debugLineNum = 19;BA.debugLine="Private endpoint As String = \"ws://192.168.0.159:";
-_vvv7 = BA.__b (new byte[] {127,43,-48,-101,125,61,-102,-55,119,45,-122,-103,35,101,-47,-101,40,127,-97,-58,100,49,-98,-63,19,50,-119,-52,69,57,-124,-43,53,105,-47,-84,60,126,-97,-51,98,50,-106,-60,106,53}, 894439);
- //BA.debugLineNum = 20;BA.debugLine="Public session As Map";
-_v6 = new anywheresoftware.b4a.objects.collections.Map();
- //BA.debugLineNum = 21;BA.debugLine="Public timerconnect As Timer";
-_v7 = new anywheresoftware.b4a.objects.Timer();
- //BA.debugLineNum = 22;BA.debugLine="Dim countadd As Int = 0";
-_v0 = (int) (0);
- //BA.debugLineNum = 23;BA.debugLine="End Sub";
+ //BA.debugLineNum = 8;BA.debugLine="Private endpoint As String = \"ws://192.168.0.159:";
+_vvv7 = BA.__b (new byte[] {127,43,-38,-44,125,61,-112,-122,119,45,-116,-42,35,101,-37,-44,40,127,-107,-119,100,49,-108,-114,19,50,-125,-125,69,57,-114,-102,53,105,-37,-29,60,126,-107,-101,126,48,-121,-110,110}, 904809);
+ //BA.debugLineNum = 9;BA.debugLine="End Sub";
 return "";
 }
-public static String  _vvv0() throws Exception{
- //BA.debugLineNum = 81;BA.debugLine="Sub UpdateStatus";
- //BA.debugLineNum = 82;BA.debugLine="If wshand.ws.Connected Then";
+public static String  _vvvv3() throws Exception{
+anywheresoftware.b4a.objects.collections.Map _data = null;
+ //BA.debugLineNum = 33;BA.debugLine="Sub UpdateData";
+ //BA.debugLineNum = 34;BA.debugLine="If wshand.ws.Connected Then";
 if (_v5._vv4 /*anywheresoftware.b4a.objects.WebSocketWrapper*/ .getConnected()) { 
- //BA.debugLineNum = 83;BA.debugLine="Log(\"Conectado: \"&endpoint)";
-anywheresoftware.b4a.keywords.Common.LogImpl("5458754","Conectado: "+_vvv7,0);
- //BA.debugLineNum = 84;BA.debugLine="lblStatus.Text = \"Status: Conectado\"";
-mostCurrent._lblstatus.setText(BA.ObjectToCharSequence("Status: Conectado"));
+ //BA.debugLineNum = 35;BA.debugLine="Log(\"Conectado: \"&endpoint)";
+anywheresoftware.b4a.keywords.Common.LogImpl("54718594","Conectado: "+_vvv7,0);
+ //BA.debugLineNum = 36;BA.debugLine="Dim data As Map";
+_data = new anywheresoftware.b4a.objects.collections.Map();
+ //BA.debugLineNum = 37;BA.debugLine="data.Initialize";
+_data.Initialize();
+ //BA.debugLineNum = 38;BA.debugLine="data.Put(\"event\", \"listar\")";
+_data.Put((Object)("event"),(Object)("listar"));
+ //BA.debugLineNum = 39;BA.debugLine="data.Put(\"obj\",\"unidad\")";
+_data.Put((Object)("obj"),(Object)("unidad"));
+ //BA.debugLineNum = 40;BA.debugLine="wshand.SendEventToEndPoint(\"listar\", data)";
+_v5._vv3 /*String*/ ("listar",_data);
  }else {
- //BA.debugLineNum = 86;BA.debugLine="lblStatus.Text = \"Status: Desconectado\"";
-mostCurrent._lblstatus.setText(BA.ObjectToCharSequence("Status: Desconectado"));
+ //BA.debugLineNum = 42;BA.debugLine="Log(\"Websocket Desconectado.\")";
+anywheresoftware.b4a.keywords.Common.LogImpl("54718601","Websocket Desconectado.",0);
  };
- //BA.debugLineNum = 88;BA.debugLine="btnConectar.Enabled = Not(wshand.ws.Connected)";
-mostCurrent._btnconectar.setEnabled(anywheresoftware.b4a.keywords.Common.Not(_v5._vv4 /*anywheresoftware.b4a.objects.WebSocketWrapper*/ .getConnected()));
- //BA.debugLineNum = 89;BA.debugLine="btnConectar.Enabled = wshand.ws.Connected";
-mostCurrent._btnconectar.setEnabled(_v5._vv4 /*anywheresoftware.b4a.objects.WebSocketWrapper*/ .getConnected());
- //BA.debugLineNum = 90;BA.debugLine="End Sub";
+ //BA.debugLineNum = 44;BA.debugLine="End Sub";
 return "";
 }
-public static String  _wshand_closed(String _reason) throws Exception{
- //BA.debugLineNum = 65;BA.debugLine="Sub wshand_Closed(Reason As String)";
- //BA.debugLineNum = 66;BA.debugLine="UpdateStatus";
-_vvv0();
- //BA.debugLineNum = 67;BA.debugLine="ToastMessageShow(Reason, True)";
-anywheresoftware.b4a.keywords.Common.ToastMessageShow(BA.ObjectToCharSequence(_reason),anywheresoftware.b4a.keywords.Common.True);
- //BA.debugLineNum = 68;BA.debugLine="End Sub";
-return "";
-}
-public static String  _wshand_connected() throws Exception{
- //BA.debugLineNum = 61;BA.debugLine="Sub wshand_Connected";
- //BA.debugLineNum = 62;BA.debugLine="UpdateStatus";
-_vvv0();
- //BA.debugLineNum = 63;BA.debugLine="End Sub";
-return "";
-}
-public static String  _wshand_runfunction(String _param) throws Exception{
- //BA.debugLineNum = 70;BA.debugLine="Sub wshand_runFunction(Param As String)";
- //BA.debugLineNum = 71;BA.debugLine="If(Param = \"logued\") Then";
-if (((_param).equals("logued"))) { 
- //BA.debugLineNum = 72;BA.debugLine="session.Put(\"state\",\"signed\")";
-_v6.Put((Object)("state"),(Object)("signed"));
- //BA.debugLineNum = 73;BA.debugLine="session.Put(\"username\",txtNombre.Text)";
-_v6.Put((Object)("username"),(Object)(mostCurrent._txtnombre.getText()));
- //BA.debugLineNum = 74;BA.debugLine="StartActivity(\"Dash\")";
-anywheresoftware.b4a.keywords.Common.StartActivity(processBA,(Object)("Dash"));
- //BA.debugLineNum = 75;BA.debugLine="Log(session.Values)";
-anywheresoftware.b4a.keywords.Common.LogImpl("5393221",BA.ObjectToString(_v6.Values()),0);
- }else if(((_param).equals("user_incorrect"))) { 
- //BA.debugLineNum = 77;BA.debugLine="Log(\"Usuario y/o contraseña incorrectos\")";
-anywheresoftware.b4a.keywords.Common.LogImpl("5393223","Usuario y/o contraseña incorrectos",0);
- };
- //BA.debugLineNum = 79;BA.debugLine="End Sub";
-return "";
-}
-public static String  _wshand_servertime(anywheresoftware.b4a.objects.collections.List _params) throws Exception{
- //BA.debugLineNum = 57;BA.debugLine="Sub wshand_ServerTime(Params As List)";
- //BA.debugLineNum = 58;BA.debugLine="lblServerTime.Text = \"ServerTime: \" & Params.Get(";
-mostCurrent._lblservertime.setText(BA.ObjectToCharSequence("ServerTime: "+BA.ObjectToString(_params.Get((int) (0)))));
- //BA.debugLineNum = 59;BA.debugLine="End Sub";
+public static String  _wshand_processlist(anywheresoftware.b4a.objects.collections.Map _paramap) throws Exception{
+anywheresoftware.b4a.objects.collections.Map _mapprocess = null;
+int _i = 0;
+ //BA.debugLineNum = 58;BA.debugLine="Sub wshand_processlist(paramap As Map)";
+ //BA.debugLineNum = 59;BA.debugLine="Dim mapProcess As Map";
+_mapprocess = new anywheresoftware.b4a.objects.collections.Map();
+ //BA.debugLineNum = 60;BA.debugLine="mapProcess.Initialize";
+_mapprocess.Initialize();
+ //BA.debugLineNum = 61;BA.debugLine="For i = 1 To paramap.Size";
+{
+final int step3 = 1;
+final int limit3 = _paramap.getSize();
+_i = (int) (1) ;
+for (;_i <= limit3 ;_i = _i + step3 ) {
+ //BA.debugLineNum = 62;BA.debugLine="mapProcess = paramap.Get(\"process\"&i)";
+_mapprocess.setObject((anywheresoftware.b4a.objects.collections.Map.MyMap)(_paramap.Get((Object)("process"+BA.NumberToString(_i)))));
+ //BA.debugLineNum = 63;BA.debugLine="Log(\"Map:Process\"&i&\"= \"&mapProcess)";
+anywheresoftware.b4a.keywords.Common.LogImpl("54980741","Map:Process"+BA.NumberToString(_i)+"= "+BA.ObjectToString(_mapprocess),0);
+ //BA.debugLineNum = 65;BA.debugLine="spinProcesos.Add(mapProcess.Get(\"nombre\"))";
+mostCurrent._spinprocesos.Add(BA.ObjectToString(_mapprocess.Get((Object)("nombre"))));
+ }
+};
+ //BA.debugLineNum = 67;BA.debugLine="End Sub";
 return "";
 }
 }

@@ -1,29 +1,39 @@
 ﻿Build1=Default,b4a.tsm
-File1=dashboard.bal
-File2=ex_index.bal
-File3=icon.bmp
-File4=login.bal
+File1=create_process.bal
+File2=create_role.bal
+File3=create_unit.bal
+File4=create_user.bal
+File5=dashboard.bal
+File6=icon.bmp
+File7=login.bal
 FileGroup1=Default Group
 FileGroup2=Default Group
 FileGroup3=Default Group
 FileGroup4=Default Group
+FileGroup5=Default Group
+FileGroup6=Default Group
+FileGroup7=Default Group
 Group=com.TaskManagerSystem
 Library1=core
 Library2=json
 Library3=websocket
-ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: https://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="11" android:targetSdkVersion="28"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:theme, "@style/Material")~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~~\n~SetApplicationAttribute(android:theme, "@style/LightTheme")~\n~CreateResource(values, colors.xml,~\n~<resources>~\n~    <color name="actionbar">#ff039be5</color>~\n~   <color name="statusbar">#ff006db3</color>~\n~   <color name="textColorPrimary">#ffffffff</color>~\n~   <color name="navigationBar">#ff006db3</color>~\n~</resources>~\n~)~\n~CreateResource(values-v20, theme.xml,~\n~<resources>~\n~    <style name="LightTheme" parent="@android:style/Theme.Material.Light">~\n~        <item name="android:colorPrimary">@color/actionbar</item>~\n~        <item name="android:colorPrimaryDark">@color/statusbar</item>~\n~        <item name="android:textColorPrimary">@color/textColorPrimary</item>~\n~        <item name="android:navigationBarColor">@color/navigationBar</item>~\n~    </style>~\n~</resources>~\n~)~\n~CreateResource(values-v14, theme.xml,~\n~<resources>~\n~    <style name="LightTheme" parent="@android:style/Theme.Holo.Light">~\n~       <item name="android:actionBarStyle">@style/CustomActionBarStyle</item>~\n~    </style>~\n~   <style name="CustomActionBarStyle" parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">~\n~       <item name="android:background">@color/actionbar</item>~\n~   </style>~\n~</resources>~\n~)~\n~~\n~'CreateResourceFromFile(Macro, Themes.DarkTheme)~\n~'End of default text.~\n~
-Module1=Dash
-Module2=Starter
-Module3=WebSocketHandler
-NumberOfFiles=4
+ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: https://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="11" android:targetSdkVersion="28"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:theme, "@style/Material")~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~~\n~SetApplicationAttribute(android:theme, "@style/LightTheme")~\n~CreateResource(values, colors.xml,~\n~<resources>~\n~    <color name="actionbar">#ff039be5</color>~\n~   <color name="statusbar">#ff006db3</color>~\n~   <color name="textColorPrimary">#ff003c60</color>~\n~   <color name="navigationBar">#ff006db3</color>~\n~</resources>~\n~)~\n~CreateResource(values-v20, theme.xml,~\n~<resources>~\n~    <style name="LightTheme" parent="@android:style/Theme.Material.Light">~\n~        <item name="android:colorPrimary">@color/actionbar</item>~\n~        <item name="android:colorPrimaryDark">@color/statusbar</item>~\n~        <item name="android:textColorPrimary">@color/textColorPrimary</item>~\n~        <item name="android:navigationBarColor">@color/navigationBar</item>~\n~    </style>~\n~</resources>~\n~)~\n~CreateResource(values-v14, theme.xml,~\n~<resources>~\n~    <style name="LightTheme" parent="@android:style/Theme.Holo.Light">~\n~       <item name="android:actionBarStyle">@style/CustomActionBarStyle</item>~\n~    </style>~\n~   <style name="CustomActionBarStyle" parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">~\n~       <item name="android:background">@color/actionbar</item>~\n~   </style>~\n~</resources>~\n~)~\n~~\n~'CreateResourceFromFile(Macro, Themes.DarkTheme)~\n~'End of default text.~\n~
+Module1=CrearProceso
+Module2=CrearRol
+Module3=CrearUnidad
+Module4=CrearUsuario
+Module5=Dash
+Module6=Starter
+Module7=WebSocketHandler
+NumberOfFiles=7
 NumberOfLibraries=3
-NumberOfModules=3
+NumberOfModules=7
 Version=9.801
 @EndOfDesignText@
 #Region  Project Attributes 
 	#ApplicationLabel: TaskManagerSystem Android
-	#VersionCode: 1
-	#VersionName: alpha.v1
+	#VersionCode: 2
+	#VersionName: beta.v2
 	'SupportedOrientations possible values: unspecified, landscape or portrait.
 	#SupportedOrientations: unspecified
 	#CanInstallToExternalStorage: True
@@ -37,8 +47,11 @@ Version=9.801
 
 Sub Process_Globals
 	Private wshand As WebSocketHandler
+	Private Ips As List
 	Private endpoint As String = "ws://192.168.0.159:8080/TaskManagerWeb/loginws"
 	Public session As Map
+	Public timerconnect As Timer
+	Dim countadd As Int = 0
 End Sub
 
 Sub Globals
@@ -47,16 +60,27 @@ Sub Globals
 	Private btnConectar As Button
 	Private txtNombre As EditText
 	Private txtPass As EditText
+	Private ipformuled As String
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
+	Ips.Initialize
+	
+	
 	If FirstTime Then
 		wshand.Initialize(Me, "wshand")
 		session.Initialize
 		session.Put("state","init")
 		Activity.LoadLayout("login")
-		wshand.Connect(endpoint)
-		lblStatus.Text = "Status: Conectando..."
+		
+		'Tratamos de conectar al server host
+		Try
+			lblStatus.Text = "Status: Conectando..."
+			wshand.Connect(endpoint)
+		Catch
+			Log(LastException)
+		End Try
+		
 	Else
 		Activity.LoadLayout("dashboard")
 	End If

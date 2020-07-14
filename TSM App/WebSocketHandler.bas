@@ -10,17 +10,50 @@ Sub Class_Globals
 	Public ws As WebSocket
 	Private Callback As Object
 	Private EventName As String
+'	Private Ips As List
+'	Public timerconnect As Timer
+'	Dim countadd As Int = 0
+'	Private ipformuled As String
 End Sub
 
 Public Sub Initialize (vCallbk As Object, vEvtName As String)
 	Callback = vCallbk
 	EventName = vEvtName
 	ws.Initialize("ws")
+	
+'	Ips.Initialize
+'	Ips.Add("192.168.0.59")
+'	Ips.Add("192.168.0.159")
+'	Ips.Add("192.168.0.7")
+'	For i=2 To 200
+'		Dim strhost As String
+'		'strhost = "ws://" & "192.168.0." & i & ":8080/TaskManagerWeb/"
+'		strhost = "192.168.0." & i
+'		Ips.Add(strhost)
+'	Next
+'	timerconnect.Initialize("timerconnect", 300)
 End Sub
 
 Public Sub Connect(url As String)
 	ws.Connect(url)
+	
+'	If ws.Connected <> True Then
+'		Log("WebSocket Desconectado. Intentando conexión...")
+'		timerconnect.Enabled = True
+'	Else
+'		Log("WebSocket: Conexión establecida.")
+'		timerconnect.Enabled = False
+'	End If
 End Sub
+
+'Private Sub timerconnect_Tick
+'	If ws.Connected <> True Then
+'		ipformuled = "ws://" & Ips.Get(countadd) & ":8080/TaskManagerWeb/loginws"
+'		Log("Conectando a: " & ipformuled)
+'		ws.Connect(ipformuled)
+'		countadd = countadd +1
+'	End If
+'End Sub
 
 Public Sub Close
 	If ws.Connected Then
@@ -83,32 +116,29 @@ Private Sub ws_TextMessage (msg As String)
 				Dim unidadesMap As Map = paramMap.Get("unitlist")
 				Dim rolesMap As Map = paramMap.Get("rolelist")
 				Dim procesosMap As Map = paramMap.Get("processlist")
+				Dim clientesMap As Map = paramMap.Get("clientlist")
 			Catch
 				Log("Maps Error: " & LastException)
 			End Try
 			
 			Select event
 				Case "dashboard"
-					'CallSub2(Callback, EventName & "_" & paramMap.ContainsKey("userlist"), usuariosMap)
-					'CallSub2(Callback, EventName & "_" & paramMap.ContainsKey("unitlist"), usuariosMap)
-					
-					'CallSub2(Callback, EventName & "_" & paramMap.getKeyAt(0), usuariosMap)
-					'CallSub2(Callback, EventName & "_" & paramMap.getKeyAt(1), unidadesMap)
-					
 					CallSub2(Callback, EventName & "_" & "userlist", usuariosMap)
 					CallSub2(Callback, EventName & "_" & "unitlist",unidadesMap)
 					CallSub2(Callback, EventName & "_" & "rolelist", rolesMap)
 					CallSub2(Callback, EventName & "_" & "processlist", procesosMap)
 					
-					
-					Log("Function: CallSub2(" & EventName & "_" & paramMap.getKeyAt(0) & ", param(" & usuariosMap&")")
-					Log("Function: CallSub2(" & EventName & "_" & paramMap.getKeyAt(1) & ", param(" & procesosMap&")")
-					Log("Function: CallSub2(" & EventName & "_" & paramMap.getKeyAt(2) & ", param(" & rolesMap&")")
-					Log("Function: CallSub2(" & EventName & "_" & paramMap.getKeyAt(3) & ", param(" & unidadesMap&")")
-					
-					
-					'Log("Function: CallSub2(" & EventName & "_" & paramMap.getKeyAt(1) & ", param(" & unidadesMap&")")
-					
+'					Log("Function: CallSub2(" & EventName & "_" & paramMap.getKeyAt(0) & ", param(" & usuariosMap&")")
+'					Log("Function: CallSub2(" & EventName & "_" & paramMap.getKeyAt(1) & ", param(" & procesosMap&")")
+'					Log("Function: CallSub2(" & EventName & "_" & paramMap.getKeyAt(2) & ", param(" & rolesMap&")")
+'					Log("Function: CallSub2(" & EventName & "_" & paramMap.getKeyAt(3) & ", param(" & unidadesMap&")")
+				Case "usuario"
+					CallSub2(Callback, EventName & "_" & "rolelist", rolesMap)
+				Case "unidad"
+					CallSub2(Callback, EventName & "_" & "processlist", procesosMap)
+				Case "proceso"
+					CallSub2(Callback, EventName & "_" & "clientlist", clientesMap)
+					CallSub2(Callback, EventName & "_" & "userlist", usuariosMap)
 			End Select
 		End If
 		

@@ -2,6 +2,6 @@
 <resources>
     <color name="actionbar">#ff039be5</color>
    <color name="statusbar">#ff006db3</color>
-   <color name="textColorPrimary">#ffffffff</color>
+   <color name="textColorPrimary">#ff003c60</color>
    <color name="navigationBar">#ff006db3</color>
 </resources>
