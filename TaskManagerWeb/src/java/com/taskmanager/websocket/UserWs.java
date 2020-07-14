@@ -5,6 +5,7 @@
  */
 package com.taskmanager.websocket;
 
+import com.taskmanager.entity.Cliente;
 import com.taskmanager.entity.Usuario;
 import com.taskmanager.entity.Unidad;
 import com.taskmanager.entity.Rol;
@@ -13,6 +14,7 @@ import com.taskmanager.session.UsuarioFacade;
 import com.taskmanager.session.UnidadFacade;
 import com.taskmanager.session.RolFacade;
 import com.taskmanager.session.ProcesoFacade;
+import com.taskmanager.session.ClienteFacade;
 import static com.taskmanager.websocket.LoginWs.queue;
 import static com.taskmanager.websocket.LoginWs.logger;
 import java.io.IOException;
@@ -45,6 +47,8 @@ public class UserWs extends AbstractWs {
     private RolFacade rolFacade;
     @EJB
     private ProcesoFacade procesoFacade;
+    @EJB
+    private ClienteFacade clienteFacade;
     
     @OnMessage
     public void onMessage(String msg, Session peer) {
@@ -53,18 +57,20 @@ public class UserWs extends AbstractWs {
         
         String event = jsonObj.get("event").toString();
         String objParam = jsonObj.get("obj").toString();
+        
+        JSONObject jsonObjAll = new JSONObject();
+        //JSONObject jsonObjTemp = new JSONObject();
+        JSONObject jsonObjUser = new JSONObject();
+        JSONObject jsonObjUnit = new JSONObject();
+        JSONObject jsonObjRole = new JSONObject();
+        JSONObject jsonObjProcess = new JSONObject();
+        JSONObject jsonObjResp = new JSONObject();
+        
         if(jsonObj != null){
             switch(event){
                 case "listar":
                     switch(objParam){
                         case "dashboard":
-                            JSONObject jsonObjAll = new JSONObject();
-                            //JSONObject jsonObjTemp = new JSONObject();
-                            JSONObject jsonObjUser = new JSONObject();
-                            JSONObject jsonObjUnit = new JSONObject();
-                            JSONObject jsonObjRole = new JSONObject();
-                            JSONObject jsonObjProcess = new JSONObject();
-                            
                             //Crear Json con Usuarios
                             for(Usuario usr : listarUsuarios()){
                                 JSONObject jsonUserTemp = new JSONObject();
@@ -102,18 +108,78 @@ public class UserWs extends AbstractWs {
                                 jsonObjProcess.put("process"+prc.getIdProceso().toString(), jsonProcTemp);
                             }
                             
-                            //Empaquetando en Json los json-lsit
+                            //Empaquetando en Json los json-list
                             jsonObjAll.put("userlist", jsonObjUser);
                             jsonObjAll.put("unitlist", jsonObjUnit);
                             jsonObjAll.put("rolelist", jsonObjRole);
                             jsonObjAll.put("processlist", jsonObjProcess);
                             
-                            JSONObject jsonObjResp = new JSONObject();
                             jsonObjResp.put("type", "response");
                             jsonObjResp.put("event", "dashboard");
                             jsonObjResp.put("param", jsonObjAll);
                             
-                            replyMsg(peer, jsonObjResp.toString());
+                            //replyMsg(peer, jsonObjResp.toString());
+                            break;
+                        case "usuario":
+                            //Crear Json con Roles
+                            for(Rol role : listarRoles()){
+                                JSONObject jsonRoleTemp = new JSONObject();
+                                jsonRoleTemp.put("id", role.getIdRol().toString());
+                                jsonRoleTemp.put("nombre", role.getNombreRol());
+                                
+                                jsonObjRole.put("role"+role.getIdRol().toString(), jsonRoleTemp);
+                            }
+                            //Empaquetando en Json los json-list
+                            jsonObjAll.put("rolelist", jsonObjRole);
+                            
+                            jsonObjResp.put("type", "response");
+                            jsonObjResp.put("event", "usuario");
+                            jsonObjResp.put("param", jsonObjAll);
+                            break;
+                        case "unidad":
+                            //Crear Json con Procesos
+                            for(Proceso prc : listarProcesos()){
+                                JSONObject jsonProcTemp = new JSONObject();
+                                jsonProcTemp.put("id", prc.getIdProceso().toString());
+                                jsonProcTemp.put("nombre", prc.getTipoProceso());
+                                jsonProcTemp.put("nombreusuario", prc.getUsuarioIdUsuario().getNombre());
+                                
+                                jsonObjProcess.put("process"+prc.getIdProceso().toString(), jsonProcTemp);
+                            }
+                            //Empaquetando en Json los json-list
+                            jsonObjAll.put("processlist", jsonObjProcess);
+                            
+                            jsonObjResp.put("type", "response");
+                            jsonObjResp.put("event", "unidad");
+                            jsonObjResp.put("param", jsonObjAll);
+                            break;
+                        case "proceso":
+                            //Crear Json con Procesos
+                            for(Cliente clt : listarClientes()){
+                                JSONObject jsonProcTemp = new JSONObject();
+                                jsonProcTemp.put("id", clt.getIdCliente().toString());
+                                jsonProcTemp.put("nombre", clt.getNombreCliente());
+                                jsonProcTemp.put("habilitado", clt.getHabilitado());
+                                
+                                jsonObjProcess.put("client"+clt.getIdCliente().toString(), jsonProcTemp);
+                            }
+                            //Crear Json con Usuarios
+                            for(Usuario usr : listarUsuarios()){
+                                JSONObject jsonUserTemp = new JSONObject();
+                                jsonUserTemp.put("id", usr.getIdUsuario().toString());
+                                jsonUserTemp.put("nombre", usr.getNombre());
+                                jsonUserTemp.put("rut", usr.getRut());
+                                jsonUserTemp.put("correo", usr.getCorreo());
+                                
+                                jsonObjUser.put("user"+usr.getIdUsuario().toString(), jsonUserTemp);
+                            }
+                            //Empaquetando en Json los json-list
+                            jsonObjAll.put("clientlist", jsonObjProcess);
+                            jsonObjAll.put("userlist", jsonObjUser);
+                            
+                            jsonObjResp.put("type", "response");
+                            jsonObjResp.put("event", "proceso");
+                            jsonObjResp.put("param", jsonObjAll);
                             break;
                         default:
                             break;
@@ -123,6 +189,7 @@ public class UserWs extends AbstractWs {
                     break;
             }
         }
+        replyMsg(peer, jsonObjResp.toString());
     }
     
     @OnError
@@ -187,6 +254,18 @@ public class UserWs extends AbstractWs {
             return listProcesos;
         }catch(Exception ex){
             System.err.println("(WS)No se han podido listar los procesos. "+ex.toString());
+            throw new RuntimeException("Listing Exception",ex);
+        }
+    }
+    
+    public List<Cliente> listarClientes(){
+        try{
+            List<Cliente> listClientes;
+            listClientes = clienteFacade.findAll();
+            System.out.println("Listando clientes: " + listClientes.toString());
+            return listClientes;
+        }catch(Exception ex){
+            System.err.println("(WS)No se han podido listar los clientes. "+ex.toString());
             throw new RuntimeException("Listing Exception",ex);
         }
     }
