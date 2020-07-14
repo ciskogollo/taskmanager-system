@@ -32,7 +32,7 @@
                     <label for="selTareaAntes">Dependiente de</label>
                     <select multiple class="form-control" id="selTareaAntes" name="selTareaAntes">
                         <c:forEach items="${tareasRegistradas}" var="tareaReg">
-                            <option><c:out value="${tareaReg.descripcion}"/></option>
+                            <option value="<c:out value="${tareaReg.idTarea}"/>"><c:out value="${tareaReg.descripcion}"/></option>
                         </c:forEach>
                     </select>
                     <small id="emailHelp" class="form-text text-muted">No es obligatoria una tarea antescesora.</small>
