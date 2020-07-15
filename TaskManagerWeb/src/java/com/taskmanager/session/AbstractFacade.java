@@ -36,6 +36,7 @@ public abstract class AbstractFacade<T> {
     public void create(T entity) {
         if (!constraintValidationsDetected(entity)) {
             getEntityManager().persist(entity);
+            System.out.println("Notice: Usuario registrado");
         }
     }
 
