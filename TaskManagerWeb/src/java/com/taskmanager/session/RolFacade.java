@@ -6,9 +6,12 @@
 package com.taskmanager.session;
 
 import com.taskmanager.entity.Rol;
+import com.taskmanager.entity.Usuario;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -28,5 +31,11 @@ public class RolFacade extends AbstractFacade<Rol> {
     public RolFacade() {
         super(Rol.class);
     }
+    
+    public List<Rol> findByName(String namerol){
+        Query query = em.createNamedQuery("Rol.findByNombreRol");
+        return query.setParameter("nombreRol",namerol).getResultList();
+    }
+            
     
 }
