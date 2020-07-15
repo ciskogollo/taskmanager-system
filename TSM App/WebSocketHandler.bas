@@ -70,7 +70,7 @@ Public Sub SendEventToEndPoint(Event As String, Data As Map)
 	m.Put("param", Data)
 	Dim jsgen As JSONGenerator
 	jsgen.Initialize(m)
-	Log(jsgen.ToString)
+	Log("(WS)ENVIANDO: "&jsgen.ToString)
 	ws.SendText(jsgen.ToString)
 End Sub
 
@@ -90,7 +90,7 @@ Private Sub ws_TextMessage (msg As String)
 		Dim etype As String = m.get("type")
 		Dim event As String = m.Get("event")
 		Dim param As String = m.Get("param")
-		Log(param)
+		'Log(param)
 		
 		'AQUI SE DEBE RECIBIR DATOS JSON DEL SERVER
 		Log("---------------")

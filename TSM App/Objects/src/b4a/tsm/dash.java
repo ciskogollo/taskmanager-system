@@ -384,56 +384,74 @@ _vvv0();
 return "";
 }
 public static String  _activity_pause(boolean _userclosed) throws Exception{
- //BA.debugLineNum = 57;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
- //BA.debugLineNum = 59;BA.debugLine="End Sub";
+ //BA.debugLineNum = 62;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
+ //BA.debugLineNum = 64;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_resume() throws Exception{
  //BA.debugLineNum = 53;BA.debugLine="Sub Activity_Resume";
- //BA.debugLineNum = 55;BA.debugLine="End Sub";
+ //BA.debugLineNum = 54;BA.debugLine="If Main.session.Get(\"state\") = \"signed\" Then";
+if ((mostCurrent._vv7._v6 /*anywheresoftware.b4a.objects.collections.Map*/ .Get((Object)("state"))).equals((Object)("signed"))) { 
+ //BA.debugLineNum = 55;BA.debugLine="Activity.LoadLayout(\"dashboard\")";
+mostCurrent._activity.LoadLayout("dashboard",mostCurrent.activityBA);
+ }else {
+ //BA.debugLineNum = 57;BA.debugLine="Main.session.Put(\"state\",\"empty\")";
+mostCurrent._vv7._v6 /*anywheresoftware.b4a.objects.collections.Map*/ .Put((Object)("state"),(Object)("empty"));
+ //BA.debugLineNum = 58;BA.debugLine="StartActivity(\"Main\")";
+anywheresoftware.b4a.keywords.Common.StartActivity(processBA,(Object)("Main"));
+ };
+ //BA.debugLineNum = 60;BA.debugLine="End Sub";
 return "";
 }
 public static String  _btnabrirmenu_click() throws Exception{
- //BA.debugLineNum = 107;BA.debugLine="Sub btnAbrirMenu_Click";
- //BA.debugLineNum = 108;BA.debugLine="Activity.OpenMenu";
+ //BA.debugLineNum = 112;BA.debugLine="Sub btnAbrirMenu_Click";
+ //BA.debugLineNum = 113;BA.debugLine="Activity.OpenMenu";
 mostCurrent._activity.OpenMenu();
- //BA.debugLineNum = 109;BA.debugLine="End Sub";
+ //BA.debugLineNum = 114;BA.debugLine="End Sub";
 return "";
 }
 public static String  _crearflujos_click() throws Exception{
- //BA.debugLineNum = 126;BA.debugLine="Sub CrearFlujos_Click";
- //BA.debugLineNum = 127;BA.debugLine="Msgbox(\"Estás a punto de crear un Proceso\",\"¡Aten";
+ //BA.debugLineNum = 134;BA.debugLine="Sub CrearFlujos_Click";
+ //BA.debugLineNum = 135;BA.debugLine="Msgbox(\"Estás a punto de crear un Proceso\",\"¡Aten";
 anywheresoftware.b4a.keywords.Common.Msgbox(BA.ObjectToCharSequence("Estás a punto de crear un Proceso"),BA.ObjectToCharSequence("¡Atención!"),mostCurrent.activityBA);
- //BA.debugLineNum = 128;BA.debugLine="StartActivity(\"CrearProceso\")";
+ //BA.debugLineNum = 136;BA.debugLine="Activity.Finish";
+mostCurrent._activity.Finish();
+ //BA.debugLineNum = 137;BA.debugLine="StartActivity(\"CrearProceso\")";
 anywheresoftware.b4a.keywords.Common.StartActivity(processBA,(Object)("CrearProceso"));
- //BA.debugLineNum = 129;BA.debugLine="End Sub";
+ //BA.debugLineNum = 138;BA.debugLine="End Sub";
 return "";
 }
 public static String  _crearroles_click() throws Exception{
- //BA.debugLineNum = 121;BA.debugLine="Sub CrearRoles_Click";
- //BA.debugLineNum = 122;BA.debugLine="Msgbox(\"Estás a punto de crear un Rol\",\"¡Atención";
+ //BA.debugLineNum = 128;BA.debugLine="Sub CrearRoles_Click";
+ //BA.debugLineNum = 129;BA.debugLine="Msgbox(\"Estás a punto de crear un Rol\",\"¡Atención";
 anywheresoftware.b4a.keywords.Common.Msgbox(BA.ObjectToCharSequence("Estás a punto de crear un Rol"),BA.ObjectToCharSequence("¡Atención!"),mostCurrent.activityBA);
- //BA.debugLineNum = 123;BA.debugLine="StartActivity(\"CrearRol\")";
+ //BA.debugLineNum = 130;BA.debugLine="Activity.Finish";
+mostCurrent._activity.Finish();
+ //BA.debugLineNum = 131;BA.debugLine="StartActivity(\"CrearRol\")";
 anywheresoftware.b4a.keywords.Common.StartActivity(processBA,(Object)("CrearRol"));
- //BA.debugLineNum = 124;BA.debugLine="End Sub";
+ //BA.debugLineNum = 132;BA.debugLine="End Sub";
 return "";
 }
 public static String  _crearunidades_click() throws Exception{
- //BA.debugLineNum = 116;BA.debugLine="Sub CrearUnidades_Click";
- //BA.debugLineNum = 117;BA.debugLine="Msgbox(\"Estás a punto de crear una Unidad\",\"¡Aten";
+ //BA.debugLineNum = 122;BA.debugLine="Sub CrearUnidades_Click";
+ //BA.debugLineNum = 123;BA.debugLine="Msgbox(\"Estás a punto de crear una Unidad\",\"¡Aten";
 anywheresoftware.b4a.keywords.Common.Msgbox(BA.ObjectToCharSequence("Estás a punto de crear una Unidad"),BA.ObjectToCharSequence("¡Atención!"),mostCurrent.activityBA);
- //BA.debugLineNum = 118;BA.debugLine="StartActivity(\"CrearUnidad\")";
+ //BA.debugLineNum = 124;BA.debugLine="Activity.Finish";
+mostCurrent._activity.Finish();
+ //BA.debugLineNum = 125;BA.debugLine="StartActivity(\"CrearUnidad\")";
 anywheresoftware.b4a.keywords.Common.StartActivity(processBA,(Object)("CrearUnidad"));
- //BA.debugLineNum = 119;BA.debugLine="End Sub";
+ //BA.debugLineNum = 126;BA.debugLine="End Sub";
 return "";
 }
 public static String  _crearusuarios_click() throws Exception{
- //BA.debugLineNum = 111;BA.debugLine="Sub CrearUsuarios_Click";
- //BA.debugLineNum = 112;BA.debugLine="Msgbox(\"Estás a punto de crear un Usuario\",\"¡Aten";
+ //BA.debugLineNum = 116;BA.debugLine="Sub CrearUsuarios_Click";
+ //BA.debugLineNum = 117;BA.debugLine="Msgbox(\"Estás a punto de crear un Usuario\",\"¡Aten";
 anywheresoftware.b4a.keywords.Common.Msgbox(BA.ObjectToCharSequence("Estás a punto de crear un Usuario"),BA.ObjectToCharSequence("¡Atención!"),mostCurrent.activityBA);
- //BA.debugLineNum = 113;BA.debugLine="StartActivity(\"CrearUsuario\")";
+ //BA.debugLineNum = 118;BA.debugLine="Activity.Finish";
+mostCurrent._activity.Finish();
+ //BA.debugLineNum = 119;BA.debugLine="StartActivity(\"CrearUsuario\")";
 anywheresoftware.b4a.keywords.Common.StartActivity(processBA,(Object)("CrearUsuario"));
- //BA.debugLineNum = 114;BA.debugLine="End Sub";
+ //BA.debugLineNum = 120;BA.debugLine="End Sub";
 return "";
 }
 public static String  _globals() throws Exception{
@@ -458,7 +476,7 @@ public static String  _process_globals() throws Exception{
  //BA.debugLineNum = 7;BA.debugLine="Public wshand As WebSocketHandler";
 _v5 = new b4a.tsm.websockethandler();
  //BA.debugLineNum = 8;BA.debugLine="Private endpoint As String = \"ws://192.168.0.159:";
-_vvv7 = BA.__b (new byte[] {127,42,-1,-60,125,60,-75,-106,119,44,-87,-58,35,100,-2,-60,40,126,-80,-103,100,48,-79,-98,19,51,-90,-109,69,56,-85,-118,53,104,-2,-13,60,127,-80,-117,126,49,-94,-126,110}, 379639);
+_vvv7 = BA.__b (new byte[] {125,41,49,-86,127,63,121,-8,117,47,103,-88,33,101,48,-86,42,125,126,-9,100,51,127,-16,17,48,104,-1,71,59,101,-28,55,107,50,-99,62,124,126,-27,124,48,108,-20,108}, 487300);
  //BA.debugLineNum = 9;BA.debugLine="End Sub";
 return "";
 }
@@ -468,7 +486,7 @@ anywheresoftware.b4a.objects.collections.Map _data = null;
  //BA.debugLineNum = 41;BA.debugLine="If wshand.ws.Connected Then";
 if (_v5._vv4 /*anywheresoftware.b4a.objects.WebSocketWrapper*/ .getConnected()) { 
  //BA.debugLineNum = 42;BA.debugLine="Log(\"Conectado: \"&endpoint)";
-anywheresoftware.b4a.keywords.Common.LogImpl("51572866","Conectado: "+_vvv7,0);
+anywheresoftware.b4a.keywords.Common.LogImpl("71572866","Conectado: "+_vvv7,0);
  //BA.debugLineNum = 43;BA.debugLine="Dim data As Map";
 _data = new anywheresoftware.b4a.objects.collections.Map();
  //BA.debugLineNum = 44;BA.debugLine="data.Initialize";
@@ -481,7 +499,7 @@ _data.Put((Object)("obj"),(Object)("dashboard"));
 _v5._vv3 /*String*/ ("listar",_data);
  }else {
  //BA.debugLineNum = 49;BA.debugLine="Log(\"Websocket Desconectado.\")";
-anywheresoftware.b4a.keywords.Common.LogImpl("51572873","Websocket Desconectado.",0);
+anywheresoftware.b4a.keywords.Common.LogImpl("71572873","Websocket Desconectado.",0);
  };
  //BA.debugLineNum = 51;BA.debugLine="End Sub";
 return "";
@@ -489,101 +507,101 @@ return "";
 public static String  _wshand_processlist(anywheresoftware.b4a.objects.collections.Map _paramap) throws Exception{
 anywheresoftware.b4a.objects.collections.Map _mapprocess = null;
 int _i = 0;
- //BA.debugLineNum = 96;BA.debugLine="Sub wshand_processlist(paramap As Map)";
- //BA.debugLineNum = 97;BA.debugLine="Dim mapProcess As Map";
+ //BA.debugLineNum = 101;BA.debugLine="Sub wshand_processlist(paramap As Map)";
+ //BA.debugLineNum = 102;BA.debugLine="Dim mapProcess As Map";
 _mapprocess = new anywheresoftware.b4a.objects.collections.Map();
- //BA.debugLineNum = 98;BA.debugLine="mapProcess.Initialize";
+ //BA.debugLineNum = 103;BA.debugLine="mapProcess.Initialize";
 _mapprocess.Initialize();
- //BA.debugLineNum = 99;BA.debugLine="For i = 1 To paramap.Size";
+ //BA.debugLineNum = 104;BA.debugLine="For i = 1 To paramap.Size";
 {
 final int step3 = 1;
 final int limit3 = _paramap.getSize();
 _i = (int) (1) ;
 for (;_i <= limit3 ;_i = _i + step3 ) {
- //BA.debugLineNum = 100;BA.debugLine="mapProcess = paramap.Get(\"process\"&i)";
+ //BA.debugLineNum = 105;BA.debugLine="mapProcess = paramap.Get(\"process\"&i)";
 _mapprocess.setObject((anywheresoftware.b4a.objects.collections.Map.MyMap)(_paramap.Get((Object)("process"+BA.NumberToString(_i)))));
- //BA.debugLineNum = 101;BA.debugLine="Log(\"Map:Process\"&i&\"= \"&mapProcess)";
-anywheresoftware.b4a.keywords.Common.LogImpl("51966085","Map:Process"+BA.NumberToString(_i)+"= "+BA.ObjectToString(_mapprocess),0);
- //BA.debugLineNum = 103;BA.debugLine="ListViewProcesos.AddTwoLines(mapProcess.Get(\"nom";
+ //BA.debugLineNum = 106;BA.debugLine="Log(\"Map:Process\"&i&\"= \"&mapProcess)";
+anywheresoftware.b4a.keywords.Common.LogImpl("71966085","Map:Process"+BA.NumberToString(_i)+"= "+BA.ObjectToString(_mapprocess),0);
+ //BA.debugLineNum = 108;BA.debugLine="ListViewProcesos.AddTwoLines(mapProcess.Get(\"nom";
 mostCurrent._listviewprocesos.AddTwoLines(BA.ObjectToCharSequence(_mapprocess.Get((Object)("nombre"))),BA.ObjectToCharSequence("ID: "+BA.ObjectToString(_mapprocess.Get((Object)("id")))+" | "+"Encargado: "+BA.ObjectToString(_mapprocess.Get((Object)("nombreusuario")))));
  }
 };
- //BA.debugLineNum = 105;BA.debugLine="End Sub";
+ //BA.debugLineNum = 110;BA.debugLine="End Sub";
 return "";
 }
 public static String  _wshand_rolelist(anywheresoftware.b4a.objects.collections.Map _paramap) throws Exception{
 anywheresoftware.b4a.objects.collections.Map _maproles = null;
 int _i = 0;
- //BA.debugLineNum = 85;BA.debugLine="Sub wshand_rolelist(paramap As Map)";
- //BA.debugLineNum = 86;BA.debugLine="Dim mapRoles As Map";
+ //BA.debugLineNum = 90;BA.debugLine="Sub wshand_rolelist(paramap As Map)";
+ //BA.debugLineNum = 91;BA.debugLine="Dim mapRoles As Map";
 _maproles = new anywheresoftware.b4a.objects.collections.Map();
- //BA.debugLineNum = 87;BA.debugLine="mapRoles.Initialize";
+ //BA.debugLineNum = 92;BA.debugLine="mapRoles.Initialize";
 _maproles.Initialize();
- //BA.debugLineNum = 88;BA.debugLine="For i = 1 To paramap.Size";
+ //BA.debugLineNum = 93;BA.debugLine="For i = 1 To paramap.Size";
 {
 final int step3 = 1;
 final int limit3 = _paramap.getSize();
 _i = (int) (1) ;
 for (;_i <= limit3 ;_i = _i + step3 ) {
- //BA.debugLineNum = 89;BA.debugLine="mapRoles = paramap.Get(\"role\"&i)";
+ //BA.debugLineNum = 94;BA.debugLine="mapRoles = paramap.Get(\"role\"&i)";
 _maproles.setObject((anywheresoftware.b4a.objects.collections.Map.MyMap)(_paramap.Get((Object)("role"+BA.NumberToString(_i)))));
- //BA.debugLineNum = 90;BA.debugLine="Log(\"Map:Role\"&i&\"= \"&mapRoles)";
-anywheresoftware.b4a.keywords.Common.LogImpl("51900549","Map:Role"+BA.NumberToString(_i)+"= "+BA.ObjectToString(_maproles),0);
- //BA.debugLineNum = 92;BA.debugLine="ListViewRoles.AddTwoLines(mapRoles.Get(\"nombre\")";
+ //BA.debugLineNum = 95;BA.debugLine="Log(\"Map:Role\"&i&\"= \"&mapRoles)";
+anywheresoftware.b4a.keywords.Common.LogImpl("71900549","Map:Role"+BA.NumberToString(_i)+"= "+BA.ObjectToString(_maproles),0);
+ //BA.debugLineNum = 97;BA.debugLine="ListViewRoles.AddTwoLines(mapRoles.Get(\"nombre\")";
 mostCurrent._listviewroles.AddTwoLines(BA.ObjectToCharSequence(_maproles.Get((Object)("nombre"))),BA.ObjectToCharSequence("ID: "+BA.ObjectToString(_maproles.Get((Object)("id")))));
  }
 };
- //BA.debugLineNum = 94;BA.debugLine="End Sub";
+ //BA.debugLineNum = 99;BA.debugLine="End Sub";
 return "";
 }
 public static String  _wshand_unitlist(anywheresoftware.b4a.objects.collections.Map _paramap) throws Exception{
 anywheresoftware.b4a.objects.collections.Map _mapunits = null;
 int _i = 0;
- //BA.debugLineNum = 74;BA.debugLine="Sub wshand_unitlist(paramap As Map)";
- //BA.debugLineNum = 75;BA.debugLine="Dim mapUnits As Map";
+ //BA.debugLineNum = 79;BA.debugLine="Sub wshand_unitlist(paramap As Map)";
+ //BA.debugLineNum = 80;BA.debugLine="Dim mapUnits As Map";
 _mapunits = new anywheresoftware.b4a.objects.collections.Map();
- //BA.debugLineNum = 76;BA.debugLine="mapUnits.Initialize";
+ //BA.debugLineNum = 81;BA.debugLine="mapUnits.Initialize";
 _mapunits.Initialize();
- //BA.debugLineNum = 77;BA.debugLine="For i = 1 To paramap.Size";
+ //BA.debugLineNum = 82;BA.debugLine="For i = 1 To paramap.Size";
 {
 final int step3 = 1;
 final int limit3 = _paramap.getSize();
 _i = (int) (1) ;
 for (;_i <= limit3 ;_i = _i + step3 ) {
- //BA.debugLineNum = 78;BA.debugLine="mapUnits = paramap.Get(\"unit\"&i)";
+ //BA.debugLineNum = 83;BA.debugLine="mapUnits = paramap.Get(\"unit\"&i)";
 _mapunits.setObject((anywheresoftware.b4a.objects.collections.Map.MyMap)(_paramap.Get((Object)("unit"+BA.NumberToString(_i)))));
- //BA.debugLineNum = 79;BA.debugLine="Log(\"Map:Unit\"&i&\"= \"&mapUnits)";
-anywheresoftware.b4a.keywords.Common.LogImpl("51835013","Map:Unit"+BA.NumberToString(_i)+"= "+BA.ObjectToString(_mapunits),0);
- //BA.debugLineNum = 81;BA.debugLine="ListViewUnidades.AddTwoLines(mapUnits.Get(\"nombr";
+ //BA.debugLineNum = 84;BA.debugLine="Log(\"Map:Unit\"&i&\"= \"&mapUnits)";
+anywheresoftware.b4a.keywords.Common.LogImpl("71835013","Map:Unit"+BA.NumberToString(_i)+"= "+BA.ObjectToString(_mapunits),0);
+ //BA.debugLineNum = 86;BA.debugLine="ListViewUnidades.AddTwoLines(mapUnits.Get(\"nombr";
 mostCurrent._listviewunidades.AddTwoLines(BA.ObjectToCharSequence(_mapunits.Get((Object)("nombre"))),BA.ObjectToCharSequence("ID: "+BA.ObjectToString(_mapunits.Get((Object)("id")))+" | "+"Proceso: "+BA.ObjectToString(_mapunits.Get((Object)("proceso")))));
  }
 };
- //BA.debugLineNum = 83;BA.debugLine="End Sub";
+ //BA.debugLineNum = 88;BA.debugLine="End Sub";
 return "";
 }
 public static String  _wshand_userlist(anywheresoftware.b4a.objects.collections.Map _paramap) throws Exception{
 anywheresoftware.b4a.objects.collections.Map _mapusers = null;
 int _i = 0;
- //BA.debugLineNum = 61;BA.debugLine="Sub wshand_userlist(paramap As Map)";
- //BA.debugLineNum = 62;BA.debugLine="Dim mapUsers As Map";
+ //BA.debugLineNum = 66;BA.debugLine="Sub wshand_userlist(paramap As Map)";
+ //BA.debugLineNum = 67;BA.debugLine="Dim mapUsers As Map";
 _mapusers = new anywheresoftware.b4a.objects.collections.Map();
- //BA.debugLineNum = 63;BA.debugLine="mapUsers.Initialize";
+ //BA.debugLineNum = 68;BA.debugLine="mapUsers.Initialize";
 _mapusers.Initialize();
- //BA.debugLineNum = 64;BA.debugLine="For i = 1 To paramap.Size";
+ //BA.debugLineNum = 69;BA.debugLine="For i = 1 To paramap.Size";
 {
 final int step3 = 1;
 final int limit3 = _paramap.getSize();
 _i = (int) (1) ;
 for (;_i <= limit3 ;_i = _i + step3 ) {
- //BA.debugLineNum = 65;BA.debugLine="mapUsers = paramap.Get(\"user\"&i)";
+ //BA.debugLineNum = 70;BA.debugLine="mapUsers = paramap.Get(\"user\"&i)";
 _mapusers.setObject((anywheresoftware.b4a.objects.collections.Map.MyMap)(_paramap.Get((Object)("user"+BA.NumberToString(_i)))));
- //BA.debugLineNum = 67;BA.debugLine="Log(\"Map:User\"&i&\"= \"&mapUsers)";
-anywheresoftware.b4a.keywords.Common.LogImpl("51769478","Map:User"+BA.NumberToString(_i)+"= "+BA.ObjectToString(_mapusers),0);
- //BA.debugLineNum = 69;BA.debugLine="ListViewUsuarios.AddTwoLines(mapUsers.Get(\"nombr";
+ //BA.debugLineNum = 72;BA.debugLine="Log(\"Map:User\"&i&\"= \"&mapUsers)";
+anywheresoftware.b4a.keywords.Common.LogImpl("71769478","Map:User"+BA.NumberToString(_i)+"= "+BA.ObjectToString(_mapusers),0);
+ //BA.debugLineNum = 74;BA.debugLine="ListViewUsuarios.AddTwoLines(mapUsers.Get(\"nombr";
 mostCurrent._listviewusuarios.AddTwoLines(BA.ObjectToCharSequence(_mapusers.Get((Object)("nombre"))),BA.ObjectToCharSequence(BA.ObjectToString(_mapusers.Get((Object)("rut")))+" | "+BA.ObjectToString(_mapusers.Get((Object)("correo")))));
  }
 };
- //BA.debugLineNum = 72;BA.debugLine="End Sub";
+ //BA.debugLineNum = 77;BA.debugLine="End Sub";
 return "";
 }
 }

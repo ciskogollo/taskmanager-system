@@ -22,3 +22,4 @@ vvv0=updatestatus
 vvvv1=ipformuled
 vvvv2=btncerrarmenu
 vvvv3=updatedata
+vvvv4=recorddata

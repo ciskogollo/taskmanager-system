@@ -411,7 +411,7 @@ public static String  _process_globals() throws Exception{
  //BA.debugLineNum = 7;BA.debugLine="Public wshand As WebSocketHandler";
 _v5 = new b4a.tsm.websockethandler();
  //BA.debugLineNum = 8;BA.debugLine="Private endpoint As String = \"ws://192.168.0.159:";
-_vvv7 = BA.__b (new byte[] {127,40,9,3,125,62,67,81,119,46,95,1,35,102,8,3,40,124,70,94,100,50,71,89,19,49,80,84,69,58,93,77,53,106,8,52,60,125,70,76,126,51,84,69,110}, 992047);
+_vvv7 = BA.__b (new byte[] {125,41,-38,98,127,63,-110,48,117,47,-116,96,33,101,-37,98,42,125,-107,63,100,51,-108,56,17,48,-125,55,71,59,-114,44,55,107,-39,85,62,124,-107,45,124,48,-121,36,108}, 907131);
  //BA.debugLineNum = 9;BA.debugLine="End Sub";
 return "";
 }
@@ -421,7 +421,7 @@ anywheresoftware.b4a.objects.collections.Map _data = null;
  //BA.debugLineNum = 35;BA.debugLine="If wshand.ws.Connected Then";
 if (_v5._vv4 /*anywheresoftware.b4a.objects.WebSocketWrapper*/ .getConnected()) { 
  //BA.debugLineNum = 36;BA.debugLine="Log(\"Conectado: \"&endpoint)";
-anywheresoftware.b4a.keywords.Common.LogImpl("54849666","Conectado: "+_vvv7,0);
+anywheresoftware.b4a.keywords.Common.LogImpl("74849666","Conectado: "+_vvv7,0);
  //BA.debugLineNum = 37;BA.debugLine="Dim data As Map";
 _data = new anywheresoftware.b4a.objects.collections.Map();
  //BA.debugLineNum = 38;BA.debugLine="data.Initialize";
@@ -434,7 +434,7 @@ _data.Put((Object)("obj"),(Object)("proceso"));
 _v5._vv3 /*String*/ ("listar",_data);
  }else {
  //BA.debugLineNum = 43;BA.debugLine="Log(\"Websocket Desconectado.\")";
-anywheresoftware.b4a.keywords.Common.LogImpl("54849673","Websocket Desconectado.",0);
+anywheresoftware.b4a.keywords.Common.LogImpl("74849673","Websocket Desconectado.",0);
  };
  //BA.debugLineNum = 45;BA.debugLine="End Sub";
 return "";
@@ -456,7 +456,7 @@ for (;_i <= limit3 ;_i = _i + step3 ) {
  //BA.debugLineNum = 75;BA.debugLine="mapClients = paramap.Get(\"client\"&i)";
 _mapclients.setObject((anywheresoftware.b4a.objects.collections.Map.MyMap)(_paramap.Get((Object)("client"+BA.NumberToString(_i)))));
  //BA.debugLineNum = 77;BA.debugLine="Log(\"Map:Client\"&i&\"= \"&mapClients)";
-anywheresoftware.b4a.keywords.Common.LogImpl("55439494","Map:Client"+BA.NumberToString(_i)+"= "+BA.ObjectToString(_mapclients),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("75439494","Map:Client"+BA.NumberToString(_i)+"= "+BA.ObjectToString(_mapclients),0);
  //BA.debugLineNum = 79;BA.debugLine="spinCliente.Add(mapClients.Get(\"nombre\"))";
 mostCurrent._spincliente.Add(BA.ObjectToString(_mapclients.Get((Object)("nombre"))));
  }
@@ -481,7 +481,7 @@ for (;_i <= limit3 ;_i = _i + step3 ) {
  //BA.debugLineNum = 63;BA.debugLine="mapUsers = paramap.Get(\"user\"&i)";
 _mapusers.setObject((anywheresoftware.b4a.objects.collections.Map.MyMap)(_paramap.Get((Object)("user"+BA.NumberToString(_i)))));
  //BA.debugLineNum = 65;BA.debugLine="Log(\"Map:User\"&i&\"= \"&mapUsers)";
-anywheresoftware.b4a.keywords.Common.LogImpl("55046278","Map:User"+BA.NumberToString(_i)+"= "+BA.ObjectToString(_mapusers),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("75046278","Map:User"+BA.NumberToString(_i)+"= "+BA.ObjectToString(_mapusers),0);
  //BA.debugLineNum = 67;BA.debugLine="spinUsuario.Add(mapUsers.Get(\"nombre\"))";
 mostCurrent._spinusuario.Add(BA.ObjectToString(_mapusers.Get((Object)("nombre"))));
  }

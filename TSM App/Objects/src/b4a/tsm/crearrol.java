@@ -402,7 +402,7 @@ public static String  _process_globals() throws Exception{
  //BA.debugLineNum = 7;BA.debugLine="Public wshand As WebSocketHandler";
 _v5 = new b4a.tsm.websockethandler();
  //BA.debugLineNum = 8;BA.debugLine="Private endpoint As String = \"ws://192.168.0.159:";
-_vvv7 = BA.__b (new byte[] {127,42,-98,-52,125,60,-44,-98,119,44,-56,-50,35,100,-97,-52,40,126,-47,-111,100,48,-48,-106,19,51,-57,-101,69,56,-54,-126,53,104,-97,-5,60,127,-47,-125,126,49,-61,-118,110}, 324031);
+_vvv7 = BA.__b (new byte[] {125,40,97,96,127,62,41,50,117,46,55,98,33,100,96,96,42,124,46,61,100,50,47,58,17,49,56,53,71,58,53,46,55,106,98,87,62,125,46,47,124,49,60,38,108}, 113292);
  //BA.debugLineNum = 9;BA.debugLine="End Sub";
 return "";
 }
@@ -412,7 +412,7 @@ anywheresoftware.b4a.objects.collections.Map _data = null;
  //BA.debugLineNum = 33;BA.debugLine="If wshand.ws.Connected Then";
 if (_v5._vv4 /*anywheresoftware.b4a.objects.WebSocketWrapper*/ .getConnected()) { 
  //BA.debugLineNum = 34;BA.debugLine="Log(\"Conectado: \"&endpoint)";
-anywheresoftware.b4a.keywords.Common.LogImpl("54784130","Conectado: "+_vvv7,0);
+anywheresoftware.b4a.keywords.Common.LogImpl("74784130","Conectado: "+_vvv7,0);
  //BA.debugLineNum = 35;BA.debugLine="Dim data As Map";
 _data = new anywheresoftware.b4a.objects.collections.Map();
  //BA.debugLineNum = 36;BA.debugLine="data.Initialize";
@@ -423,7 +423,7 @@ _data.Put((Object)("event"),(Object)("listar"));
 _data.Put((Object)("obj"),(Object)("rol"));
  }else {
  //BA.debugLineNum = 41;BA.debugLine="Log(\"Websocket Desconectado.\")";
-anywheresoftware.b4a.keywords.Common.LogImpl("54784137","Websocket Desconectado.",0);
+anywheresoftware.b4a.keywords.Common.LogImpl("74784137","Websocket Desconectado.",0);
  };
  //BA.debugLineNum = 43;BA.debugLine="End Sub";
 return "";

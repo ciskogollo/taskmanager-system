@@ -2,8 +2,8 @@
 <manifest
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	package="b4a.tsm"
-	android:versionCode="8"
-	android:versionName="beta.v1"
+	android:versionCode="10"
+	android:versionName="beta.v3"
 	android:installLocation="preferExternal">
 	
 	<uses-sdk android:minSdkVersion="11" android:targetSdkVersion="28"/>

@@ -32,8 +32,8 @@ Version=9.801
 @EndOfDesignText@
 #Region  Project Attributes 
 	#ApplicationLabel: TaskManagerSystem Android
-	#VersionCode: 2
-	#VersionName: beta.v2
+	#VersionCode: 10
+	#VersionName: beta.v3
 	'SupportedOrientations possible values: unspecified, landscape or portrait.
 	#SupportedOrientations: unspecified
 	#CanInstallToExternalStorage: True

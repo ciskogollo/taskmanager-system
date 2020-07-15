@@ -57,7 +57,12 @@ Sub UpdateStatus
 End Sub
 
 Sub Activity_Resume
-
+	If Main.session.Get("state") = "signed" Then
+		Activity.LoadLayout("dashboard")
+	Else
+		Main.session.Put("state","empty")
+		StartActivity("Main")
+	End If
 End Sub
 
 Sub Activity_Pause (UserClosed As Boolean)
@@ -116,20 +121,24 @@ End Sub
 
 Sub CrearUsuarios_Click
 	Msgbox("Estás a punto de crear un Usuario","¡Atención!")
+	Activity.Finish
 	StartActivity("CrearUsuario")
 End Sub
 
 Sub CrearUnidades_Click
 	Msgbox("Estás a punto de crear una Unidad","¡Atención!")
+	Activity.Finish
 	StartActivity("CrearUnidad")
 End Sub
 
 Sub CrearRoles_Click
 	Msgbox("Estás a punto de crear un Rol","¡Atención!")
+	Activity.Finish
 	StartActivity("CrearRol")
 End Sub
 
 Sub CrearFlujos_Click
 	Msgbox("Estás a punto de crear un Proceso","¡Atención!")
+	Activity.Finish
 	StartActivity("CrearProceso")
 End Sub

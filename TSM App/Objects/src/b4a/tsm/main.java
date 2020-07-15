@@ -379,7 +379,7 @@ _v5._vv2 /*String*/ (_vvv7);
  } 
        catch (Exception e11) {
 			processBA.setLastException(e11); //BA.debugLineNum = 49;BA.debugLine="Log(LastException)";
-anywheresoftware.b4a.keywords.Common.LogImpl("5131087",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("7131087",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
  };
  }else {
  //BA.debugLineNum = 53;BA.debugLine="Activity.LoadLayout(\"dashboard\")";
@@ -396,7 +396,7 @@ if (_userclosed==anywheresoftware.b4a.keywords.Common.True) {
 _v6.setObject((anywheresoftware.b4a.objects.collections.Map.MyMap)(anywheresoftware.b4a.keywords.Common.Null));
  }else {
  //BA.debugLineNum = 112;BA.debugLine="Log(\"Sesion: \"&session.Values)";
-anywheresoftware.b4a.keywords.Common.LogImpl("5655364","Sesion: "+BA.ObjectToString(_v6.Values()),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("7655364","Sesion: "+BA.ObjectToString(_v6.Values()),0);
  };
  //BA.debugLineNum = 114;BA.debugLine="End Sub";
 return "";
@@ -468,7 +468,7 @@ _v5 = new b4a.tsm.websockethandler();
  //BA.debugLineNum = 18;BA.debugLine="Private Ips As List";
 _vvv6 = new anywheresoftware.b4a.objects.collections.List();
  //BA.debugLineNum = 19;BA.debugLine="Private endpoint As String = \"ws://192.168.0.159:";
-_vvv7 = BA.__b (new byte[] {127,43,-48,-101,125,61,-102,-55,119,45,-122,-103,35,101,-47,-101,40,127,-97,-58,100,49,-98,-63,19,50,-119,-52,69,57,-124,-43,53,105,-47,-84,60,126,-97,-51,98,50,-106,-60,106,53}, 894439);
+_vvv7 = BA.__b (new byte[] {125,41,39,15,127,63,111,93,117,47,113,13,33,101,38,15,42,125,104,82,100,51,105,85,17,48,126,90,71,59,115,65,55,107,36,56,62,124,104,89,96,50,97,80,104,55}, 454408);
  //BA.debugLineNum = 20;BA.debugLine="Public session As Map";
 _v6 = new anywheresoftware.b4a.objects.collections.Map();
  //BA.debugLineNum = 21;BA.debugLine="Public timerconnect As Timer";
@@ -483,7 +483,7 @@ public static String  _vvv0() throws Exception{
  //BA.debugLineNum = 82;BA.debugLine="If wshand.ws.Connected Then";
 if (_v5._vv4 /*anywheresoftware.b4a.objects.WebSocketWrapper*/ .getConnected()) { 
  //BA.debugLineNum = 83;BA.debugLine="Log(\"Conectado: \"&endpoint)";
-anywheresoftware.b4a.keywords.Common.LogImpl("5458754","Conectado: "+_vvv7,0);
+anywheresoftware.b4a.keywords.Common.LogImpl("7458754","Conectado: "+_vvv7,0);
  //BA.debugLineNum = 84;BA.debugLine="lblStatus.Text = \"Status: Conectado\"";
 mostCurrent._lblstatus.setText(BA.ObjectToCharSequence("Status: Conectado"));
  }else {
@@ -524,10 +524,10 @@ _v6.Put((Object)("username"),(Object)(mostCurrent._txtnombre.getText()));
  //BA.debugLineNum = 74;BA.debugLine="StartActivity(\"Dash\")";
 anywheresoftware.b4a.keywords.Common.StartActivity(processBA,(Object)("Dash"));
  //BA.debugLineNum = 75;BA.debugLine="Log(session.Values)";
-anywheresoftware.b4a.keywords.Common.LogImpl("5393221",BA.ObjectToString(_v6.Values()),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("7393221",BA.ObjectToString(_v6.Values()),0);
  }else if(((_param).equals("user_incorrect"))) { 
  //BA.debugLineNum = 77;BA.debugLine="Log(\"Usuario y/o contraseña incorrectos\")";
-anywheresoftware.b4a.keywords.Common.LogImpl("5393223","Usuario y/o contraseña incorrectos",0);
+anywheresoftware.b4a.keywords.Common.LogImpl("7393223","Usuario y/o contraseña incorrectos",0);
  };
  //BA.debugLineNum = 79;BA.debugLine="End Sub";
 return "";

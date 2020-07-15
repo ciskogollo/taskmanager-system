@@ -408,7 +408,7 @@ public static String  _process_globals() throws Exception{
  //BA.debugLineNum = 7;BA.debugLine="Public wshand As WebSocketHandler";
 _v5 = new b4a.tsm.websockethandler();
  //BA.debugLineNum = 8;BA.debugLine="Private endpoint As String = \"ws://192.168.0.159:";
-_vvv7 = BA.__b (new byte[] {127,43,-38,-44,125,61,-112,-122,119,45,-116,-42,35,101,-37,-44,40,127,-107,-119,100,49,-108,-114,19,50,-125,-125,69,57,-114,-102,53,105,-37,-29,60,126,-107,-101,126,48,-121,-110,110}, 904809);
+_vvv7 = BA.__b (new byte[] {125,41,-43,-37,127,63,-99,-119,117,47,-125,-39,33,101,-44,-37,42,125,-102,-122,100,51,-101,-127,17,48,-116,-114,71,59,-127,-107,55,107,-42,-20,62,124,-102,-108,124,48,-120,-99,108}, 881439);
  //BA.debugLineNum = 9;BA.debugLine="End Sub";
 return "";
 }
@@ -418,7 +418,7 @@ anywheresoftware.b4a.objects.collections.Map _data = null;
  //BA.debugLineNum = 34;BA.debugLine="If wshand.ws.Connected Then";
 if (_v5._vv4 /*anywheresoftware.b4a.objects.WebSocketWrapper*/ .getConnected()) { 
  //BA.debugLineNum = 35;BA.debugLine="Log(\"Conectado: \"&endpoint)";
-anywheresoftware.b4a.keywords.Common.LogImpl("54718594","Conectado: "+_vvv7,0);
+anywheresoftware.b4a.keywords.Common.LogImpl("74718594","Conectado: "+_vvv7,0);
  //BA.debugLineNum = 36;BA.debugLine="Dim data As Map";
 _data = new anywheresoftware.b4a.objects.collections.Map();
  //BA.debugLineNum = 37;BA.debugLine="data.Initialize";
@@ -431,7 +431,7 @@ _data.Put((Object)("obj"),(Object)("unidad"));
 _v5._vv3 /*String*/ ("listar",_data);
  }else {
  //BA.debugLineNum = 42;BA.debugLine="Log(\"Websocket Desconectado.\")";
-anywheresoftware.b4a.keywords.Common.LogImpl("54718601","Websocket Desconectado.",0);
+anywheresoftware.b4a.keywords.Common.LogImpl("74718601","Websocket Desconectado.",0);
  };
  //BA.debugLineNum = 44;BA.debugLine="End Sub";
 return "";
@@ -453,7 +453,7 @@ for (;_i <= limit3 ;_i = _i + step3 ) {
  //BA.debugLineNum = 62;BA.debugLine="mapProcess = paramap.Get(\"process\"&i)";
 _mapprocess.setObject((anywheresoftware.b4a.objects.collections.Map.MyMap)(_paramap.Get((Object)("process"+BA.NumberToString(_i)))));
  //BA.debugLineNum = 63;BA.debugLine="Log(\"Map:Process\"&i&\"= \"&mapProcess)";
-anywheresoftware.b4a.keywords.Common.LogImpl("54980741","Map:Process"+BA.NumberToString(_i)+"= "+BA.ObjectToString(_mapprocess),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("74980741","Map:Process"+BA.NumberToString(_i)+"= "+BA.ObjectToString(_mapprocess),0);
  //BA.debugLineNum = 65;BA.debugLine="spinProcesos.Add(mapProcess.Get(\"nombre\"))";
 mostCurrent._spinprocesos.Add(BA.ObjectToString(_mapprocess.Get((Object)("nombre"))));
  }

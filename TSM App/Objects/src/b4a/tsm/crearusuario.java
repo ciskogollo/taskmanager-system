@@ -378,20 +378,53 @@ _vvvv3();
 return "";
 }
 public static String  _activity_pause(boolean _userclosed) throws Exception{
- //BA.debugLineNum = 54;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
- //BA.debugLineNum = 56;BA.debugLine="End Sub";
+ //BA.debugLineNum = 66;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
+ //BA.debugLineNum = 68;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_resume() throws Exception{
- //BA.debugLineNum = 50;BA.debugLine="Sub Activity_Resume";
- //BA.debugLineNum = 52;BA.debugLine="End Sub";
+ //BA.debugLineNum = 62;BA.debugLine="Sub Activity_Resume";
+ //BA.debugLineNum = 64;BA.debugLine="End Sub";
 return "";
 }
 public static String  _btnatras_click() throws Exception{
- //BA.debugLineNum = 58;BA.debugLine="Sub btnAtras_Click";
- //BA.debugLineNum = 59;BA.debugLine="StartActivity(\"Dash\")";
+ //BA.debugLineNum = 70;BA.debugLine="Sub btnAtras_Click";
+ //BA.debugLineNum = 71;BA.debugLine="StartActivity(\"Dash\")";
 anywheresoftware.b4a.keywords.Common.StartActivity(processBA,(Object)("Dash"));
- //BA.debugLineNum = 60;BA.debugLine="End Sub";
+ //BA.debugLineNum = 72;BA.debugLine="End Sub";
+return "";
+}
+public static String  _btnenviar_click() throws Exception{
+anywheresoftware.b4a.objects.collections.Map _datosext = null;
+String _selrol = "";
+ //BA.debugLineNum = 85;BA.debugLine="Sub btnEnviar_Click";
+ //BA.debugLineNum = 86;BA.debugLine="Dim datosExt As Map";
+_datosext = new anywheresoftware.b4a.objects.collections.Map();
+ //BA.debugLineNum = 87;BA.debugLine="datosExt.Initialize";
+_datosext.Initialize();
+ //BA.debugLineNum = 89;BA.debugLine="Dim selRol As String = spinRol.SelectedItem";
+_selrol = mostCurrent._spinrol.getSelectedItem();
+ //BA.debugLineNum = 90;BA.debugLine="Log(selRol)";
+anywheresoftware.b4a.keywords.Common.LogImpl("76684677",_selrol,0);
+ //BA.debugLineNum = 91;BA.debugLine="datosExt.Put(\"nombre\", txtNombre.Text.ToLowerCase";
+_datosext.Put((Object)("nombre"),(Object)(mostCurrent._txtnombre.getText().toLowerCase()));
+ //BA.debugLineNum = 92;BA.debugLine="datosExt.Put(\"correo\", txtCorreo.Text.ToLowerCase";
+_datosext.Put((Object)("correo"),(Object)(mostCurrent._txtcorreo.getText().toLowerCase()));
+ //BA.debugLineNum = 93;BA.debugLine="datosExt.Put(\"hash\", txtHash.Text)";
+_datosext.Put((Object)("hash"),(Object)(mostCurrent._txthash.getText()));
+ //BA.debugLineNum = 94;BA.debugLine="datosExt.Put(\"rut\", txtRut.Text)";
+_datosext.Put((Object)("rut"),(Object)(mostCurrent._txtrut.getText()));
+ //BA.debugLineNum = 95;BA.debugLine="datosExt.Put(\"direccion\", txtDireccion.Text)";
+_datosext.Put((Object)("direccion"),(Object)(mostCurrent._txtdireccion.getText()));
+ //BA.debugLineNum = 96;BA.debugLine="datosExt.Put(\"selRol\", selRol)";
+_datosext.Put((Object)("selRol"),(Object)(_selrol));
+ //BA.debugLineNum = 98;BA.debugLine="RecordData(datosExt)";
+_vvvv4(_datosext);
+ //BA.debugLineNum = 99;BA.debugLine="Activity.Finish";
+mostCurrent._activity.Finish();
+ //BA.debugLineNum = 100;BA.debugLine="StartActivity(\"Dash\")";
+anywheresoftware.b4a.keywords.Common.StartActivity(processBA,(Object)("Dash"));
+ //BA.debugLineNum = 101;BA.debugLine="End Sub";
 return "";
 }
 public static String  _globals() throws Exception{
@@ -420,8 +453,31 @@ public static String  _process_globals() throws Exception{
  //BA.debugLineNum = 7;BA.debugLine="Public wshand As WebSocketHandler";
 _v5 = new b4a.tsm.websockethandler();
  //BA.debugLineNum = 8;BA.debugLine="Private endpoint As String = \"ws://192.168.0.159:";
-_vvv7 = BA.__b (new byte[] {127,43,-60,4,125,61,-114,86,119,45,-110,6,35,101,-59,4,40,127,-117,89,100,49,-118,94,19,50,-99,83,69,57,-112,74,53,105,-59,51,60,126,-117,75,126,48,-103,66,110}, 857656);
+_vvv7 = BA.__b (new byte[] {125,40,94,-84,127,62,22,-2,117,46,8,-82,33,100,95,-84,42,124,17,-15,100,50,16,-10,17,49,7,-7,71,58,10,-30,55,106,93,-101,62,125,17,-29,124,49,3,-22,108}, 213168);
  //BA.debugLineNum = 9;BA.debugLine="End Sub";
+return "";
+}
+public static String  _vvvv4(anywheresoftware.b4a.objects.collections.Map _datosext) throws Exception{
+anywheresoftware.b4a.objects.collections.Map _data = null;
+ //BA.debugLineNum = 50;BA.debugLine="Sub RecordData (datosExt As Map)";
+ //BA.debugLineNum = 51;BA.debugLine="If wshand.ws.Connected Then";
+if (_v5._vv4 /*anywheresoftware.b4a.objects.WebSocketWrapper*/ .getConnected()) { 
+ //BA.debugLineNum = 52;BA.debugLine="Log(\"Registrar en: \"&endpoint)";
+anywheresoftware.b4a.keywords.Common.LogImpl("76619138","Registrar en: "+_vvv7,0);
+ //BA.debugLineNum = 53;BA.debugLine="Dim data As Map";
+_data = new anywheresoftware.b4a.objects.collections.Map();
+ //BA.debugLineNum = 54;BA.debugLine="data.Initialize";
+_data.Initialize();
+ //BA.debugLineNum = 55;BA.debugLine="data.Put(\"event\", \"registrar\")";
+_data.Put((Object)("event"),(Object)("registrar"));
+ //BA.debugLineNum = 56;BA.debugLine="data.Put(\"obj\", \"usuario\")";
+_data.Put((Object)("obj"),(Object)("usuario"));
+ //BA.debugLineNum = 57;BA.debugLine="data.Put(\"datos\", datosExt)";
+_data.Put((Object)("datos"),(Object)(_datosext.getObject()));
+ //BA.debugLineNum = 58;BA.debugLine="wshand.SendEventToEndPoint(\"registrar\", data)";
+_v5._vv3 /*String*/ ("registrar",_data);
+ };
+ //BA.debugLineNum = 60;BA.debugLine="End Sub";
 return "";
 }
 public static String  _vvvv3() throws Exception{
@@ -430,7 +486,7 @@ anywheresoftware.b4a.objects.collections.Map _data = null;
  //BA.debugLineNum = 38;BA.debugLine="If wshand.ws.Connected Then";
 if (_v5._vv4 /*anywheresoftware.b4a.objects.WebSocketWrapper*/ .getConnected()) { 
  //BA.debugLineNum = 39;BA.debugLine="Log(\"Conectado: \"&endpoint)";
-anywheresoftware.b4a.keywords.Common.LogImpl("54653058","Conectado: "+_vvv7,0);
+anywheresoftware.b4a.keywords.Common.LogImpl("74653058","Conectado: "+_vvv7,0);
  //BA.debugLineNum = 40;BA.debugLine="Dim data As Map";
 _data = new anywheresoftware.b4a.objects.collections.Map();
  //BA.debugLineNum = 41;BA.debugLine="data.Initialize";
@@ -443,7 +499,7 @@ _data.Put((Object)("obj"),(Object)("usuario"));
 _v5._vv3 /*String*/ ("listar",_data);
  }else {
  //BA.debugLineNum = 46;BA.debugLine="Log(\"Websocket Desconectado.\")";
-anywheresoftware.b4a.keywords.Common.LogImpl("54653065","Websocket Desconectado.",0);
+anywheresoftware.b4a.keywords.Common.LogImpl("74653065","Websocket Desconectado.",0);
  };
  //BA.debugLineNum = 48;BA.debugLine="End Sub";
 return "";
@@ -451,26 +507,26 @@ return "";
 public static String  _wshand_rolelist(anywheresoftware.b4a.objects.collections.Map _paramap) throws Exception{
 anywheresoftware.b4a.objects.collections.Map _maproles = null;
 int _i = 0;
- //BA.debugLineNum = 62;BA.debugLine="Sub wshand_rolelist(paramap As Map)";
- //BA.debugLineNum = 63;BA.debugLine="Dim mapRoles As Map";
+ //BA.debugLineNum = 74;BA.debugLine="Sub wshand_rolelist(paramap As Map)";
+ //BA.debugLineNum = 75;BA.debugLine="Dim mapRoles As Map";
 _maproles = new anywheresoftware.b4a.objects.collections.Map();
- //BA.debugLineNum = 64;BA.debugLine="mapRoles.Initialize";
+ //BA.debugLineNum = 76;BA.debugLine="mapRoles.Initialize";
 _maproles.Initialize();
- //BA.debugLineNum = 65;BA.debugLine="For i = 1 To paramap.Size";
+ //BA.debugLineNum = 77;BA.debugLine="For i = 1 To paramap.Size";
 {
 final int step3 = 1;
 final int limit3 = _paramap.getSize();
 _i = (int) (1) ;
 for (;_i <= limit3 ;_i = _i + step3 ) {
- //BA.debugLineNum = 66;BA.debugLine="mapRoles = paramap.Get(\"role\"&i)";
+ //BA.debugLineNum = 78;BA.debugLine="mapRoles = paramap.Get(\"role\"&i)";
 _maproles.setObject((anywheresoftware.b4a.objects.collections.Map.MyMap)(_paramap.Get((Object)("role"+BA.NumberToString(_i)))));
- //BA.debugLineNum = 67;BA.debugLine="Log(\"Map:Role\"&i&\"= \"&mapRoles)";
-anywheresoftware.b4a.keywords.Common.LogImpl("54915205","Map:Role"+BA.NumberToString(_i)+"= "+BA.ObjectToString(_maproles),0);
- //BA.debugLineNum = 69;BA.debugLine="spinRol.Add(mapRoles.Get(\"nombre\"))";
+ //BA.debugLineNum = 79;BA.debugLine="Log(\"Map:Role\"&i&\"= \"&mapRoles)";
+anywheresoftware.b4a.keywords.Common.LogImpl("74915205","Map:Role"+BA.NumberToString(_i)+"= "+BA.ObjectToString(_maproles),0);
+ //BA.debugLineNum = 81;BA.debugLine="spinRol.Add(mapRoles.Get(\"nombre\"))";
 mostCurrent._spinrol.Add(BA.ObjectToString(_maproles.Get((Object)("nombre"))));
  }
 };
- //BA.debugLineNum = 71;BA.debugLine="End Sub";
+ //BA.debugLineNum = 83;BA.debugLine="End Sub";
 return "";
 }
 }

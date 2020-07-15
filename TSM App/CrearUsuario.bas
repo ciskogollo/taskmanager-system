@@ -53,6 +53,20 @@ Sub UpdateData
 	End If
 End Sub
 
+Sub RecordData (datosExt As Map)
+	If wshand.ws.Connected Then
+		Log("Registrar en: "&endpoint)
+		Dim data As Map
+		data.Initialize
+		data.Put("event", "registrar")
+		data.Put("obj", "usuario")
+		data.Put("datos", datosExt)
+		wshand.SendEventToEndPoint("registrar", data)
+	End If
+	
+	Activity.Finish
+End Sub
+
 Sub Activity_Resume
 
 End Sub
@@ -74,4 +88,23 @@ Sub wshand_rolelist(paramap As Map)
 		
 		spinRol.Add(mapRoles.Get("nombre"))
 	Next
+End Sub
+
+Sub btnEnviar_Click
+	Dim datosExt As Map
+	datosExt.Initialize
+
+	Dim selRol As String = spinRol.SelectedItem
+	Log(selRol)
+	datosExt.Put("nombre", txtNombre.Text.ToLowerCase)
+	datosExt.Put("correo", txtCorreo.Text.ToLowerCase)
+	datosExt.Put("hash", txtHash.Text)
+	datosExt.Put("rut", txtRut.Text)
+	datosExt.Put("direccion", txtDireccion.Text)
+	datosExt.Put("selRol", selRol)
+	
+	RecordData(datosExt)
+'	Antes iba aqui
+'	Activity.Finish
+	StartActivity("Dash")
 End Sub

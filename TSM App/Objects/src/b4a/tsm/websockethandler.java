@@ -92,8 +92,8 @@ _m.Put((Object)("param"),(Object)(_data.getObject()));
 _jsgen = new anywheresoftware.b4a.objects.collections.JSONParser.JSONGenerator();
  //BA.debugLineNum = 66;BA.debugLine="jsgen.Initialize(m)";
 _jsgen.Initialize(_m);
- //BA.debugLineNum = 67;BA.debugLine="Log(jsgen.ToString)";
-__c.LogImpl("5983048",_jsgen.ToString(),0);
+ //BA.debugLineNum = 67;BA.debugLine="Log(\"(WS)ENVIANDO: \"&jsgen.ToString)";
+__c.LogImpl("7983048","(WS)ENVIANDO: "+_jsgen.ToString(),0);
  //BA.debugLineNum = 68;BA.debugLine="ws.SendText(jsgen.ToString)";
 _vv4.SendText(_jsgen.ToString());
  //BA.debugLineNum = 69;BA.debugLine="End Sub";
@@ -143,7 +143,7 @@ _m = _jspars.NextObject();
  } 
        catch (Exception e9) {
 			ba.setLastException(e9); //BA.debugLineNum = 80;BA.debugLine="Log(\"No se ha podido parsear de JSON a MAP .- \"";
-__c.LogImpl("51048585","No se ha podido parsear de JSON a MAP .- "+BA.ObjectToString(__c.LastException(getActivityBA())),0);
+__c.LogImpl("71048585","No se ha podido parsear de JSON a MAP .- "+BA.ObjectToString(__c.LastException(getActivityBA())),0);
  };
  //BA.debugLineNum = 84;BA.debugLine="Dim etype As String = m.get(\"type\")";
 _etype = BA.ObjectToString(_m.Get((Object)("type")));
@@ -151,12 +151,10 @@ _etype = BA.ObjectToString(_m.Get((Object)("type")));
 _event = BA.ObjectToString(_m.Get((Object)("event")));
  //BA.debugLineNum = 86;BA.debugLine="Dim param As String = m.Get(\"param\")";
 _param = BA.ObjectToString(_m.Get((Object)("param")));
- //BA.debugLineNum = 87;BA.debugLine="Log(param)";
-__c.LogImpl("51048592",_param,0);
  //BA.debugLineNum = 90;BA.debugLine="Log(\"---------------\")";
-__c.LogImpl("51048595","---------------",0);
+__c.LogImpl("71048595","---------------",0);
  //BA.debugLineNum = 91;BA.debugLine="Log(\"eType: \"&etype)";
-__c.LogImpl("51048596","eType: "+_etype,0);
+__c.LogImpl("71048596","eType: "+_etype,0);
  //BA.debugLineNum = 92;BA.debugLine="If etype = \"event\" Then";
 if ((_etype).equals("event")) { 
  //BA.debugLineNum = 93;BA.debugLine="Select event";
@@ -165,7 +163,7 @@ case 0: {
  //BA.debugLineNum = 95;BA.debugLine="CallSub2(Callback, EventName & \"_\" & event, p";
 __c.CallSubNew2(ba,_vv5,_vv6+"_"+_event,(Object)(_param));
  //BA.debugLineNum = 96;BA.debugLine="Log(\"Evento: \"&CallSub2(Callback, EventName &";
-__c.LogImpl("51048601","Evento: "+BA.ObjectToString(__c.CallSubNew2(ba,_vv5,_vv6+"_"+_event,(Object)(_param))),0);
+__c.LogImpl("71048601","Evento: "+BA.ObjectToString(__c.CallSubNew2(ba,_vv5,_vv6+"_"+_event,(Object)(_param))),0);
  break; }
 }
 ;
@@ -174,15 +172,15 @@ __c.LogImpl("51048601","Evento: "+BA.ObjectToString(__c.CallSubNew2(ba,_vv5,_vv6
 _parammap = new anywheresoftware.b4a.objects.collections.Map();
 _parammap.setObject((anywheresoftware.b4a.objects.collections.Map.MyMap)(_m.Get((Object)("param"))));
  //BA.debugLineNum = 103;BA.debugLine="Log(\"MSGRecibido: \"& param)";
-__c.LogImpl("51048608","MSGRecibido: "+_param,0);
+__c.LogImpl("71048608","MSGRecibido: "+_param,0);
  //BA.debugLineNum = 104;BA.debugLine="For i=0 To paramMap.Size -1";
 {
-final int step26 = 1;
-final int limit26 = (int) (_parammap.getSize()-1);
+final int step25 = 1;
+final int limit25 = (int) (_parammap.getSize()-1);
 _i = (int) (0) ;
-for (;_i <= limit26 ;_i = _i + step26 ) {
+for (;_i <= limit25 ;_i = _i + step25 ) {
  //BA.debugLineNum = 105;BA.debugLine="Log(\"ParamMap-Keys: \"&paramMap.getKeyAt(i))";
-__c.LogImpl("51048610","ParamMap-Keys: "+BA.ObjectToString(_parammap.GetKeyAt(_i)),0);
+__c.LogImpl("71048610","ParamMap-Keys: "+BA.ObjectToString(_parammap.GetKeyAt(_i)),0);
  }
 };
  //BA.debugLineNum = 108;BA.debugLine="Try";
@@ -202,9 +200,9 @@ _procesosmap.setObject((anywheresoftware.b4a.objects.collections.Map.MyMap)(_par
 _clientesmap = new anywheresoftware.b4a.objects.collections.Map();
 _clientesmap.setObject((anywheresoftware.b4a.objects.collections.Map.MyMap)(_parammap.Get((Object)("clientlist"))));
  } 
-       catch (Exception e36) {
-			ba.setLastException(e36); //BA.debugLineNum = 115;BA.debugLine="Log(\"Maps Error: \" & LastException)";
-__c.LogImpl("51048620","Maps Error: "+BA.ObjectToString(__c.LastException(getActivityBA())),0);
+       catch (Exception e35) {
+			ba.setLastException(e35); //BA.debugLineNum = 115;BA.debugLine="Log(\"Maps Error: \" & LastException)";
+__c.LogImpl("71048620","Maps Error: "+BA.ObjectToString(__c.LastException(getActivityBA())),0);
  };
  //BA.debugLineNum = 118;BA.debugLine="Select event";
 switch (BA.switchObjectToInt(_event,"dashboard","usuario","unidad","proceso")) {
@@ -236,9 +234,9 @@ __c.CallSubNew2(ba,_vv5,_vv6+"_"+"userlist",(Object)(_usuariosmap));
 ;
  };
  } 
-       catch (Exception e54) {
-			ba.setLastException(e54); //BA.debugLineNum = 140;BA.debugLine="Log(\"TextMessage Error: \" & LastException)";
-__c.LogImpl("51048645","TextMessage Error: "+BA.ObjectToString(__c.LastException(getActivityBA())),0);
+       catch (Exception e53) {
+			ba.setLastException(e53); //BA.debugLineNum = 140;BA.debugLine="Log(\"TextMessage Error: \" & LastException)";
+__c.LogImpl("71048645","TextMessage Error: "+BA.ObjectToString(__c.LastException(getActivityBA())),0);
  };
  //BA.debugLineNum = 142;BA.debugLine="End Sub";
 return "";
