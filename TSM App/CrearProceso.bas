@@ -50,6 +50,20 @@ Sub UpdateData
 	End If
 End Sub
 
+Sub RecordData (datosExt As Map)
+	If wshand.ws.Connected Then
+		Log("Registrar en: "&endpoint)
+		Dim data As Map
+		data.Initialize
+		data.Put("event", "registrar")
+		data.Put("obj", "proceso")
+		data.Put("datos", datosExt)
+		wshand.SendEventToEndPoint("registrar", data)
+	End If
+	
+	Activity.Finish
+End Sub
+
 Sub Activity_Resume
 
 End Sub
@@ -59,6 +73,7 @@ Sub Activity_Pause (UserClosed As Boolean)
 End Sub
 
 Sub btnAtras_Click
+	Activity.Finish
 	StartActivity("Dash")
 End Sub
 
@@ -84,4 +99,22 @@ Sub wshand_clientlist(paramap As Map)
 		
 		spinCliente.Add(mapClients.Get("nombre"))
 	Next
+End Sub
+
+Sub btnEnviar_Click
+	Dim datosExt As Map
+	datosExt.Initialize
+
+	Dim selClient As String = spinCliente.SelectedItem
+	Dim selUser As String = spinUsuario.SelectedItem
+	Log(selClient)
+	Log(selUser)
+	datosExt.Put("nombre", txtNombre.Text.ToLowerCase)
+	datosExt.Put("selClient", selClient)
+	datosExt.Put("selUser", selUser)
+	
+	RecordData(datosExt)
+'	Antes iba aqui
+'	Activity.Finish
+	StartActivity("Dash")
 End Sub

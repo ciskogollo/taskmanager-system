@@ -16,8 +16,8 @@ End Sub
 
 Sub Globals
 	Private btnEnviar As Button
-
 	Private btnAtras As Button
+	Private txtNombre As EditText
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
@@ -48,6 +48,20 @@ Sub UpdateData
 	End If
 End Sub
 
+Sub RecordData (datosExt As Map)
+	If wshand.ws.Connected Then
+		Log("Registrar en: "&endpoint)
+		Dim data As Map
+		data.Initialize
+		data.Put("event", "registrar")
+		data.Put("obj", "rol")
+		data.Put("datos", datosExt)
+		wshand.SendEventToEndPoint("registrar", data)
+	End If
+	
+	Activity.Finish
+End Sub
+
 Sub Activity_Resume
 
 End Sub
@@ -57,5 +71,18 @@ Sub Activity_Pause (UserClosed As Boolean)
 End Sub
 
 Sub btnAtras_Click
+	Activity.Finish
+	StartActivity("Dash")
+End Sub
+
+Sub btnEnviar_Click
+	Dim datosExt As Map
+	datosExt.Initialize
+
+	datosExt.Put("nombre", txtNombre.Text.ToLowerCase)
+	
+	RecordData(datosExt)
+'	Antes iba aqui
+'	Activity.Finish
 	StartActivity("Dash")
 End Sub

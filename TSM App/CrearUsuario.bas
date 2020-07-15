@@ -76,6 +76,7 @@ Sub Activity_Pause (UserClosed As Boolean)
 End Sub
 
 Sub btnAtras_Click
+	Activity.Finish
 	StartActivity("Dash")
 End Sub
 
