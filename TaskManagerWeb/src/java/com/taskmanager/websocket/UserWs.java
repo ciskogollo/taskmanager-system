@@ -18,6 +18,7 @@ import com.taskmanager.session.ClienteFacade;
 import static com.taskmanager.websocket.LoginWs.queue;
 import static com.taskmanager.websocket.LoginWs.logger;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
@@ -182,6 +183,44 @@ public class UserWs extends AbstractWs {
                             jsonObjResp.put("param", jsonObjAll);
                             break;
                         default:
+                            break;
+                    }
+                    break;
+                case "registrar":
+                    JSONObject jsonDatos;
+                    JSONObject objDatos = new JSONObject(jsonObj.get("datos").toString());
+                    //JSONObject objDatoss = new JSONObject(jsonObj.get.toString());
+                    //Object objDatosss = jsonObj.get("datos");
+                    System.out.println("objDatos: "+objDatos);
+                    //jsonDatos = parseUsuario(objDatos);
+                    //System.out.println("jsonDatos: "+jsonDatos);
+                    switch(objParam){
+                        case "usuario":
+                            String nombre,correo,hash,rut,direccion,selRol;
+                            nombre = objDatos.get("nombre").toString();
+                            correo = objDatos.get("correo").toString();
+                            hash = objDatos.get("hash").toString();
+                            rut = objDatos.get("rut").toString();
+                            direccion = objDatos.get("direccion").toString();
+                            selRol = objDatos.get("selRol").toString();
+                            BigDecimal idUser = new BigDecimal(usuarioFacade.findAll().size()).add(new BigDecimal(1));
+                            Rol objRol = rolFacade.findByName(selRol).get(0);
+                            
+                            Usuario usr = new Usuario();
+                            usr.setIdUsuario(idUser);
+                            usr.setNombre(nombre);
+                            usr.setCorreo(correo);
+                            usr.setHash(hash);
+                            usr.setRut(rut);
+                            usr.setDireccion(direccion);
+                            usr.setRolIdRol(objRol);
+                            
+                            usuarioFacade.create(usr);
+                            
+                            jsonObjAll.put("registro","exitoso");
+                            jsonObjResp.put("type", "response");
+                            jsonObjResp.put("event", "register_result");
+                            jsonObjResp.put("param", jsonObjAll);
                             break;
                     }
                     break;

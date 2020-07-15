@@ -36,6 +36,17 @@ public abstract class AbstractWs {
         return null;
     }
     
+    public JSONObject parseUsuario(String msg){
+        try{
+            jsonObj = new JSONObject(msg);
+            JSONObject userObj = new JSONObject(jsonObj.getJSONObject("datos").toString());
+            return userObj;
+        }catch(JSONException e){
+            System.err.println("Error: "+e.toString());
+        }
+        return null;
+    }
+    
     public void runFunction(String param){
         
         
