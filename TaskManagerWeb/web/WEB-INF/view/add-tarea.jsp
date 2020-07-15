@@ -14,16 +14,16 @@
             <form action="add-tarea" method="POST">
                 <div class="form-group">
                     <label for="txtDescriTarea">Descripción</label>
-                    <input type="text" class="form-control" id="txtDescriTarea" name="txtDescriTarea" placeholder="Nombre de la Tarea">
+                    <input type="text" class="form-control" id="txtDescriTarea" name="txtDescriTarea" placeholder="Nombre de la Tarea" required>
                 </div>
                 <div class="form-group">
                     <label for="datePlazoTarea">Plazo</label>
-                    <input type="date" class="form-control" id="datePlazoTarea" name="datePlazoTarea">
+                    <input type="date" class="form-control" id="datePlazoTarea" name="datePlazoTarea" required>
                 </div>
                 <div class="form-group">
                     <label for="selResponsableTarea">Responsable</label>
                     <select multiple class="form-control" id="selResponsableTarea" name="selResponsableTarea">
-                        <c:forEach items="${usuariosRegistrados}" var="usuarioReg">
+                        <c:forEach items="${usuariosRegistrados}" var="usuarioReg" required>
                             <option value="<c:out value="${usuarioReg.idUsuario}"/>"><c:out value="${usuarioReg.nombre}"/></option>
                         </c:forEach>
                     </select>
