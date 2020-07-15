@@ -6,9 +6,12 @@
 package com.taskmanager.session;
 
 import com.taskmanager.entity.Cliente;
+import com.taskmanager.entity.Proceso;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -29,4 +32,8 @@ public class ClienteFacade extends AbstractFacade<Cliente> {
         super(Cliente.class);
     }
     
+    public List<Cliente> findByNombreCliente(String nomClient){
+        Query query = em.createNamedQuery("Cliente.findByNombreCliente");
+        return query.setParameter("nombreCliente",nomClient).getResultList();
+    }
 }

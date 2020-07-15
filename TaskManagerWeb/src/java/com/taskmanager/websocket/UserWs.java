@@ -19,6 +19,7 @@ import static com.taskmanager.websocket.LoginWs.queue;
 import static com.taskmanager.websocket.LoginWs.logger;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
@@ -118,7 +119,6 @@ public class UserWs extends AbstractWs {
                             jsonObjResp.put("type", "response");
                             jsonObjResp.put("event", "dashboard");
                             jsonObjResp.put("param", jsonObjAll);
-                            
                             //replyMsg(peer, jsonObjResp.toString());
                             break;
                         case "usuario":
@@ -214,8 +214,62 @@ public class UserWs extends AbstractWs {
                             usr.setRut(rut);
                             usr.setDireccion(direccion);
                             usr.setRolIdRol(objRol);
-                            
                             usuarioFacade.create(usr);
+                            
+                            jsonObjAll.put("registro","exitoso");
+                            jsonObjResp.put("type", "response");
+                            jsonObjResp.put("event", "register_result");
+                            jsonObjResp.put("param", jsonObjAll);
+                            break;
+                        case "unidad":
+                            String proceso, nombreUnid;
+                            proceso = objDatos.get("proceso").toString();
+                            nombreUnid = objDatos.get("nombre").toString();
+                            BigDecimal idUnit = new BigDecimal(unidadFacade.findAll().size()).add(new BigDecimal(1));
+                            Proceso objProc = procesoFacade.findByTipoProceso(proceso).get(0);
+                            BigDecimal idProc = objProc.getIdProceso();
+                            
+                            Unidad und = new Unidad();
+                            und.setIdUnidad(idUnit);
+                            und.setIdProceso(idProc);
+                            und.setTipoUnidad(nombreUnid);
+                            unidadFacade.create(und);
+                            
+                            jsonObjAll.put("registro","exitoso");
+                            jsonObjResp.put("type", "response");
+                            jsonObjResp.put("event", "register_result");
+                            jsonObjResp.put("param", jsonObjAll);
+                            break;
+                        case "rol":
+                            String nombreRol;
+                            nombreRol = objDatos.get("rol").toString();
+                            BigDecimal idRol = new BigDecimal(rolFacade.findAll().size()).add(new BigDecimal(1));
+                            
+                            Rol rle = new Rol();
+                            rle.setIdRol(idRol);
+                            rle.setNombreRol(nombreRol);
+                            rolFacade.create(rle);
+                            
+                            jsonObjAll.put("registro","exitoso");
+                            jsonObjResp.put("type", "response");
+                            jsonObjResp.put("event", "register_result");
+                            jsonObjResp.put("param", jsonObjAll);
+                            break;
+                        case "proceso":
+                            String nombreProc,cliente,user;
+                            BigDecimal idProce = new BigDecimal(procesoFacade.findAll().size()).add(new BigDecimal(1));
+                            nombreProc = objDatos.get("nombre").toString();
+                            cliente = objDatos.get("selClient").toString();
+                            user = objDatos.get("selUser").toString();
+                            Cliente objClient = clienteFacade.findByNombreCliente(cliente).get(0);
+                            Usuario objUs = usuarioFacade.findByName(user).get(0);
+                            
+                            Proceso pso = new Proceso();
+                            pso.setIdProceso(idProce);
+                            pso.setTipoProceso(nombreProc);
+                            pso.setClienteIdCliente(objClient);
+                            pso.setUsuarioIdUsuario(objUs);
+                            procesoFacade.create(pso);
                             
                             jsonObjAll.put("registro","exitoso");
                             jsonObjResp.put("type", "response");

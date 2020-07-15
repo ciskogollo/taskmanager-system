@@ -22,8 +22,8 @@
                 </div>
                 <div class="form-group">
                     <label for="selResponsableTarea">Responsable</label>
-                    <select multiple class="form-control" id="selResponsableTarea" name="selResponsableTarea">
-                        <c:forEach items="${usuariosRegistrados}" var="usuarioReg" required>
+                    <select multiple class="form-control" id="selResponsableTarea" name="selResponsableTarea" required>
+                        <c:forEach items="${usuariosRegistrados}" var="usuarioReg">
                             <option value="<c:out value="${usuarioReg.idUsuario}"/>"><c:out value="${usuarioReg.nombre}"/></option>
                         </c:forEach>
                     </select>

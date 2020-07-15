@@ -58,6 +58,10 @@
                 </c:forEach>
             </tbody>
         </table>
+        <c:if test="${empty listTareas}">
+            <div class="text-center">
+                <span class="mx-auto">Usted no tiene tareas asignadas.</span>
+            </div>
+        </c:if>
     </div>
 </div>
-            

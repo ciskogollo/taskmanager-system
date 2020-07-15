@@ -47,7 +47,7 @@ public class Unidad implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "ID_PROCESO")
-    private BigInteger idProceso;
+    private BigDecimal idProceso;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 35)
@@ -63,7 +63,7 @@ public class Unidad implements Serializable {
         this.idUnidad = idUnidad;
     }
 
-    public Unidad(BigDecimal idUnidad, BigInteger idProceso, String tipoUnidad) {
+    public Unidad(BigDecimal idUnidad, BigDecimal idProceso, String tipoUnidad) {
         this.idUnidad = idUnidad;
         this.idProceso = idProceso;
         this.tipoUnidad = tipoUnidad;
@@ -77,11 +77,11 @@ public class Unidad implements Serializable {
         this.idUnidad = idUnidad;
     }
 
-    public BigInteger getIdProceso() {
+    public BigDecimal getIdProceso() {
         return idProceso;
     }
 
-    public void setIdProceso(BigInteger idProceso) {
+    public void setIdProceso(BigDecimal idProceso) {
         this.idProceso = idProceso;
     }
 
@@ -124,7 +124,7 @@ public class Unidad implements Serializable {
 
     @Override
     public String toString() {
-        return "com.taskmanager.entity.Unidad[ idUnidad=" + idUnidad + " ]";
+        return "Unidad:{idUnidad:" + idUnidad + ", tipo:" + idProceso +"}";
     }
     
 }

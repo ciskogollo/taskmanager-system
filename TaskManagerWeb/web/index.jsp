@@ -78,11 +78,13 @@ ${pageContext.servletContext.setAttribute("Titulo","Dashboard")}
                                 </td>
                             </tr><c
                         </c:forEach>
-                        <c:if test="${empty listTareas}">
-                            <span>Usted no tiene tareas asignadas.</span>
-                        </c:if>
                     </tbody>
                 </table>
+                <c:if test="${empty listTareas}">
+                    <div class="text-center">
+                        <span class="mx-auto">Usted no tiene tareas asignadas.</span>
+                    </div>
+                </c:if>
             </div>
         </div>
     </c:otherwise>
